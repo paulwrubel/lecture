@@ -23,21 +23,27 @@ fragment DIGIT: [0-9];
 // initial rule
 lecture: program EOF;
 
-program: startClause (statement SPACE)+ endClause;
+program: startClause (statement)+ endClause;
 
-startClause: START_CLAUSE TERMINATOR SPACE;
+startClause: START_CLAUSE TERMINATOR;
 
 endClause: END_CLAUSE TERMINATOR;
 
 statement: (declarationStatement | printStatement) TERMINATOR;
 
 declarationStatement:
-	DECLARATION_STATEMENT_INTRO SPACE variable SPACE ASSIGNMENT SPACE value;
+	DECLARATION_STATEMENT_INTRO SPACE identifier SPACE IS SPACE valueClause;
 
-printStatement: PRINT_STATEMENT_INTRO SPACE variable;
+printStatement: PRINT_STATEMENT_INTRO SPACE valueClause;
 
-variable: ALPHANUMERICSTRING;
-value: number;
+identifier: ALPHANUMERICSTRING;
+
+valueClause: value (SPACE operator SPACE valueClause)?;
+value: literalClause | identifier;
+literalClause: LITERALLY SPACE literal;
+literal: number;
+
+operator: PLUS;
 
 number: INTEGER;
 
@@ -50,9 +56,11 @@ START_CLAUSE: 'okay, hear me out';
 END_CLAUSE: 'i rest my case';
 DECLARATION_STATEMENT_INTRO: 'let\'s say';
 PRINT_STATEMENT_INTRO: 'then we have';
-
-ASSIGNMENT: 'is';
 TERMINATOR: DOT;
+
+IS: 'is';
+LITERALLY: 'literally';
+PLUS: 'plus';
 SPACE: ' ';
 
 // reserved symbols

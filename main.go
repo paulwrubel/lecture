@@ -6,7 +6,22 @@ import (
 )
 
 func main() {
-	lectureWalker, err := NewLectureWalker("okay, hear me out. let's say one is 1. then we have one. i rest my case.")
+	lectureText := `
+		okay, hear me out. 
+			let's say one is literally 1. 
+			let's say two is literally 2. 
+			let's say three is one plus two.
+			let's say four is two plus two.
+			let's say fifteen is one plus two plus three plus four plus literally 5.
+			then we have one.
+			then we have two.
+			then we have three.
+			then we have four.
+			then we have fifteen.
+			then we have literally 50 plus literally 5 plus four plus literally 2 plus two.
+		i rest my case.
+	`
+	lectureWalker, err := NewLectureWalker(lectureText)
 	if err != nil {
 		panic(err)
 	}

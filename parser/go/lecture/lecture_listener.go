@@ -28,11 +28,23 @@ type LectureListener interface {
 	// EnterPrintStatement is called when entering the printStatement production.
 	EnterPrintStatement(c *PrintStatementContext)
 
-	// EnterVariable is called when entering the variable production.
-	EnterVariable(c *VariableContext)
+	// EnterIdentifier is called when entering the identifier production.
+	EnterIdentifier(c *IdentifierContext)
+
+	// EnterValueClause is called when entering the valueClause production.
+	EnterValueClause(c *ValueClauseContext)
 
 	// EnterValue is called when entering the value production.
 	EnterValue(c *ValueContext)
+
+	// EnterLiteralClause is called when entering the literalClause production.
+	EnterLiteralClause(c *LiteralClauseContext)
+
+	// EnterLiteral is called when entering the literal production.
+	EnterLiteral(c *LiteralContext)
+
+	// EnterOperator is called when entering the operator production.
+	EnterOperator(c *OperatorContext)
 
 	// EnterNumber is called when entering the number production.
 	EnterNumber(c *NumberContext)
@@ -58,11 +70,23 @@ type LectureListener interface {
 	// ExitPrintStatement is called when exiting the printStatement production.
 	ExitPrintStatement(c *PrintStatementContext)
 
-	// ExitVariable is called when exiting the variable production.
-	ExitVariable(c *VariableContext)
+	// ExitIdentifier is called when exiting the identifier production.
+	ExitIdentifier(c *IdentifierContext)
+
+	// ExitValueClause is called when exiting the valueClause production.
+	ExitValueClause(c *ValueClauseContext)
 
 	// ExitValue is called when exiting the value production.
 	ExitValue(c *ValueContext)
+
+	// ExitLiteralClause is called when exiting the literalClause production.
+	ExitLiteralClause(c *LiteralClauseContext)
+
+	// ExitLiteral is called when exiting the literal production.
+	ExitLiteral(c *LiteralContext)
+
+	// ExitOperator is called when exiting the operator production.
+	ExitOperator(c *OperatorContext)
 
 	// ExitNumber is called when exiting the number production.
 	ExitNumber(c *NumberContext)

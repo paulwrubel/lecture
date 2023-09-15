@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/dave/jennifer/jen"
 	"github.com/paulwrubel/lecture-lang/parser/go/lecture"
@@ -22,6 +24,7 @@ type GolangLectureListener struct {
 	// jennifer constructs
 	currentFuncName   string
 	currentStatements []jen.Code
+	currentStatement  *jen.Statement
 }
 
 func (l *GolangLectureListener) EnterLecture(ctx *lecture.LectureContext) {
@@ -45,20 +48,53 @@ func (l GolangLectureListener) EnterEndClause(ctx *lecture.EndClauseContext) {
 }
 
 func (l *GolangLectureListener) EnterDeclarationStatement(ctx *lecture.DeclarationStatementContext) {
-	varName := ctx.Variable().GetText()
-	varValueString := ctx.Value().Number().GetText()
+	// initialize statement
+	varName := ctx.Identifier().GetText()
+	statement := jen.Id(varName).Op(":=")
 
-	varValue, err := strconv.ParseInt(varValueString, 10, 64)
-	if err != nil {
-		l.Errors = append(l.Errors, err)
-		return
-	}
+	l.currentStatement = statement
+}
 
-	l.currentStatements = append(l.currentStatements, jen.Id(varName).Op(":=").Lit(varValue))
+func (l *GolangLectureListener) ExitDeclarationStatement(ctx *lecture.DeclarationStatementContext) {
+	l.currentStatements = append(l.currentStatements, l.currentStatement)
+	l.currentStatement = nil
 }
 
 func (l *GolangLectureListener) EnterPrintStatement(ctx *lecture.PrintStatementContext) {
-	varName := ctx.Variable().GetText()
+	l.currentStatement = jen.Null()
+}
 
-	l.currentStatements = append(l.currentStatements, jen.Qual("fmt", "Println").Call(jen.Id(varName)))
+func (l *GolangLectureListener) ExitPrintStatement(ctx *lecture.PrintStatementContext) {
+	statement := jen.Qual("fmt", "Println").Call(l.currentStatement)
+
+	l.currentStatements = append(l.currentStatements, statement)
+	l.currentStatement = nil
+}
+
+func (l *GolangLectureListener) EnterValue(ctx *lecture.ValueContext) {
+	if ctx.Identifier() != nil {
+		// we are an identifier
+		l.currentStatement.Add(jen.Id(ctx.GetText()))
+	} else {
+		// we are a literal
+		literalInt64, err := strconv.ParseInt(ctx.LiteralClause().Literal().GetText(), 10, 64)
+		if err != nil {
+			l.Errors = append(l.Errors, err)
+			return
+		}
+		l.currentStatement.Add(jen.Lit(literalInt64))
+	}
+}
+
+func (l *GolangLectureListener) EnterOperator(ctx *lecture.OperatorContext) {
+	operatorString := ctx.GetText()
+	var op string
+	switch strings.ToLower(operatorString) {
+	case "plus":
+		op = "+"
+	default:
+		l.Errors = append(l.Errors, fmt.Errorf("unknown operator: %s", operatorString))
+		return
+	}
+	l.currentStatement.Add(jen.Op(op))
 }

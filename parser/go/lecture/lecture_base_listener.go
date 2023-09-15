@@ -62,17 +62,41 @@ func (s *BaseLectureListener) EnterPrintStatement(ctx *PrintStatementContext) {}
 // ExitPrintStatement is called when production printStatement is exited.
 func (s *BaseLectureListener) ExitPrintStatement(ctx *PrintStatementContext) {}
 
-// EnterVariable is called when production variable is entered.
-func (s *BaseLectureListener) EnterVariable(ctx *VariableContext) {}
+// EnterIdentifier is called when production identifier is entered.
+func (s *BaseLectureListener) EnterIdentifier(ctx *IdentifierContext) {}
 
-// ExitVariable is called when production variable is exited.
-func (s *BaseLectureListener) ExitVariable(ctx *VariableContext) {}
+// ExitIdentifier is called when production identifier is exited.
+func (s *BaseLectureListener) ExitIdentifier(ctx *IdentifierContext) {}
+
+// EnterValueClause is called when production valueClause is entered.
+func (s *BaseLectureListener) EnterValueClause(ctx *ValueClauseContext) {}
+
+// ExitValueClause is called when production valueClause is exited.
+func (s *BaseLectureListener) ExitValueClause(ctx *ValueClauseContext) {}
 
 // EnterValue is called when production value is entered.
 func (s *BaseLectureListener) EnterValue(ctx *ValueContext) {}
 
 // ExitValue is called when production value is exited.
 func (s *BaseLectureListener) ExitValue(ctx *ValueContext) {}
+
+// EnterLiteralClause is called when production literalClause is entered.
+func (s *BaseLectureListener) EnterLiteralClause(ctx *LiteralClauseContext) {}
+
+// ExitLiteralClause is called when production literalClause is exited.
+func (s *BaseLectureListener) ExitLiteralClause(ctx *LiteralClauseContext) {}
+
+// EnterLiteral is called when production literal is entered.
+func (s *BaseLectureListener) EnterLiteral(ctx *LiteralContext) {}
+
+// ExitLiteral is called when production literal is exited.
+func (s *BaseLectureListener) ExitLiteral(ctx *LiteralContext) {}
+
+// EnterOperator is called when production operator is entered.
+func (s *BaseLectureListener) EnterOperator(ctx *OperatorContext) {}
+
+// ExitOperator is called when production operator is exited.
+func (s *BaseLectureListener) ExitOperator(ctx *OperatorContext) {}
 
 // EnterNumber is called when production number is entered.
 func (s *BaseLectureListener) EnterNumber(ctx *NumberContext) {}

@@ -115,6 +115,9 @@ type LectureListener interface {
 	// EnterLiteral is called when entering the literal production.
 	EnterLiteral(c *LiteralContext)
 
+	// EnterString is called when entering the string production.
+	EnterString(c *StringContext)
+
 	// EnterNumber is called when entering the number production.
 	EnterNumber(c *NumberContext)
 
@@ -225,6 +228,9 @@ type LectureListener interface {
 
 	// ExitLiteral is called when exiting the literal production.
 	ExitLiteral(c *LiteralContext)
+
+	// ExitString is called when exiting the string production.
+	ExitString(c *StringContext)
 
 	// ExitNumber is called when exiting the number production.
 	ExitNumber(c *NumberContext)

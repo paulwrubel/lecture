@@ -270,12 +270,8 @@ func (l *GolangLectureListener) EnterValue(ctx *lecture.ValueContext) {
 		valuesStatement.Add(jen.Id(ctx.GetText()))
 	} else if ctx.LiteralClause() != nil {
 		// we are a literal
-		literalInt64, err := strconv.ParseInt(ctx.LiteralClause().Literal().GetText(), 10, 64)
-		if err != nil {
-			l.Errors = append(l.Errors, err)
-			return
-		}
-		valuesStatement.Add(jen.Lit(literalInt64))
+		//
+		// this case is handled elsewhere
 	} else {
 		l.Errors = append(l.Errors, errors.New("value is not identifier or literal (shouldn't be possible)"))
 	}
@@ -347,6 +343,30 @@ func (l *GolangLectureListener) EnterComparator(ctx *lecture.ComparatorContext) 
 		return
 	}
 	statement.Add(jen.Op(comp))
+
+	l.statementStack.Push(statement)
+}
+
+func (l *GolangLectureListener) EnterString(ctx *lecture.StringContext) {
+	statement := l.statementStack.Pop()
+
+	literalString := ctx.GetText()
+	literalString = strings.TrimPrefix(literalString, "quote, ")
+	literalString = strings.TrimSuffix(literalString, ", unquote")
+	statement.Add(jen.Lit(literalString))
+
+	l.statementStack.Push(statement)
+}
+
+func (l *GolangLectureListener) EnterNumber(ctx *lecture.NumberContext) {
+	statement := l.statementStack.Pop()
+
+	literalInt64, err := strconv.ParseInt(ctx.GetText(), 10, 64)
+	if err != nil {
+		l.Errors = append(l.Errors, err)
+		return
+	}
+	statement.Add(jen.Lit(literalInt64))
 
 	l.statementStack.Push(statement)
 }

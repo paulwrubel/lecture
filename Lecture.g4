@@ -7,6 +7,7 @@ grammar Lecture;
 // string parsing helpers
 fragment NON_QUOTE: ~["];
 fragment ESCAPED_QUOTE: '\\"';
+fragment CHARACTER: .;
 fragment ALPHANUMERIC: [a-zA-Z0-9];
 fragment ALPHA: [a-zA-Z];
 fragment BASICSYMBOL: [\-@_.];
@@ -126,9 +127,10 @@ type: NUMBER;
 operator: PLUS | MINUS;
 comparator: IS;
 
-identifier: ALPHANUMERICSTRING;
+identifier: IDENTIFIER_STRING;
 
-literal: number;
+literal: number | string;
+string: STRING;
 number: INTEGER;
 
 /**
@@ -163,6 +165,8 @@ LITERALLY: 'literally';
 NUMBER: 'number';
 PLUS: 'plus';
 MINUS: 'minus';
+QUOTE: 'quote';
+UNQUOTE: 'unquote';
 
 // reserved symbols
 COMMA: ',';
@@ -170,7 +174,8 @@ SPACE: ' ';
 TERMINATOR: DOT;
 
 // strings
-ALPHANUMERICSTRING: ALPHA (ALPHANUMERIC)*;
+IDENTIFIER_STRING: ALPHA ALPHANUMERIC*;
+STRING: QUOTE COMMA SPACE CHARACTER* COMMA SPACE UNQUOTE;
 // ALPHANUMERICSTRING: QUOTATION (ALPHANUMERIC | BASICSYMBOL)+ QUOTATION
 // 
 // QUOTEESCAPEDSTRING: QUOTATION NONQUOTEORESCAPED* QUOTATION;

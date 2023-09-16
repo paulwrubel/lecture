@@ -238,6 +238,12 @@ func (s *BaseLectureListener) EnterLiteral(ctx *LiteralContext) {}
 // ExitLiteral is called when production literal is exited.
 func (s *BaseLectureListener) ExitLiteral(ctx *LiteralContext) {}
 
+// EnterString is called when production string is entered.
+func (s *BaseLectureListener) EnterString(ctx *StringContext) {}
+
+// ExitString is called when production string is exited.
+func (s *BaseLectureListener) ExitString(ctx *StringContext) {}
+
 // EnterNumber is called when production number is entered.
 func (s *BaseLectureListener) EnterNumber(ctx *NumberContext) {}
 

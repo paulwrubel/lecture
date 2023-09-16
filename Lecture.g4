@@ -25,48 +25,104 @@ lecture: program EOF;
 
 program: startClause (statement)+ endClause;
 
-startClause: START_CLAUSE TERMINATOR;
+startClause: OKAY_HEAR_ME_OUT TERMINATOR;
 
-endClause: END_CLAUSE TERMINATOR;
+endClause: I_REST_MY_CASE TERMINATOR;
 
-statement: (declarationStatement | printStatement) TERMINATOR;
+// contructs
+
+function: functionStatement (atomicStatement)* returnStatement;
+
+// statements
+
+statement: (atomicStatement | function);
+
+atomicStatement: (declarationStatement | printStatement) TERMINATOR;
+
+functionStatement:
+	WE_CAN_USE_A_PROCESS_KNOWN_AS SPACE identifier (
+		parametersDeclaration
+	)? SPACE AND_PROCEEDS_AS_FOLLOWS TERMINATOR;
+
+returnStatement: FINALLY_WE_GET SPACE valueClause TERMINATOR;
 
 declarationStatement:
-	DECLARATION_STATEMENT_INTRO SPACE identifier SPACE IS SPACE valueClause;
+	LETS_SAY SPACE identifier SPACE IS SPACE valueClause;
 
-printStatement: PRINT_STATEMENT_INTRO SPACE valueClause;
+printStatement: THEN_WE_HAVE SPACE valueClause;
+
+// sub-statements
+
+parametersDeclaration:
+	COMMA SPACE WHICH_NEEDS SPACE parameterDeclarationClause COMMA;
+
+parameterDeclarationClause:
+	parameterDeclaration (
+		SPACE AND SPACE parameterDeclarationClause
+	)?;
+
+parameterDeclaration:
+	A SPACE type SPACE CALLED SPACE identifier;
+
+// valueClause
+
+valueClause: value (SPACE operator SPACE valueClause)?;
+
+value: literalClause | identifier | functionCall;
+
+literalClause: LITERALLY SPACE literal;
+
+functionCall:
+	THE_RESULT_OF SPACE identifier (
+		SPACE WITH SPACE parametersClause
+	)?;
+
+parametersClause: value (SPACE AND SPACE parametersClause)?;
+
+// simples
+
+type: NUMBER;
+operator: PLUS;
 
 identifier: ALPHANUMERICSTRING;
 
-valueClause: value (SPACE operator SPACE valueClause)?;
-value: literalClause | identifier;
-literalClause: LITERALLY SPACE literal;
 literal: number;
-
-operator: PLUS;
-
 number: INTEGER;
 
 /**
  * TOKENS
  */
 
-// reserved keywords and phrases
-START_CLAUSE: 'okay, hear me out';
-END_CLAUSE: 'i rest my case';
-DECLARATION_STATEMENT_INTRO: 'let\'s say';
-PRINT_STATEMENT_INTRO: 'then we have';
-TERMINATOR: DOT;
+// reserved keyphrases
+OKAY_HEAR_ME_OUT: 'okay, hear me out';
+I_REST_MY_CASE: 'i rest my case';
+LETS_SAY: 'let\'s say';
+THEN_WE_HAVE: 'then we have';
+WE_CAN_USE_A_PROCESS_KNOWN_AS: 'we can use a process known as';
+WHICH_NEEDS: 'which needs';
+AND_PROCEEDS_AS_FOLLOWS: 'and proceeds as follows';
+FINALLY_WE_GET: 'finally, we get';
+THE_RESULT_OF: 'the result of';
 
+// reserved keywords
+A: 'a';
+CALLED: 'called';
 IS: 'is';
+AND: 'and';
+WITH: 'with';
 LITERALLY: 'literally';
+NUMBER: 'number';
 PLUS: 'plus';
-SPACE: ' ';
 
 // reserved symbols
-ALPHANUMERICSTRING: ALPHA (ALPHANUMERIC)*;
+COMMA: ',';
+SPACE: ' ';
+TERMINATOR: DOT;
 
-// strings ALPHANUMERICSTRING: QUOTATION (ALPHANUMERIC | BASICSYMBOL)+ QUOTATION;
+// strings
+ALPHANUMERICSTRING: ALPHA (ALPHANUMERIC)*;
+// ALPHANUMERICSTRING: QUOTATION (ALPHANUMERIC | BASICSYMBOL)+ QUOTATION
+
 // QUOTEESCAPEDSTRING: QUOTATION NONQUOTEORESCAPED* QUOTATION;
 
 // numbers

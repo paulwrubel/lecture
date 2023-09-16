@@ -2,6 +2,7 @@
 .PHONY: all grammar build test
 
 ANTLR4_JAR=/usr/local/lib/antlr-4.13.1-complete.jar
+ANTLR4=antlr4
 
 GRAMMAR_NAME=Lecture
 GRAMMAR_FILE=$(GRAMMAR_NAME).g4
@@ -11,7 +12,6 @@ GOLANG_PACKAGE=lecture
 
 BINARY_NAME=lecture
 
-ANTLR4=java -cp "$(ANTLR4_JAR)" org.antlr.v4.Tool
 
 GO_SOURCES = $(shell find . -type f -name '*.go') go.mod
 

@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"fmt"
@@ -75,7 +75,7 @@ func (l *GolangLectureListener) EnterValue(ctx *lecture.ValueContext) {
 	if ctx.Identifier() != nil {
 		// we are an identifier
 		l.currentStatement.Add(jen.Id(ctx.GetText()))
-	} else {
+	} else if ctx.LiteralClause() != nil {
 		// we are a literal
 		literalInt64, err := strconv.ParseInt(ctx.LiteralClause().Literal().GetText(), 10, 64)
 		if err != nil {
@@ -83,6 +83,8 @@ func (l *GolangLectureListener) EnterValue(ctx *lecture.ValueContext) {
 			return
 		}
 		l.currentStatement.Add(jen.Lit(literalInt64))
+	} else {
+		// we are a function call
 	}
 }
 

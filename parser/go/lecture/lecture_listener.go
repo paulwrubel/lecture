@@ -13,32 +13,20 @@ type LectureListener interface {
 	// EnterProgram is called when entering the program production.
 	EnterProgram(c *ProgramContext)
 
-	// EnterStartClause is called when entering the startClause production.
-	EnterStartClause(c *StartClauseContext)
+	// EnterMainFunction is called when entering the mainFunction production.
+	EnterMainFunction(c *MainFunctionContext)
 
-	// EnterEndClause is called when entering the endClause production.
-	EnterEndClause(c *EndClauseContext)
+	// EnterMainStartStatement is called when entering the mainStartStatement production.
+	EnterMainStartStatement(c *MainStartStatementContext)
 
-	// EnterStatement is called when entering the statement production.
-	EnterStatement(c *StatementContext)
-
-	// EnterAtomicStatement is called when entering the atomicStatement production.
-	EnterAtomicStatement(c *AtomicStatementContext)
+	// EnterMainEndStatement is called when entering the mainEndStatement production.
+	EnterMainEndStatement(c *MainEndStatementContext)
 
 	// EnterFunction is called when entering the function production.
 	EnterFunction(c *FunctionContext)
 
-	// EnterFunctionStatement is called when entering the functionStatement production.
-	EnterFunctionStatement(c *FunctionStatementContext)
-
-	// EnterReturnStatement is called when entering the returnStatement production.
-	EnterReturnStatement(c *ReturnStatementContext)
-
-	// EnterDeclarationStatement is called when entering the declarationStatement production.
-	EnterDeclarationStatement(c *DeclarationStatementContext)
-
-	// EnterPrintStatement is called when entering the printStatement production.
-	EnterPrintStatement(c *PrintStatementContext)
+	// EnterFunctionSignature is called when entering the functionSignature production.
+	EnterFunctionSignature(c *FunctionSignatureContext)
 
 	// EnterParametersDeclaration is called when entering the parametersDeclaration production.
 	EnterParametersDeclaration(c *ParametersDeclarationContext)
@@ -46,26 +34,71 @@ type LectureListener interface {
 	// EnterParameterDeclarationClause is called when entering the parameterDeclarationClause production.
 	EnterParameterDeclarationClause(c *ParameterDeclarationClauseContext)
 
+	// EnterParameterDeclaration is called when entering the parameterDeclaration production.
+	EnterParameterDeclaration(c *ParameterDeclarationContext)
+
+	// EnterStatement is called when entering the statement production.
+	EnterStatement(c *StatementContext)
+
+	// EnterStatementBlock is called when entering the statementBlock production.
+	EnterStatementBlock(c *StatementBlockContext)
+
+	// EnterReturnStatement is called when entering the returnStatement production.
+	EnterReturnStatement(c *ReturnStatementContext)
+
+	// EnterAssignmentStatement is called when entering the assignmentStatement production.
+	EnterAssignmentStatement(c *AssignmentStatementContext)
+
+	// EnterReassignmentStatement is called when entering the reassignmentStatement production.
+	EnterReassignmentStatement(c *ReassignmentStatementContext)
+
+	// EnterPrintStatement is called when entering the printStatement production.
+	EnterPrintStatement(c *PrintStatementContext)
+
+	// EnterIfChainStatement is called when entering the ifChainStatement production.
+	EnterIfChainStatement(c *IfChainStatementContext)
+
+	// EnterIfStatement is called when entering the ifStatement production.
+	EnterIfStatement(c *IfStatementContext)
+
+	// EnterIfSignature is called when entering the ifSignature production.
+	EnterIfSignature(c *IfSignatureContext)
+
+	// EnterElseIfStatement is called when entering the elseIfStatement production.
+	EnterElseIfStatement(c *ElseIfStatementContext)
+
+	// EnterElseIfSignature is called when entering the elseIfSignature production.
+	EnterElseIfSignature(c *ElseIfSignatureContext)
+
+	// EnterElseStatement is called when entering the elseStatement production.
+	EnterElseStatement(c *ElseStatementContext)
+
+	// EnterElseSignature is called when entering the elseSignature production.
+	EnterElseSignature(c *ElseSignatureContext)
+
+	// EnterIfClosingStatement is called when entering the ifClosingStatement production.
+	EnterIfClosingStatement(c *IfClosingStatementContext)
+
+	// EnterConditionClause is called when entering the conditionClause production.
+	EnterConditionClause(c *ConditionClauseContext)
+
+	// EnterValueClause is called when entering the valueClause production.
+	EnterValueClause(c *ValueClauseContext)
+
+	// EnterValue is called when entering the value production.
+	EnterValue(c *ValueContext)
+
+	// EnterLiteralClause is called when entering the literalClause production.
+	EnterLiteralClause(c *LiteralClauseContext)
+
 	// EnterFunctionCall is called when entering the functionCall production.
 	EnterFunctionCall(c *FunctionCallContext)
 
 	// EnterParametersClause is called when entering the parametersClause production.
 	EnterParametersClause(c *ParametersClauseContext)
 
-	// EnterValueClause is called when entering the valueClause production.
-	EnterValueClause(c *ValueClauseContext)
-
-	// EnterLiteralClause is called when entering the literalClause production.
-	EnterLiteralClause(c *LiteralClauseContext)
-
-	// EnterParameterDeclaration is called when entering the parameterDeclaration production.
-	EnterParameterDeclaration(c *ParameterDeclarationContext)
-
-	// EnterValue is called when entering the value production.
-	EnterValue(c *ValueContext)
-
-	// EnterLiteral is called when entering the literal production.
-	EnterLiteral(c *LiteralContext)
+	// EnterParameter is called when entering the parameter production.
+	EnterParameter(c *ParameterContext)
 
 	// EnterType is called when entering the type production.
 	EnterType(c *TypeContext)
@@ -73,8 +106,14 @@ type LectureListener interface {
 	// EnterOperator is called when entering the operator production.
 	EnterOperator(c *OperatorContext)
 
+	// EnterComparator is called when entering the comparator production.
+	EnterComparator(c *ComparatorContext)
+
 	// EnterIdentifier is called when entering the identifier production.
 	EnterIdentifier(c *IdentifierContext)
+
+	// EnterLiteral is called when entering the literal production.
+	EnterLiteral(c *LiteralContext)
 
 	// EnterNumber is called when entering the number production.
 	EnterNumber(c *NumberContext)
@@ -85,32 +124,20 @@ type LectureListener interface {
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
-	// ExitStartClause is called when exiting the startClause production.
-	ExitStartClause(c *StartClauseContext)
+	// ExitMainFunction is called when exiting the mainFunction production.
+	ExitMainFunction(c *MainFunctionContext)
 
-	// ExitEndClause is called when exiting the endClause production.
-	ExitEndClause(c *EndClauseContext)
+	// ExitMainStartStatement is called when exiting the mainStartStatement production.
+	ExitMainStartStatement(c *MainStartStatementContext)
 
-	// ExitStatement is called when exiting the statement production.
-	ExitStatement(c *StatementContext)
-
-	// ExitAtomicStatement is called when exiting the atomicStatement production.
-	ExitAtomicStatement(c *AtomicStatementContext)
+	// ExitMainEndStatement is called when exiting the mainEndStatement production.
+	ExitMainEndStatement(c *MainEndStatementContext)
 
 	// ExitFunction is called when exiting the function production.
 	ExitFunction(c *FunctionContext)
 
-	// ExitFunctionStatement is called when exiting the functionStatement production.
-	ExitFunctionStatement(c *FunctionStatementContext)
-
-	// ExitReturnStatement is called when exiting the returnStatement production.
-	ExitReturnStatement(c *ReturnStatementContext)
-
-	// ExitDeclarationStatement is called when exiting the declarationStatement production.
-	ExitDeclarationStatement(c *DeclarationStatementContext)
-
-	// ExitPrintStatement is called when exiting the printStatement production.
-	ExitPrintStatement(c *PrintStatementContext)
+	// ExitFunctionSignature is called when exiting the functionSignature production.
+	ExitFunctionSignature(c *FunctionSignatureContext)
 
 	// ExitParametersDeclaration is called when exiting the parametersDeclaration production.
 	ExitParametersDeclaration(c *ParametersDeclarationContext)
@@ -118,26 +145,71 @@ type LectureListener interface {
 	// ExitParameterDeclarationClause is called when exiting the parameterDeclarationClause production.
 	ExitParameterDeclarationClause(c *ParameterDeclarationClauseContext)
 
+	// ExitParameterDeclaration is called when exiting the parameterDeclaration production.
+	ExitParameterDeclaration(c *ParameterDeclarationContext)
+
+	// ExitStatement is called when exiting the statement production.
+	ExitStatement(c *StatementContext)
+
+	// ExitStatementBlock is called when exiting the statementBlock production.
+	ExitStatementBlock(c *StatementBlockContext)
+
+	// ExitReturnStatement is called when exiting the returnStatement production.
+	ExitReturnStatement(c *ReturnStatementContext)
+
+	// ExitAssignmentStatement is called when exiting the assignmentStatement production.
+	ExitAssignmentStatement(c *AssignmentStatementContext)
+
+	// ExitReassignmentStatement is called when exiting the reassignmentStatement production.
+	ExitReassignmentStatement(c *ReassignmentStatementContext)
+
+	// ExitPrintStatement is called when exiting the printStatement production.
+	ExitPrintStatement(c *PrintStatementContext)
+
+	// ExitIfChainStatement is called when exiting the ifChainStatement production.
+	ExitIfChainStatement(c *IfChainStatementContext)
+
+	// ExitIfStatement is called when exiting the ifStatement production.
+	ExitIfStatement(c *IfStatementContext)
+
+	// ExitIfSignature is called when exiting the ifSignature production.
+	ExitIfSignature(c *IfSignatureContext)
+
+	// ExitElseIfStatement is called when exiting the elseIfStatement production.
+	ExitElseIfStatement(c *ElseIfStatementContext)
+
+	// ExitElseIfSignature is called when exiting the elseIfSignature production.
+	ExitElseIfSignature(c *ElseIfSignatureContext)
+
+	// ExitElseStatement is called when exiting the elseStatement production.
+	ExitElseStatement(c *ElseStatementContext)
+
+	// ExitElseSignature is called when exiting the elseSignature production.
+	ExitElseSignature(c *ElseSignatureContext)
+
+	// ExitIfClosingStatement is called when exiting the ifClosingStatement production.
+	ExitIfClosingStatement(c *IfClosingStatementContext)
+
+	// ExitConditionClause is called when exiting the conditionClause production.
+	ExitConditionClause(c *ConditionClauseContext)
+
+	// ExitValueClause is called when exiting the valueClause production.
+	ExitValueClause(c *ValueClauseContext)
+
+	// ExitValue is called when exiting the value production.
+	ExitValue(c *ValueContext)
+
+	// ExitLiteralClause is called when exiting the literalClause production.
+	ExitLiteralClause(c *LiteralClauseContext)
+
 	// ExitFunctionCall is called when exiting the functionCall production.
 	ExitFunctionCall(c *FunctionCallContext)
 
 	// ExitParametersClause is called when exiting the parametersClause production.
 	ExitParametersClause(c *ParametersClauseContext)
 
-	// ExitValueClause is called when exiting the valueClause production.
-	ExitValueClause(c *ValueClauseContext)
-
-	// ExitLiteralClause is called when exiting the literalClause production.
-	ExitLiteralClause(c *LiteralClauseContext)
-
-	// ExitParameterDeclaration is called when exiting the parameterDeclaration production.
-	ExitParameterDeclaration(c *ParameterDeclarationContext)
-
-	// ExitValue is called when exiting the value production.
-	ExitValue(c *ValueContext)
-
-	// ExitLiteral is called when exiting the literal production.
-	ExitLiteral(c *LiteralContext)
+	// ExitParameter is called when exiting the parameter production.
+	ExitParameter(c *ParameterContext)
 
 	// ExitType is called when exiting the type production.
 	ExitType(c *TypeContext)
@@ -145,8 +217,14 @@ type LectureListener interface {
 	// ExitOperator is called when exiting the operator production.
 	ExitOperator(c *OperatorContext)
 
+	// ExitComparator is called when exiting the comparator production.
+	ExitComparator(c *ComparatorContext)
+
 	// ExitIdentifier is called when exiting the identifier production.
 	ExitIdentifier(c *IdentifierContext)
+
+	// ExitLiteral is called when exiting the literal production.
+	ExitLiteral(c *LiteralContext)
 
 	// ExitNumber is called when exiting the number production.
 	ExitNumber(c *NumberContext)

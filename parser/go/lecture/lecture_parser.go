@@ -32,96 +32,148 @@ var LectureParserStaticData struct {
 func lectureParserInit() {
 	staticData := &LectureParserStaticData
 	staticData.LiteralNames = []string{
-		"", "'okay, hear me out'", "'i rest my case'", "'let's say'", "'then we have'",
-		"'we can use a process known as'", "'which needs'", "'and proceeds as follows'",
-		"'finally, we get'", "'the result of'", "", "'a'", "'called'", "'is'",
-		"'and'", "'with'", "'literally'", "'number'", "'plus'", "','", "' '",
+		"", "'okay, hear me out'", "'i rest my case'", "'now let's say'", "'let's say'",
+		"'then we have'", "'we can use a process known as'", "'which needs'",
+		"'to produce a'", "'it proceeds as follows'", "'finally, we get'", "'the result of'",
+		"'here's what we need to do'", "'now that we've done that'", "'we can move on'",
+		"'a'", "'called'", "'is'", "'and'", "'using'", "'if'", "'otherwise'",
+		"'literally'", "'number'", "'plus'", "'minus'", "','", "' '",
 	}
 	staticData.SymbolicNames = []string{
-		"", "OKAY_HEAR_ME_OUT", "I_REST_MY_CASE", "LETS_SAY", "THEN_WE_HAVE",
-		"WE_CAN_USE_A_PROCESS_KNOWN_AS", "WHICH_NEEDS", "AND_PROCEEDS_AS_FOLLOWS",
-		"FINALLY_WE_GET", "THE_RESULT_OF", "TERMINATOR", "A", "CALLED", "IS",
-		"AND", "WITH", "LITERALLY", "NUMBER", "PLUS", "COMMA", "SPACE", "ALPHANUMERICSTRING",
-		"INTEGER", "WS",
+		"", "OKAY_HEAR_ME_OUT", "I_REST_MY_CASE", "NOW_LETS_SAY", "LETS_SAY",
+		"THEN_WE_HAVE", "WE_CAN_USE_A_PROCESS_KNOWN_AS", "WHICH_NEEDS", "TO_PRODUCE_A",
+		"IT_PROCEEDS_AS_FOLLOWS", "FINALLY_WE_GET", "THE_RESULT_OF", "HERES_WHAT_WE_NEED_TO_DO",
+		"NOW_THAT_WEVE_DONE_THAT", "WE_CAN_MOVE_ON", "A", "CALLED", "IS", "AND",
+		"USING", "IF", "OTHERWISE", "LITERALLY", "NUMBER", "PLUS", "MINUS",
+		"COMMA", "SPACE", "TERMINATOR", "ALPHANUMERICSTRING", "INTEGER", "WS",
 	}
 	staticData.RuleNames = []string{
-		"lecture", "program", "startClause", "endClause", "statement", "atomicStatement",
-		"function", "functionStatement", "returnStatement", "declarationStatement",
-		"printStatement", "parametersDeclaration", "parameterDeclarationClause",
-		"functionCall", "parametersClause", "valueClause", "literalClause",
-		"parameterDeclaration", "value", "literal", "type", "operator", "identifier",
+		"lecture", "program", "mainFunction", "mainStartStatement", "mainEndStatement",
+		"function", "functionSignature", "parametersDeclaration", "parameterDeclarationClause",
+		"parameterDeclaration", "statement", "statementBlock", "returnStatement",
+		"assignmentStatement", "reassignmentStatement", "printStatement", "ifChainStatement",
+		"ifStatement", "ifSignature", "elseIfStatement", "elseIfSignature",
+		"elseStatement", "elseSignature", "ifClosingStatement", "conditionClause",
+		"valueClause", "value", "literalClause", "functionCall", "parametersClause",
+		"parameter", "type", "operator", "comparator", "identifier", "literal",
 		"number",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 23, 177, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 31, 288, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
 		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 2, 14, 7, 14, 2, 15, 7, 15,
 		2, 16, 7, 16, 2, 17, 7, 17, 2, 18, 7, 18, 2, 19, 7, 19, 2, 20, 7, 20, 2,
-		21, 7, 21, 2, 22, 7, 22, 2, 23, 7, 23, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 4,
-		1, 54, 8, 1, 11, 1, 12, 1, 55, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 3, 1, 3,
-		1, 3, 1, 4, 1, 4, 3, 4, 68, 8, 4, 1, 5, 1, 5, 3, 5, 72, 8, 5, 1, 5, 1,
-		5, 1, 6, 1, 6, 5, 6, 78, 8, 6, 10, 6, 12, 6, 81, 9, 6, 1, 6, 1, 6, 1, 7,
-		1, 7, 1, 7, 1, 7, 3, 7, 89, 8, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 8, 1, 8, 1,
-		8, 1, 8, 1, 8, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 10, 1,
-		10, 1, 10, 1, 10, 1, 11, 1, 11, 1, 11, 1, 11, 1, 11, 1, 11, 1, 11, 1, 12,
-		1, 12, 1, 12, 1, 12, 1, 12, 3, 12, 124, 8, 12, 1, 13, 1, 13, 1, 13, 1,
-		13, 1, 13, 1, 13, 1, 13, 3, 13, 133, 8, 13, 1, 14, 1, 14, 1, 14, 1, 14,
-		1, 14, 3, 14, 140, 8, 14, 1, 15, 1, 15, 1, 15, 1, 15, 1, 15, 1, 15, 3,
-		15, 148, 8, 15, 1, 16, 1, 16, 1, 16, 1, 16, 1, 17, 1, 17, 1, 17, 1, 17,
-		1, 17, 1, 17, 1, 17, 1, 17, 1, 18, 1, 18, 1, 18, 3, 18, 165, 8, 18, 1,
-		19, 1, 19, 1, 20, 1, 20, 1, 21, 1, 21, 1, 22, 1, 22, 1, 23, 1, 23, 1, 23,
-		0, 0, 24, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32,
-		34, 36, 38, 40, 42, 44, 46, 0, 0, 163, 0, 48, 1, 0, 0, 0, 2, 51, 1, 0,
-		0, 0, 4, 59, 1, 0, 0, 0, 6, 62, 1, 0, 0, 0, 8, 67, 1, 0, 0, 0, 10, 71,
-		1, 0, 0, 0, 12, 75, 1, 0, 0, 0, 14, 84, 1, 0, 0, 0, 16, 94, 1, 0, 0, 0,
-		18, 99, 1, 0, 0, 0, 20, 107, 1, 0, 0, 0, 22, 111, 1, 0, 0, 0, 24, 118,
-		1, 0, 0, 0, 26, 125, 1, 0, 0, 0, 28, 134, 1, 0, 0, 0, 30, 141, 1, 0, 0,
-		0, 32, 149, 1, 0, 0, 0, 34, 153, 1, 0, 0, 0, 36, 164, 1, 0, 0, 0, 38, 166,
-		1, 0, 0, 0, 40, 168, 1, 0, 0, 0, 42, 170, 1, 0, 0, 0, 44, 172, 1, 0, 0,
-		0, 46, 174, 1, 0, 0, 0, 48, 49, 3, 2, 1, 0, 49, 50, 5, 0, 0, 1, 50, 1,
-		1, 0, 0, 0, 51, 53, 3, 4, 2, 0, 52, 54, 3, 8, 4, 0, 53, 52, 1, 0, 0, 0,
-		54, 55, 1, 0, 0, 0, 55, 53, 1, 0, 0, 0, 55, 56, 1, 0, 0, 0, 56, 57, 1,
-		0, 0, 0, 57, 58, 3, 6, 3, 0, 58, 3, 1, 0, 0, 0, 59, 60, 5, 1, 0, 0, 60,
-		61, 5, 10, 0, 0, 61, 5, 1, 0, 0, 0, 62, 63, 5, 2, 0, 0, 63, 64, 5, 10,
-		0, 0, 64, 7, 1, 0, 0, 0, 65, 68, 3, 10, 5, 0, 66, 68, 3, 12, 6, 0, 67,
-		65, 1, 0, 0, 0, 67, 66, 1, 0, 0, 0, 68, 9, 1, 0, 0, 0, 69, 72, 3, 18, 9,
-		0, 70, 72, 3, 20, 10, 0, 71, 69, 1, 0, 0, 0, 71, 70, 1, 0, 0, 0, 72, 73,
-		1, 0, 0, 0, 73, 74, 5, 10, 0, 0, 74, 11, 1, 0, 0, 0, 75, 79, 3, 14, 7,
-		0, 76, 78, 3, 10, 5, 0, 77, 76, 1, 0, 0, 0, 78, 81, 1, 0, 0, 0, 79, 77,
-		1, 0, 0, 0, 79, 80, 1, 0, 0, 0, 80, 82, 1, 0, 0, 0, 81, 79, 1, 0, 0, 0,
-		82, 83, 3, 16, 8, 0, 83, 13, 1, 0, 0, 0, 84, 85, 5, 5, 0, 0, 85, 86, 5,
-		20, 0, 0, 86, 88, 3, 44, 22, 0, 87, 89, 3, 22, 11, 0, 88, 87, 1, 0, 0,
-		0, 88, 89, 1, 0, 0, 0, 89, 90, 1, 0, 0, 0, 90, 91, 5, 20, 0, 0, 91, 92,
-		5, 7, 0, 0, 92, 93, 5, 10, 0, 0, 93, 15, 1, 0, 0, 0, 94, 95, 5, 8, 0, 0,
-		95, 96, 5, 20, 0, 0, 96, 97, 3, 30, 15, 0, 97, 98, 5, 10, 0, 0, 98, 17,
-		1, 0, 0, 0, 99, 100, 5, 3, 0, 0, 100, 101, 5, 20, 0, 0, 101, 102, 3, 44,
-		22, 0, 102, 103, 5, 20, 0, 0, 103, 104, 5, 13, 0, 0, 104, 105, 5, 20, 0,
-		0, 105, 106, 3, 30, 15, 0, 106, 19, 1, 0, 0, 0, 107, 108, 5, 4, 0, 0, 108,
-		109, 5, 20, 0, 0, 109, 110, 3, 30, 15, 0, 110, 21, 1, 0, 0, 0, 111, 112,
-		5, 19, 0, 0, 112, 113, 5, 20, 0, 0, 113, 114, 5, 6, 0, 0, 114, 115, 5,
-		20, 0, 0, 115, 116, 3, 24, 12, 0, 116, 117, 5, 19, 0, 0, 117, 23, 1, 0,
-		0, 0, 118, 123, 3, 34, 17, 0, 119, 120, 5, 20, 0, 0, 120, 121, 5, 14, 0,
-		0, 121, 122, 5, 20, 0, 0, 122, 124, 3, 24, 12, 0, 123, 119, 1, 0, 0, 0,
-		123, 124, 1, 0, 0, 0, 124, 25, 1, 0, 0, 0, 125, 126, 5, 9, 0, 0, 126, 127,
-		5, 20, 0, 0, 127, 132, 3, 44, 22, 0, 128, 129, 5, 20, 0, 0, 129, 130, 5,
-		15, 0, 0, 130, 131, 5, 20, 0, 0, 131, 133, 3, 28, 14, 0, 132, 128, 1, 0,
-		0, 0, 132, 133, 1, 0, 0, 0, 133, 27, 1, 0, 0, 0, 134, 139, 3, 36, 18, 0,
-		135, 136, 5, 20, 0, 0, 136, 137, 5, 14, 0, 0, 137, 138, 5, 20, 0, 0, 138,
-		140, 3, 28, 14, 0, 139, 135, 1, 0, 0, 0, 139, 140, 1, 0, 0, 0, 140, 29,
-		1, 0, 0, 0, 141, 147, 3, 36, 18, 0, 142, 143, 5, 20, 0, 0, 143, 144, 3,
-		42, 21, 0, 144, 145, 5, 20, 0, 0, 145, 146, 3, 30, 15, 0, 146, 148, 1,
-		0, 0, 0, 147, 142, 1, 0, 0, 0, 147, 148, 1, 0, 0, 0, 148, 31, 1, 0, 0,
-		0, 149, 150, 5, 16, 0, 0, 150, 151, 5, 20, 0, 0, 151, 152, 3, 38, 19, 0,
-		152, 33, 1, 0, 0, 0, 153, 154, 5, 11, 0, 0, 154, 155, 5, 20, 0, 0, 155,
-		156, 3, 40, 20, 0, 156, 157, 5, 20, 0, 0, 157, 158, 5, 12, 0, 0, 158, 159,
-		5, 20, 0, 0, 159, 160, 3, 44, 22, 0, 160, 35, 1, 0, 0, 0, 161, 165, 3,
-		32, 16, 0, 162, 165, 3, 44, 22, 0, 163, 165, 3, 26, 13, 0, 164, 161, 1,
-		0, 0, 0, 164, 162, 1, 0, 0, 0, 164, 163, 1, 0, 0, 0, 165, 37, 1, 0, 0,
-		0, 166, 167, 3, 46, 23, 0, 167, 39, 1, 0, 0, 0, 168, 169, 5, 17, 0, 0,
-		169, 41, 1, 0, 0, 0, 170, 171, 5, 18, 0, 0, 171, 43, 1, 0, 0, 0, 172, 173,
-		5, 21, 0, 0, 173, 45, 1, 0, 0, 0, 174, 175, 5, 22, 0, 0, 175, 47, 1, 0,
-		0, 0, 10, 55, 67, 71, 79, 88, 123, 132, 139, 147, 164,
+		21, 7, 21, 2, 22, 7, 22, 2, 23, 7, 23, 2, 24, 7, 24, 2, 25, 7, 25, 2, 26,
+		7, 26, 2, 27, 7, 27, 2, 28, 7, 28, 2, 29, 7, 29, 2, 30, 7, 30, 2, 31, 7,
+		31, 2, 32, 7, 32, 2, 33, 7, 33, 2, 34, 7, 34, 2, 35, 7, 35, 2, 36, 7, 36,
+		1, 0, 1, 0, 1, 0, 1, 1, 5, 1, 79, 8, 1, 10, 1, 12, 1, 82, 9, 1, 1, 1, 1,
+		1, 5, 1, 86, 8, 1, 10, 1, 12, 1, 89, 9, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 3,
+		1, 3, 1, 3, 1, 4, 1, 4, 1, 4, 1, 5, 1, 5, 5, 5, 103, 8, 5, 10, 5, 12, 5,
+		106, 9, 5, 1, 5, 1, 5, 1, 6, 1, 6, 1, 6, 1, 6, 3, 6, 114, 8, 6, 1, 6, 1,
+		6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1,
+		7, 1, 7, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 3, 8, 136, 8, 8, 1, 9, 1, 9, 1,
+		9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 10, 1, 10, 1, 10, 1, 10, 3, 10, 150,
+		8, 10, 1, 10, 1, 10, 1, 11, 4, 11, 155, 8, 11, 11, 11, 12, 11, 156, 1,
+		12, 1, 12, 1, 12, 1, 12, 1, 12, 1, 13, 1, 13, 1, 13, 1, 13, 1, 13, 1, 13,
+		1, 13, 1, 13, 3, 13, 172, 8, 13, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1,
+		14, 1, 14, 1, 14, 3, 14, 182, 8, 14, 1, 15, 1, 15, 1, 15, 1, 15, 1, 16,
+		1, 16, 5, 16, 190, 8, 16, 10, 16, 12, 16, 193, 9, 16, 1, 16, 3, 16, 196,
+		8, 16, 1, 16, 1, 16, 1, 17, 1, 17, 1, 17, 1, 18, 1, 18, 1, 18, 1, 18, 1,
+		18, 1, 18, 1, 18, 1, 18, 1, 19, 1, 19, 1, 19, 1, 20, 1, 20, 1, 20, 1, 20,
+		1, 20, 1, 21, 1, 21, 1, 21, 1, 22, 1, 22, 1, 22, 1, 22, 1, 22, 1, 22, 1,
+		23, 1, 23, 1, 23, 1, 23, 1, 23, 1, 24, 1, 24, 1, 24, 1, 24, 1, 24, 1, 24,
+		1, 25, 1, 25, 1, 25, 1, 25, 1, 25, 1, 25, 3, 25, 245, 8, 25, 1, 26, 1,
+		26, 3, 26, 249, 8, 26, 1, 27, 1, 27, 1, 27, 1, 27, 1, 28, 1, 28, 1, 28,
+		1, 28, 3, 28, 259, 8, 28, 1, 28, 1, 28, 1, 28, 1, 28, 3, 28, 265, 8, 28,
+		1, 29, 1, 29, 1, 29, 1, 29, 1, 29, 3, 29, 272, 8, 29, 1, 30, 1, 30, 1,
+		31, 1, 31, 1, 32, 1, 32, 1, 33, 1, 33, 1, 34, 1, 34, 1, 35, 1, 35, 1, 36,
+		1, 36, 1, 36, 0, 0, 37, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24,
+		26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60,
+		62, 64, 66, 68, 70, 72, 0, 1, 1, 0, 24, 25, 268, 0, 74, 1, 0, 0, 0, 2,
+		80, 1, 0, 0, 0, 4, 90, 1, 0, 0, 0, 6, 94, 1, 0, 0, 0, 8, 97, 1, 0, 0, 0,
+		10, 100, 1, 0, 0, 0, 12, 109, 1, 0, 0, 0, 14, 123, 1, 0, 0, 0, 16, 130,
+		1, 0, 0, 0, 18, 137, 1, 0, 0, 0, 20, 149, 1, 0, 0, 0, 22, 154, 1, 0, 0,
+		0, 24, 158, 1, 0, 0, 0, 26, 163, 1, 0, 0, 0, 28, 173, 1, 0, 0, 0, 30, 183,
+		1, 0, 0, 0, 32, 187, 1, 0, 0, 0, 34, 199, 1, 0, 0, 0, 36, 202, 1, 0, 0,
+		0, 38, 210, 1, 0, 0, 0, 40, 213, 1, 0, 0, 0, 42, 218, 1, 0, 0, 0, 44, 221,
+		1, 0, 0, 0, 46, 227, 1, 0, 0, 0, 48, 232, 1, 0, 0, 0, 50, 238, 1, 0, 0,
+		0, 52, 248, 1, 0, 0, 0, 54, 250, 1, 0, 0, 0, 56, 254, 1, 0, 0, 0, 58, 266,
+		1, 0, 0, 0, 60, 273, 1, 0, 0, 0, 62, 275, 1, 0, 0, 0, 64, 277, 1, 0, 0,
+		0, 66, 279, 1, 0, 0, 0, 68, 281, 1, 0, 0, 0, 70, 283, 1, 0, 0, 0, 72, 285,
+		1, 0, 0, 0, 74, 75, 3, 2, 1, 0, 75, 76, 5, 0, 0, 1, 76, 1, 1, 0, 0, 0,
+		77, 79, 3, 10, 5, 0, 78, 77, 1, 0, 0, 0, 79, 82, 1, 0, 0, 0, 80, 78, 1,
+		0, 0, 0, 80, 81, 1, 0, 0, 0, 81, 83, 1, 0, 0, 0, 82, 80, 1, 0, 0, 0, 83,
+		87, 3, 4, 2, 0, 84, 86, 3, 10, 5, 0, 85, 84, 1, 0, 0, 0, 86, 89, 1, 0,
+		0, 0, 87, 85, 1, 0, 0, 0, 87, 88, 1, 0, 0, 0, 88, 3, 1, 0, 0, 0, 89, 87,
+		1, 0, 0, 0, 90, 91, 3, 6, 3, 0, 91, 92, 3, 22, 11, 0, 92, 93, 3, 8, 4,
+		0, 93, 5, 1, 0, 0, 0, 94, 95, 5, 1, 0, 0, 95, 96, 5, 28, 0, 0, 96, 7, 1,
+		0, 0, 0, 97, 98, 5, 2, 0, 0, 98, 99, 5, 28, 0, 0, 99, 9, 1, 0, 0, 0, 100,
+		104, 3, 12, 6, 0, 101, 103, 3, 20, 10, 0, 102, 101, 1, 0, 0, 0, 103, 106,
+		1, 0, 0, 0, 104, 102, 1, 0, 0, 0, 104, 105, 1, 0, 0, 0, 105, 107, 1, 0,
+		0, 0, 106, 104, 1, 0, 0, 0, 107, 108, 3, 24, 12, 0, 108, 11, 1, 0, 0, 0,
+		109, 110, 5, 6, 0, 0, 110, 111, 5, 27, 0, 0, 111, 113, 3, 68, 34, 0, 112,
+		114, 3, 14, 7, 0, 113, 112, 1, 0, 0, 0, 113, 114, 1, 0, 0, 0, 114, 115,
+		1, 0, 0, 0, 115, 116, 5, 27, 0, 0, 116, 117, 5, 8, 0, 0, 117, 118, 5, 27,
+		0, 0, 118, 119, 3, 62, 31, 0, 119, 120, 5, 28, 0, 0, 120, 121, 5, 9, 0,
+		0, 121, 122, 5, 28, 0, 0, 122, 13, 1, 0, 0, 0, 123, 124, 5, 26, 0, 0, 124,
+		125, 5, 27, 0, 0, 125, 126, 5, 7, 0, 0, 126, 127, 5, 27, 0, 0, 127, 128,
+		3, 16, 8, 0, 128, 129, 5, 26, 0, 0, 129, 15, 1, 0, 0, 0, 130, 135, 3, 18,
+		9, 0, 131, 132, 5, 27, 0, 0, 132, 133, 5, 18, 0, 0, 133, 134, 5, 27, 0,
+		0, 134, 136, 3, 16, 8, 0, 135, 131, 1, 0, 0, 0, 135, 136, 1, 0, 0, 0, 136,
+		17, 1, 0, 0, 0, 137, 138, 5, 15, 0, 0, 138, 139, 5, 27, 0, 0, 139, 140,
+		3, 62, 31, 0, 140, 141, 5, 27, 0, 0, 141, 142, 5, 16, 0, 0, 142, 143, 5,
+		27, 0, 0, 143, 144, 3, 68, 34, 0, 144, 19, 1, 0, 0, 0, 145, 150, 3, 26,
+		13, 0, 146, 150, 3, 28, 14, 0, 147, 150, 3, 30, 15, 0, 148, 150, 3, 32,
+		16, 0, 149, 145, 1, 0, 0, 0, 149, 146, 1, 0, 0, 0, 149, 147, 1, 0, 0, 0,
+		149, 148, 1, 0, 0, 0, 150, 151, 1, 0, 0, 0, 151, 152, 5, 28, 0, 0, 152,
+		21, 1, 0, 0, 0, 153, 155, 3, 20, 10, 0, 154, 153, 1, 0, 0, 0, 155, 156,
+		1, 0, 0, 0, 156, 154, 1, 0, 0, 0, 156, 157, 1, 0, 0, 0, 157, 23, 1, 0,
+		0, 0, 158, 159, 5, 10, 0, 0, 159, 160, 5, 27, 0, 0, 160, 161, 3, 50, 25,
+		0, 161, 162, 5, 28, 0, 0, 162, 25, 1, 0, 0, 0, 163, 164, 5, 4, 0, 0, 164,
+		165, 5, 27, 0, 0, 165, 166, 3, 68, 34, 0, 166, 167, 5, 27, 0, 0, 167, 168,
+		5, 17, 0, 0, 168, 171, 5, 27, 0, 0, 169, 172, 3, 50, 25, 0, 170, 172, 3,
+		56, 28, 0, 171, 169, 1, 0, 0, 0, 171, 170, 1, 0, 0, 0, 172, 27, 1, 0, 0,
+		0, 173, 174, 5, 3, 0, 0, 174, 175, 5, 27, 0, 0, 175, 176, 3, 68, 34, 0,
+		176, 177, 5, 27, 0, 0, 177, 178, 5, 17, 0, 0, 178, 181, 5, 27, 0, 0, 179,
+		182, 3, 50, 25, 0, 180, 182, 3, 56, 28, 0, 181, 179, 1, 0, 0, 0, 181, 180,
+		1, 0, 0, 0, 182, 29, 1, 0, 0, 0, 183, 184, 5, 5, 0, 0, 184, 185, 5, 27,
+		0, 0, 185, 186, 3, 50, 25, 0, 186, 31, 1, 0, 0, 0, 187, 191, 3, 34, 17,
+		0, 188, 190, 3, 38, 19, 0, 189, 188, 1, 0, 0, 0, 190, 193, 1, 0, 0, 0,
+		191, 189, 1, 0, 0, 0, 191, 192, 1, 0, 0, 0, 192, 195, 1, 0, 0, 0, 193,
+		191, 1, 0, 0, 0, 194, 196, 3, 42, 21, 0, 195, 194, 1, 0, 0, 0, 195, 196,
+		1, 0, 0, 0, 196, 197, 1, 0, 0, 0, 197, 198, 3, 46, 23, 0, 198, 33, 1, 0,
+		0, 0, 199, 200, 3, 36, 18, 0, 200, 201, 3, 22, 11, 0, 201, 35, 1, 0, 0,
+		0, 202, 203, 5, 20, 0, 0, 203, 204, 5, 27, 0, 0, 204, 205, 3, 48, 24, 0,
+		205, 206, 5, 26, 0, 0, 206, 207, 5, 27, 0, 0, 207, 208, 5, 12, 0, 0, 208,
+		209, 5, 28, 0, 0, 209, 37, 1, 0, 0, 0, 210, 211, 3, 40, 20, 0, 211, 212,
+		3, 22, 11, 0, 212, 39, 1, 0, 0, 0, 213, 214, 5, 21, 0, 0, 214, 215, 5,
+		26, 0, 0, 215, 216, 5, 27, 0, 0, 216, 217, 3, 36, 18, 0, 217, 41, 1, 0,
+		0, 0, 218, 219, 3, 44, 22, 0, 219, 220, 3, 22, 11, 0, 220, 43, 1, 0, 0,
+		0, 221, 222, 5, 21, 0, 0, 222, 223, 5, 26, 0, 0, 223, 224, 5, 27, 0, 0,
+		224, 225, 5, 12, 0, 0, 225, 226, 5, 28, 0, 0, 226, 45, 1, 0, 0, 0, 227,
+		228, 5, 13, 0, 0, 228, 229, 5, 26, 0, 0, 229, 230, 5, 27, 0, 0, 230, 231,
+		5, 14, 0, 0, 231, 47, 1, 0, 0, 0, 232, 233, 3, 50, 25, 0, 233, 234, 5,
+		27, 0, 0, 234, 235, 3, 66, 33, 0, 235, 236, 5, 27, 0, 0, 236, 237, 3, 50,
+		25, 0, 237, 49, 1, 0, 0, 0, 238, 244, 3, 52, 26, 0, 239, 240, 5, 27, 0,
+		0, 240, 241, 3, 64, 32, 0, 241, 242, 5, 27, 0, 0, 242, 243, 3, 50, 25,
+		0, 243, 245, 1, 0, 0, 0, 244, 239, 1, 0, 0, 0, 244, 245, 1, 0, 0, 0, 245,
+		51, 1, 0, 0, 0, 246, 249, 3, 54, 27, 0, 247, 249, 3, 68, 34, 0, 248, 246,
+		1, 0, 0, 0, 248, 247, 1, 0, 0, 0, 249, 53, 1, 0, 0, 0, 250, 251, 5, 22,
+		0, 0, 251, 252, 5, 27, 0, 0, 252, 253, 3, 70, 35, 0, 253, 55, 1, 0, 0,
+		0, 254, 255, 5, 11, 0, 0, 255, 256, 5, 27, 0, 0, 256, 264, 3, 68, 34, 0,
+		257, 259, 5, 26, 0, 0, 258, 257, 1, 0, 0, 0, 258, 259, 1, 0, 0, 0, 259,
+		260, 1, 0, 0, 0, 260, 261, 5, 27, 0, 0, 261, 262, 5, 19, 0, 0, 262, 263,
+		5, 27, 0, 0, 263, 265, 3, 58, 29, 0, 264, 258, 1, 0, 0, 0, 264, 265, 1,
+		0, 0, 0, 265, 57, 1, 0, 0, 0, 266, 271, 3, 60, 30, 0, 267, 268, 5, 27,
+		0, 0, 268, 269, 5, 18, 0, 0, 269, 270, 5, 27, 0, 0, 270, 272, 3, 58, 29,
+		0, 271, 267, 1, 0, 0, 0, 271, 272, 1, 0, 0, 0, 272, 59, 1, 0, 0, 0, 273,
+		274, 3, 50, 25, 0, 274, 61, 1, 0, 0, 0, 275, 276, 5, 23, 0, 0, 276, 63,
+		1, 0, 0, 0, 277, 278, 7, 0, 0, 0, 278, 65, 1, 0, 0, 0, 279, 280, 5, 17,
+		0, 0, 280, 67, 1, 0, 0, 0, 281, 282, 5, 29, 0, 0, 282, 69, 1, 0, 0, 0,
+		283, 284, 3, 72, 36, 0, 284, 71, 1, 0, 0, 0, 285, 286, 5, 30, 0, 0, 286,
+		73, 1, 0, 0, 0, 16, 80, 87, 104, 113, 135, 149, 156, 171, 181, 191, 195,
+		244, 248, 258, 264, 271,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -162,55 +214,76 @@ const (
 	LectureParserEOF                           = antlr.TokenEOF
 	LectureParserOKAY_HEAR_ME_OUT              = 1
 	LectureParserI_REST_MY_CASE                = 2
-	LectureParserLETS_SAY                      = 3
-	LectureParserTHEN_WE_HAVE                  = 4
-	LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS = 5
-	LectureParserWHICH_NEEDS                   = 6
-	LectureParserAND_PROCEEDS_AS_FOLLOWS       = 7
-	LectureParserFINALLY_WE_GET                = 8
-	LectureParserTHE_RESULT_OF                 = 9
-	LectureParserTERMINATOR                    = 10
-	LectureParserA                             = 11
-	LectureParserCALLED                        = 12
-	LectureParserIS                            = 13
-	LectureParserAND                           = 14
-	LectureParserWITH                          = 15
-	LectureParserLITERALLY                     = 16
-	LectureParserNUMBER                        = 17
-	LectureParserPLUS                          = 18
-	LectureParserCOMMA                         = 19
-	LectureParserSPACE                         = 20
-	LectureParserALPHANUMERICSTRING            = 21
-	LectureParserINTEGER                       = 22
-	LectureParserWS                            = 23
+	LectureParserNOW_LETS_SAY                  = 3
+	LectureParserLETS_SAY                      = 4
+	LectureParserTHEN_WE_HAVE                  = 5
+	LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS = 6
+	LectureParserWHICH_NEEDS                   = 7
+	LectureParserTO_PRODUCE_A                  = 8
+	LectureParserIT_PROCEEDS_AS_FOLLOWS        = 9
+	LectureParserFINALLY_WE_GET                = 10
+	LectureParserTHE_RESULT_OF                 = 11
+	LectureParserHERES_WHAT_WE_NEED_TO_DO      = 12
+	LectureParserNOW_THAT_WEVE_DONE_THAT       = 13
+	LectureParserWE_CAN_MOVE_ON                = 14
+	LectureParserA                             = 15
+	LectureParserCALLED                        = 16
+	LectureParserIS                            = 17
+	LectureParserAND                           = 18
+	LectureParserUSING                         = 19
+	LectureParserIF                            = 20
+	LectureParserOTHERWISE                     = 21
+	LectureParserLITERALLY                     = 22
+	LectureParserNUMBER                        = 23
+	LectureParserPLUS                          = 24
+	LectureParserMINUS                         = 25
+	LectureParserCOMMA                         = 26
+	LectureParserSPACE                         = 27
+	LectureParserTERMINATOR                    = 28
+	LectureParserALPHANUMERICSTRING            = 29
+	LectureParserINTEGER                       = 30
+	LectureParserWS                            = 31
 )
 
 // LectureParser rules.
 const (
 	LectureParserRULE_lecture                    = 0
 	LectureParserRULE_program                    = 1
-	LectureParserRULE_startClause                = 2
-	LectureParserRULE_endClause                  = 3
-	LectureParserRULE_statement                  = 4
-	LectureParserRULE_atomicStatement            = 5
-	LectureParserRULE_function                   = 6
-	LectureParserRULE_functionStatement          = 7
-	LectureParserRULE_returnStatement            = 8
-	LectureParserRULE_declarationStatement       = 9
-	LectureParserRULE_printStatement             = 10
-	LectureParserRULE_parametersDeclaration      = 11
-	LectureParserRULE_parameterDeclarationClause = 12
-	LectureParserRULE_functionCall               = 13
-	LectureParserRULE_parametersClause           = 14
-	LectureParserRULE_valueClause                = 15
-	LectureParserRULE_literalClause              = 16
-	LectureParserRULE_parameterDeclaration       = 17
-	LectureParserRULE_value                      = 18
-	LectureParserRULE_literal                    = 19
-	LectureParserRULE_type                       = 20
-	LectureParserRULE_operator                   = 21
-	LectureParserRULE_identifier                 = 22
-	LectureParserRULE_number                     = 23
+	LectureParserRULE_mainFunction               = 2
+	LectureParserRULE_mainStartStatement         = 3
+	LectureParserRULE_mainEndStatement           = 4
+	LectureParserRULE_function                   = 5
+	LectureParserRULE_functionSignature          = 6
+	LectureParserRULE_parametersDeclaration      = 7
+	LectureParserRULE_parameterDeclarationClause = 8
+	LectureParserRULE_parameterDeclaration       = 9
+	LectureParserRULE_statement                  = 10
+	LectureParserRULE_statementBlock             = 11
+	LectureParserRULE_returnStatement            = 12
+	LectureParserRULE_assignmentStatement        = 13
+	LectureParserRULE_reassignmentStatement      = 14
+	LectureParserRULE_printStatement             = 15
+	LectureParserRULE_ifChainStatement           = 16
+	LectureParserRULE_ifStatement                = 17
+	LectureParserRULE_ifSignature                = 18
+	LectureParserRULE_elseIfStatement            = 19
+	LectureParserRULE_elseIfSignature            = 20
+	LectureParserRULE_elseStatement              = 21
+	LectureParserRULE_elseSignature              = 22
+	LectureParserRULE_ifClosingStatement         = 23
+	LectureParserRULE_conditionClause            = 24
+	LectureParserRULE_valueClause                = 25
+	LectureParserRULE_value                      = 26
+	LectureParserRULE_literalClause              = 27
+	LectureParserRULE_functionCall               = 28
+	LectureParserRULE_parametersClause           = 29
+	LectureParserRULE_parameter                  = 30
+	LectureParserRULE_type                       = 31
+	LectureParserRULE_operator                   = 32
+	LectureParserRULE_comparator                 = 33
+	LectureParserRULE_identifier                 = 34
+	LectureParserRULE_literal                    = 35
+	LectureParserRULE_number                     = 36
 )
 
 // ILectureContext is an interface to support dynamic dispatch.
@@ -305,11 +378,11 @@ func (p *LectureParser) Lecture() (localctx ILectureContext) {
 	p.EnterRule(localctx, 0, LectureParserRULE_lecture)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(48)
+		p.SetState(74)
 		p.Program()
 	}
 	{
-		p.SetState(49)
+		p.SetState(75)
 		p.Match(LectureParserEOF)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -338,10 +411,9 @@ type IProgramContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	StartClause() IStartClauseContext
-	EndClause() IEndClauseContext
-	AllStatement() []IStatementContext
-	Statement(i int) IStatementContext
+	MainFunction() IMainFunctionContext
+	AllFunction() []IFunctionContext
+	Function(i int) IFunctionContext
 
 	// IsProgramContext differentiates from other interfaces.
 	IsProgramContext()
@@ -379,10 +451,10 @@ func NewProgramContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 
 func (s *ProgramContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ProgramContext) StartClause() IStartClauseContext {
+func (s *ProgramContext) MainFunction() IMainFunctionContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IStartClauseContext); ok {
+		if _, ok := ctx.(IMainFunctionContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -392,39 +464,23 @@ func (s *ProgramContext) StartClause() IStartClauseContext {
 		return nil
 	}
 
-	return t.(IStartClauseContext)
+	return t.(IMainFunctionContext)
 }
 
-func (s *ProgramContext) EndClause() IEndClauseContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IEndClauseContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IEndClauseContext)
-}
-
-func (s *ProgramContext) AllStatement() []IStatementContext {
+func (s *ProgramContext) AllFunction() []IFunctionContext {
 	children := s.GetChildren()
 	len := 0
 	for _, ctx := range children {
-		if _, ok := ctx.(IStatementContext); ok {
+		if _, ok := ctx.(IFunctionContext); ok {
 			len++
 		}
 	}
 
-	tst := make([]IStatementContext, len)
+	tst := make([]IFunctionContext, len)
 	i := 0
 	for _, ctx := range children {
-		if t, ok := ctx.(IStatementContext); ok {
-			tst[i] = t.(IStatementContext)
+		if t, ok := ctx.(IFunctionContext); ok {
+			tst[i] = t.(IFunctionContext)
 			i++
 		}
 	}
@@ -432,11 +488,11 @@ func (s *ProgramContext) AllStatement() []IStatementContext {
 	return tst
 }
 
-func (s *ProgramContext) Statement(i int) IStatementContext {
+func (s *ProgramContext) Function(i int) IFunctionContext {
 	var t antlr.RuleContext
 	j := 0
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IStatementContext); ok {
+		if _, ok := ctx.(IFunctionContext); ok {
 			if j == i {
 				t = ctx.(antlr.RuleContext)
 				break
@@ -449,7 +505,7 @@ func (s *ProgramContext) Statement(i int) IStatementContext {
 		return nil
 	}
 
-	return t.(IStatementContext)
+	return t.(IFunctionContext)
 }
 
 func (s *ProgramContext) GetRuleContext() antlr.RuleContext {
@@ -478,24 +534,20 @@ func (p *LectureParser) Program() (localctx IProgramContext) {
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(51)
-		p.StartClause()
-	}
-	p.SetState(53)
+	p.SetState(80)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&56) != 0) {
+	for _la == LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS {
 		{
-			p.SetState(52)
-			p.Statement()
+			p.SetState(77)
+			p.Function()
 		}
 
-		p.SetState(55)
+		p.SetState(82)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -503,8 +555,28 @@ func (p *LectureParser) Program() (localctx IProgramContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(57)
-		p.EndClause()
+		p.SetState(83)
+		p.MainFunction()
+	}
+	p.SetState(87)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS {
+		{
+			p.SetState(84)
+			p.Function()
+		}
+
+		p.SetState(89)
+		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
+		_la = p.GetTokenStream().LA(1)
 	}
 
 errorExit:
@@ -520,8 +592,154 @@ errorExit:
 	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
-// IStartClauseContext is an interface to support dynamic dispatch.
-type IStartClauseContext interface {
+// IMainFunctionContext is an interface to support dynamic dispatch.
+type IMainFunctionContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	MainStartStatement() IMainStartStatementContext
+	StatementBlock() IStatementBlockContext
+	MainEndStatement() IMainEndStatementContext
+
+	// IsMainFunctionContext differentiates from other interfaces.
+	IsMainFunctionContext()
+}
+
+type MainFunctionContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyMainFunctionContext() *MainFunctionContext {
+	var p = new(MainFunctionContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_mainFunction
+	return p
+}
+
+func InitEmptyMainFunctionContext(p *MainFunctionContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_mainFunction
+}
+
+func (*MainFunctionContext) IsMainFunctionContext() {}
+
+func NewMainFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MainFunctionContext {
+	var p = new(MainFunctionContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_mainFunction
+
+	return p
+}
+
+func (s *MainFunctionContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *MainFunctionContext) MainStartStatement() IMainStartStatementContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IMainStartStatementContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IMainStartStatementContext)
+}
+
+func (s *MainFunctionContext) StatementBlock() IStatementBlockContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IStatementBlockContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IStatementBlockContext)
+}
+
+func (s *MainFunctionContext) MainEndStatement() IMainEndStatementContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IMainEndStatementContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IMainEndStatementContext)
+}
+
+func (s *MainFunctionContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *MainFunctionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *MainFunctionContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterMainFunction(s)
+	}
+}
+
+func (s *MainFunctionContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitMainFunction(s)
+	}
+}
+
+func (p *LectureParser) MainFunction() (localctx IMainFunctionContext) {
+	localctx = NewMainFunctionContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 4, LectureParserRULE_mainFunction)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(90)
+		p.MainStartStatement()
+	}
+	{
+		p.SetState(91)
+		p.StatementBlock()
+	}
+	{
+		p.SetState(92)
+		p.MainEndStatement()
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IMainStartStatementContext is an interface to support dynamic dispatch.
+type IMainStartStatementContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
@@ -531,76 +749,76 @@ type IStartClauseContext interface {
 	OKAY_HEAR_ME_OUT() antlr.TerminalNode
 	TERMINATOR() antlr.TerminalNode
 
-	// IsStartClauseContext differentiates from other interfaces.
-	IsStartClauseContext()
+	// IsMainStartStatementContext differentiates from other interfaces.
+	IsMainStartStatementContext()
 }
 
-type StartClauseContext struct {
+type MainStartStatementContext struct {
 	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyStartClauseContext() *StartClauseContext {
-	var p = new(StartClauseContext)
+func NewEmptyMainStartStatementContext() *MainStartStatementContext {
+	var p = new(MainStartStatementContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_startClause
+	p.RuleIndex = LectureParserRULE_mainStartStatement
 	return p
 }
 
-func InitEmptyStartClauseContext(p *StartClauseContext) {
+func InitEmptyMainStartStatementContext(p *MainStartStatementContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_startClause
+	p.RuleIndex = LectureParserRULE_mainStartStatement
 }
 
-func (*StartClauseContext) IsStartClauseContext() {}
+func (*MainStartStatementContext) IsMainStartStatementContext() {}
 
-func NewStartClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *StartClauseContext {
-	var p = new(StartClauseContext)
+func NewMainStartStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MainStartStatementContext {
+	var p = new(MainStartStatementContext)
 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = LectureParserRULE_startClause
+	p.RuleIndex = LectureParserRULE_mainStartStatement
 
 	return p
 }
 
-func (s *StartClauseContext) GetParser() antlr.Parser { return s.parser }
+func (s *MainStartStatementContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *StartClauseContext) OKAY_HEAR_ME_OUT() antlr.TerminalNode {
+func (s *MainStartStatementContext) OKAY_HEAR_ME_OUT() antlr.TerminalNode {
 	return s.GetToken(LectureParserOKAY_HEAR_ME_OUT, 0)
 }
 
-func (s *StartClauseContext) TERMINATOR() antlr.TerminalNode {
+func (s *MainStartStatementContext) TERMINATOR() antlr.TerminalNode {
 	return s.GetToken(LectureParserTERMINATOR, 0)
 }
 
-func (s *StartClauseContext) GetRuleContext() antlr.RuleContext {
+func (s *MainStartStatementContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *StartClauseContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *MainStartStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *StartClauseContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *MainStartStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterStartClause(s)
+		listenerT.EnterMainStartStatement(s)
 	}
 }
 
-func (s *StartClauseContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *MainStartStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitStartClause(s)
+		listenerT.ExitMainStartStatement(s)
 	}
 }
 
-func (p *LectureParser) StartClause() (localctx IStartClauseContext) {
-	localctx = NewStartClauseContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, LectureParserRULE_startClause)
+func (p *LectureParser) MainStartStatement() (localctx IMainStartStatementContext) {
+	localctx = NewMainStartStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 6, LectureParserRULE_mainStartStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(59)
+		p.SetState(94)
 		p.Match(LectureParserOKAY_HEAR_ME_OUT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -608,7 +826,7 @@ func (p *LectureParser) StartClause() (localctx IStartClauseContext) {
 		}
 	}
 	{
-		p.SetState(60)
+		p.SetState(95)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -629,8 +847,8 @@ errorExit:
 	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
-// IEndClauseContext is an interface to support dynamic dispatch.
-type IEndClauseContext interface {
+// IMainEndStatementContext is an interface to support dynamic dispatch.
+type IMainEndStatementContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
@@ -640,76 +858,76 @@ type IEndClauseContext interface {
 	I_REST_MY_CASE() antlr.TerminalNode
 	TERMINATOR() antlr.TerminalNode
 
-	// IsEndClauseContext differentiates from other interfaces.
-	IsEndClauseContext()
+	// IsMainEndStatementContext differentiates from other interfaces.
+	IsMainEndStatementContext()
 }
 
-type EndClauseContext struct {
+type MainEndStatementContext struct {
 	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyEndClauseContext() *EndClauseContext {
-	var p = new(EndClauseContext)
+func NewEmptyMainEndStatementContext() *MainEndStatementContext {
+	var p = new(MainEndStatementContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_endClause
+	p.RuleIndex = LectureParserRULE_mainEndStatement
 	return p
 }
 
-func InitEmptyEndClauseContext(p *EndClauseContext) {
+func InitEmptyMainEndStatementContext(p *MainEndStatementContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_endClause
+	p.RuleIndex = LectureParserRULE_mainEndStatement
 }
 
-func (*EndClauseContext) IsEndClauseContext() {}
+func (*MainEndStatementContext) IsMainEndStatementContext() {}
 
-func NewEndClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *EndClauseContext {
-	var p = new(EndClauseContext)
+func NewMainEndStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MainEndStatementContext {
+	var p = new(MainEndStatementContext)
 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = LectureParserRULE_endClause
+	p.RuleIndex = LectureParserRULE_mainEndStatement
 
 	return p
 }
 
-func (s *EndClauseContext) GetParser() antlr.Parser { return s.parser }
+func (s *MainEndStatementContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *EndClauseContext) I_REST_MY_CASE() antlr.TerminalNode {
+func (s *MainEndStatementContext) I_REST_MY_CASE() antlr.TerminalNode {
 	return s.GetToken(LectureParserI_REST_MY_CASE, 0)
 }
 
-func (s *EndClauseContext) TERMINATOR() antlr.TerminalNode {
+func (s *MainEndStatementContext) TERMINATOR() antlr.TerminalNode {
 	return s.GetToken(LectureParserTERMINATOR, 0)
 }
 
-func (s *EndClauseContext) GetRuleContext() antlr.RuleContext {
+func (s *MainEndStatementContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *EndClauseContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *MainEndStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *EndClauseContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *MainEndStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterEndClause(s)
+		listenerT.EnterMainEndStatement(s)
 	}
 }
 
-func (s *EndClauseContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *MainEndStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitEndClause(s)
+		listenerT.ExitMainEndStatement(s)
 	}
 }
 
-func (p *LectureParser) EndClause() (localctx IEndClauseContext) {
-	localctx = NewEndClauseContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, LectureParserRULE_endClause)
+func (p *LectureParser) MainEndStatement() (localctx IMainEndStatementContext) {
+	localctx = NewMainEndStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 8, LectureParserRULE_mainEndStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(62)
+		p.SetState(97)
 		p.Match(LectureParserI_REST_MY_CASE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -717,300 +935,7 @@ func (p *LectureParser) EndClause() (localctx IEndClauseContext) {
 		}
 	}
 	{
-		p.SetState(63)
-		p.Match(LectureParserTERMINATOR)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-
-errorExit:
-	if p.HasError() {
-		v := p.GetError()
-		localctx.SetException(v)
-		p.GetErrorHandler().ReportError(p, v)
-		p.GetErrorHandler().Recover(p, v)
-		p.SetError(nil)
-	}
-	p.ExitRule()
-	return localctx
-	goto errorExit // Trick to prevent compiler error if the label is not used
-}
-
-// IStatementContext is an interface to support dynamic dispatch.
-type IStatementContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// Getter signatures
-	AtomicStatement() IAtomicStatementContext
-	Function() IFunctionContext
-
-	// IsStatementContext differentiates from other interfaces.
-	IsStatementContext()
-}
-
-type StatementContext struct {
-	antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyStatementContext() *StatementContext {
-	var p = new(StatementContext)
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_statement
-	return p
-}
-
-func InitEmptyStatementContext(p *StatementContext) {
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_statement
-}
-
-func (*StatementContext) IsStatementContext() {}
-
-func NewStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *StatementContext {
-	var p = new(StatementContext)
-
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = LectureParserRULE_statement
-
-	return p
-}
-
-func (s *StatementContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *StatementContext) AtomicStatement() IAtomicStatementContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IAtomicStatementContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IAtomicStatementContext)
-}
-
-func (s *StatementContext) Function() IFunctionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IFunctionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IFunctionContext)
-}
-
-func (s *StatementContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *StatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *StatementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterStatement(s)
-	}
-}
-
-func (s *StatementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitStatement(s)
-	}
-}
-
-func (p *LectureParser) Statement() (localctx IStatementContext) {
-	localctx = NewStatementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, LectureParserRULE_statement)
-	p.EnterOuterAlt(localctx, 1)
-	p.SetState(67)
-	p.GetErrorHandler().Sync(p)
-	if p.HasError() {
-		goto errorExit
-	}
-
-	switch p.GetTokenStream().LA(1) {
-	case LectureParserLETS_SAY, LectureParserTHEN_WE_HAVE:
-		{
-			p.SetState(65)
-			p.AtomicStatement()
-		}
-
-	case LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS:
-		{
-			p.SetState(66)
-			p.Function()
-		}
-
-	default:
-		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
-		goto errorExit
-	}
-
-errorExit:
-	if p.HasError() {
-		v := p.GetError()
-		localctx.SetException(v)
-		p.GetErrorHandler().ReportError(p, v)
-		p.GetErrorHandler().Recover(p, v)
-		p.SetError(nil)
-	}
-	p.ExitRule()
-	return localctx
-	goto errorExit // Trick to prevent compiler error if the label is not used
-}
-
-// IAtomicStatementContext is an interface to support dynamic dispatch.
-type IAtomicStatementContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// Getter signatures
-	TERMINATOR() antlr.TerminalNode
-	DeclarationStatement() IDeclarationStatementContext
-	PrintStatement() IPrintStatementContext
-
-	// IsAtomicStatementContext differentiates from other interfaces.
-	IsAtomicStatementContext()
-}
-
-type AtomicStatementContext struct {
-	antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyAtomicStatementContext() *AtomicStatementContext {
-	var p = new(AtomicStatementContext)
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_atomicStatement
-	return p
-}
-
-func InitEmptyAtomicStatementContext(p *AtomicStatementContext) {
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_atomicStatement
-}
-
-func (*AtomicStatementContext) IsAtomicStatementContext() {}
-
-func NewAtomicStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *AtomicStatementContext {
-	var p = new(AtomicStatementContext)
-
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = LectureParserRULE_atomicStatement
-
-	return p
-}
-
-func (s *AtomicStatementContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *AtomicStatementContext) TERMINATOR() antlr.TerminalNode {
-	return s.GetToken(LectureParserTERMINATOR, 0)
-}
-
-func (s *AtomicStatementContext) DeclarationStatement() IDeclarationStatementContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IDeclarationStatementContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IDeclarationStatementContext)
-}
-
-func (s *AtomicStatementContext) PrintStatement() IPrintStatementContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IPrintStatementContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IPrintStatementContext)
-}
-
-func (s *AtomicStatementContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *AtomicStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *AtomicStatementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterAtomicStatement(s)
-	}
-}
-
-func (s *AtomicStatementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitAtomicStatement(s)
-	}
-}
-
-func (p *LectureParser) AtomicStatement() (localctx IAtomicStatementContext) {
-	localctx = NewAtomicStatementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, LectureParserRULE_atomicStatement)
-	p.EnterOuterAlt(localctx, 1)
-	p.SetState(71)
-	p.GetErrorHandler().Sync(p)
-	if p.HasError() {
-		goto errorExit
-	}
-
-	switch p.GetTokenStream().LA(1) {
-	case LectureParserLETS_SAY:
-		{
-			p.SetState(69)
-			p.DeclarationStatement()
-		}
-
-	case LectureParserTHEN_WE_HAVE:
-		{
-			p.SetState(70)
-			p.PrintStatement()
-		}
-
-	default:
-		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
-		goto errorExit
-	}
-	{
-		p.SetState(73)
+		p.SetState(98)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1039,10 +964,10 @@ type IFunctionContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	FunctionStatement() IFunctionStatementContext
+	FunctionSignature() IFunctionSignatureContext
 	ReturnStatement() IReturnStatementContext
-	AllAtomicStatement() []IAtomicStatementContext
-	AtomicStatement(i int) IAtomicStatementContext
+	AllStatement() []IStatementContext
+	Statement(i int) IStatementContext
 
 	// IsFunctionContext differentiates from other interfaces.
 	IsFunctionContext()
@@ -1080,10 +1005,10 @@ func NewFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 
 func (s *FunctionContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *FunctionContext) FunctionStatement() IFunctionStatementContext {
+func (s *FunctionContext) FunctionSignature() IFunctionSignatureContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IFunctionStatementContext); ok {
+		if _, ok := ctx.(IFunctionSignatureContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -1093,7 +1018,7 @@ func (s *FunctionContext) FunctionStatement() IFunctionStatementContext {
 		return nil
 	}
 
-	return t.(IFunctionStatementContext)
+	return t.(IFunctionSignatureContext)
 }
 
 func (s *FunctionContext) ReturnStatement() IReturnStatementContext {
@@ -1112,20 +1037,20 @@ func (s *FunctionContext) ReturnStatement() IReturnStatementContext {
 	return t.(IReturnStatementContext)
 }
 
-func (s *FunctionContext) AllAtomicStatement() []IAtomicStatementContext {
+func (s *FunctionContext) AllStatement() []IStatementContext {
 	children := s.GetChildren()
 	len := 0
 	for _, ctx := range children {
-		if _, ok := ctx.(IAtomicStatementContext); ok {
+		if _, ok := ctx.(IStatementContext); ok {
 			len++
 		}
 	}
 
-	tst := make([]IAtomicStatementContext, len)
+	tst := make([]IStatementContext, len)
 	i := 0
 	for _, ctx := range children {
-		if t, ok := ctx.(IAtomicStatementContext); ok {
-			tst[i] = t.(IAtomicStatementContext)
+		if t, ok := ctx.(IStatementContext); ok {
+			tst[i] = t.(IStatementContext)
 			i++
 		}
 	}
@@ -1133,11 +1058,11 @@ func (s *FunctionContext) AllAtomicStatement() []IAtomicStatementContext {
 	return tst
 }
 
-func (s *FunctionContext) AtomicStatement(i int) IAtomicStatementContext {
+func (s *FunctionContext) Statement(i int) IStatementContext {
 	var t antlr.RuleContext
 	j := 0
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IAtomicStatementContext); ok {
+		if _, ok := ctx.(IStatementContext); ok {
 			if j == i {
 				t = ctx.(antlr.RuleContext)
 				break
@@ -1150,7 +1075,7 @@ func (s *FunctionContext) AtomicStatement(i int) IAtomicStatementContext {
 		return nil
 	}
 
-	return t.(IAtomicStatementContext)
+	return t.(IStatementContext)
 }
 
 func (s *FunctionContext) GetRuleContext() antlr.RuleContext {
@@ -1175,28 +1100,28 @@ func (s *FunctionContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) Function() (localctx IFunctionContext) {
 	localctx = NewFunctionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 12, LectureParserRULE_function)
+	p.EnterRule(localctx, 10, LectureParserRULE_function)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(75)
-		p.FunctionStatement()
+		p.SetState(100)
+		p.FunctionSignature()
 	}
-	p.SetState(79)
+	p.SetState(104)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == LectureParserLETS_SAY || _la == LectureParserTHEN_WE_HAVE {
+	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1048632) != 0 {
 		{
-			p.SetState(76)
-			p.AtomicStatement()
+			p.SetState(101)
+			p.Statement()
 		}
 
-		p.SetState(81)
+		p.SetState(106)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -1204,7 +1129,7 @@ func (p *LectureParser) Function() (localctx IFunctionContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(82)
+		p.SetState(107)
 		p.ReturnStatement()
 	}
 
@@ -1221,8 +1146,8 @@ errorExit:
 	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
-// IFunctionStatementContext is an interface to support dynamic dispatch.
-type IFunctionStatementContext interface {
+// IFunctionSignatureContext is an interface to support dynamic dispatch.
+type IFunctionSignatureContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
@@ -1233,59 +1158,62 @@ type IFunctionStatementContext interface {
 	AllSPACE() []antlr.TerminalNode
 	SPACE(i int) antlr.TerminalNode
 	Identifier() IIdentifierContext
-	AND_PROCEEDS_AS_FOLLOWS() antlr.TerminalNode
-	TERMINATOR() antlr.TerminalNode
+	TO_PRODUCE_A() antlr.TerminalNode
+	Type_() ITypeContext
+	AllTERMINATOR() []antlr.TerminalNode
+	TERMINATOR(i int) antlr.TerminalNode
+	IT_PROCEEDS_AS_FOLLOWS() antlr.TerminalNode
 	ParametersDeclaration() IParametersDeclarationContext
 
-	// IsFunctionStatementContext differentiates from other interfaces.
-	IsFunctionStatementContext()
+	// IsFunctionSignatureContext differentiates from other interfaces.
+	IsFunctionSignatureContext()
 }
 
-type FunctionStatementContext struct {
+type FunctionSignatureContext struct {
 	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyFunctionStatementContext() *FunctionStatementContext {
-	var p = new(FunctionStatementContext)
+func NewEmptyFunctionSignatureContext() *FunctionSignatureContext {
+	var p = new(FunctionSignatureContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_functionStatement
+	p.RuleIndex = LectureParserRULE_functionSignature
 	return p
 }
 
-func InitEmptyFunctionStatementContext(p *FunctionStatementContext) {
+func InitEmptyFunctionSignatureContext(p *FunctionSignatureContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_functionStatement
+	p.RuleIndex = LectureParserRULE_functionSignature
 }
 
-func (*FunctionStatementContext) IsFunctionStatementContext() {}
+func (*FunctionSignatureContext) IsFunctionSignatureContext() {}
 
-func NewFunctionStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionStatementContext {
-	var p = new(FunctionStatementContext)
+func NewFunctionSignatureContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionSignatureContext {
+	var p = new(FunctionSignatureContext)
 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = LectureParserRULE_functionStatement
+	p.RuleIndex = LectureParserRULE_functionSignature
 
 	return p
 }
 
-func (s *FunctionStatementContext) GetParser() antlr.Parser { return s.parser }
+func (s *FunctionSignatureContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *FunctionStatementContext) WE_CAN_USE_A_PROCESS_KNOWN_AS() antlr.TerminalNode {
+func (s *FunctionSignatureContext) WE_CAN_USE_A_PROCESS_KNOWN_AS() antlr.TerminalNode {
 	return s.GetToken(LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS, 0)
 }
 
-func (s *FunctionStatementContext) AllSPACE() []antlr.TerminalNode {
+func (s *FunctionSignatureContext) AllSPACE() []antlr.TerminalNode {
 	return s.GetTokens(LectureParserSPACE)
 }
 
-func (s *FunctionStatementContext) SPACE(i int) antlr.TerminalNode {
+func (s *FunctionSignatureContext) SPACE(i int) antlr.TerminalNode {
 	return s.GetToken(LectureParserSPACE, i)
 }
 
-func (s *FunctionStatementContext) Identifier() IIdentifierContext {
+func (s *FunctionSignatureContext) Identifier() IIdentifierContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IIdentifierContext); ok {
@@ -1301,15 +1229,39 @@ func (s *FunctionStatementContext) Identifier() IIdentifierContext {
 	return t.(IIdentifierContext)
 }
 
-func (s *FunctionStatementContext) AND_PROCEEDS_AS_FOLLOWS() antlr.TerminalNode {
-	return s.GetToken(LectureParserAND_PROCEEDS_AS_FOLLOWS, 0)
+func (s *FunctionSignatureContext) TO_PRODUCE_A() antlr.TerminalNode {
+	return s.GetToken(LectureParserTO_PRODUCE_A, 0)
 }
 
-func (s *FunctionStatementContext) TERMINATOR() antlr.TerminalNode {
-	return s.GetToken(LectureParserTERMINATOR, 0)
+func (s *FunctionSignatureContext) Type_() ITypeContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(ITypeContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ITypeContext)
 }
 
-func (s *FunctionStatementContext) ParametersDeclaration() IParametersDeclarationContext {
+func (s *FunctionSignatureContext) AllTERMINATOR() []antlr.TerminalNode {
+	return s.GetTokens(LectureParserTERMINATOR)
+}
+
+func (s *FunctionSignatureContext) TERMINATOR(i int) antlr.TerminalNode {
+	return s.GetToken(LectureParserTERMINATOR, i)
+}
+
+func (s *FunctionSignatureContext) IT_PROCEEDS_AS_FOLLOWS() antlr.TerminalNode {
+	return s.GetToken(LectureParserIT_PROCEEDS_AS_FOLLOWS, 0)
+}
+
+func (s *FunctionSignatureContext) ParametersDeclaration() IParametersDeclarationContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IParametersDeclarationContext); ok {
@@ -1325,34 +1277,34 @@ func (s *FunctionStatementContext) ParametersDeclaration() IParametersDeclaratio
 	return t.(IParametersDeclarationContext)
 }
 
-func (s *FunctionStatementContext) GetRuleContext() antlr.RuleContext {
+func (s *FunctionSignatureContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *FunctionStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *FunctionSignatureContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *FunctionStatementContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *FunctionSignatureContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterFunctionStatement(s)
+		listenerT.EnterFunctionSignature(s)
 	}
 }
 
-func (s *FunctionStatementContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *FunctionSignatureContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitFunctionStatement(s)
+		listenerT.ExitFunctionSignature(s)
 	}
 }
 
-func (p *LectureParser) FunctionStatement() (localctx IFunctionStatementContext) {
-	localctx = NewFunctionStatementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 14, LectureParserRULE_functionStatement)
+func (p *LectureParser) FunctionSignature() (localctx IFunctionSignatureContext) {
+	localctx = NewFunctionSignatureContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 12, LectureParserRULE_functionSignature)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(84)
+		p.SetState(109)
 		p.Match(LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1360,7 +1312,7 @@ func (p *LectureParser) FunctionStatement() (localctx IFunctionStatementContext)
 		}
 	}
 	{
-		p.SetState(85)
+		p.SetState(110)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1368,10 +1320,10 @@ func (p *LectureParser) FunctionStatement() (localctx IFunctionStatementContext)
 		}
 	}
 	{
-		p.SetState(86)
+		p.SetState(111)
 		p.Identifier()
 	}
-	p.SetState(88)
+	p.SetState(113)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -1380,13 +1332,13 @@ func (p *LectureParser) FunctionStatement() (localctx IFunctionStatementContext)
 
 	if _la == LectureParserCOMMA {
 		{
-			p.SetState(87)
+			p.SetState(112)
 			p.ParametersDeclaration()
 		}
 
 	}
 	{
-		p.SetState(90)
+		p.SetState(115)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1394,478 +1346,48 @@ func (p *LectureParser) FunctionStatement() (localctx IFunctionStatementContext)
 		}
 	}
 	{
-		p.SetState(91)
-		p.Match(LectureParserAND_PROCEEDS_AS_FOLLOWS)
+		p.SetState(116)
+		p.Match(LectureParserTO_PRODUCE_A)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
 	{
-		p.SetState(92)
+		p.SetState(117)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(118)
+		p.Type_()
+	}
+	{
+		p.SetState(119)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-
-errorExit:
-	if p.HasError() {
-		v := p.GetError()
-		localctx.SetException(v)
-		p.GetErrorHandler().ReportError(p, v)
-		p.GetErrorHandler().Recover(p, v)
-		p.SetError(nil)
-	}
-	p.ExitRule()
-	return localctx
-	goto errorExit // Trick to prevent compiler error if the label is not used
-}
-
-// IReturnStatementContext is an interface to support dynamic dispatch.
-type IReturnStatementContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// Getter signatures
-	FINALLY_WE_GET() antlr.TerminalNode
-	SPACE() antlr.TerminalNode
-	ValueClause() IValueClauseContext
-	TERMINATOR() antlr.TerminalNode
-
-	// IsReturnStatementContext differentiates from other interfaces.
-	IsReturnStatementContext()
-}
-
-type ReturnStatementContext struct {
-	antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyReturnStatementContext() *ReturnStatementContext {
-	var p = new(ReturnStatementContext)
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_returnStatement
-	return p
-}
-
-func InitEmptyReturnStatementContext(p *ReturnStatementContext) {
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_returnStatement
-}
-
-func (*ReturnStatementContext) IsReturnStatementContext() {}
-
-func NewReturnStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ReturnStatementContext {
-	var p = new(ReturnStatementContext)
-
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = LectureParserRULE_returnStatement
-
-	return p
-}
-
-func (s *ReturnStatementContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *ReturnStatementContext) FINALLY_WE_GET() antlr.TerminalNode {
-	return s.GetToken(LectureParserFINALLY_WE_GET, 0)
-}
-
-func (s *ReturnStatementContext) SPACE() antlr.TerminalNode {
-	return s.GetToken(LectureParserSPACE, 0)
-}
-
-func (s *ReturnStatementContext) ValueClause() IValueClauseContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IValueClauseContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IValueClauseContext)
-}
-
-func (s *ReturnStatementContext) TERMINATOR() antlr.TerminalNode {
-	return s.GetToken(LectureParserTERMINATOR, 0)
-}
-
-func (s *ReturnStatementContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *ReturnStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *ReturnStatementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterReturnStatement(s)
-	}
-}
-
-func (s *ReturnStatementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitReturnStatement(s)
-	}
-}
-
-func (p *LectureParser) ReturnStatement() (localctx IReturnStatementContext) {
-	localctx = NewReturnStatementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 16, LectureParserRULE_returnStatement)
-	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(94)
-		p.Match(LectureParserFINALLY_WE_GET)
+		p.SetState(120)
+		p.Match(LectureParserIT_PROCEEDS_AS_FOLLOWS)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
 	{
-		p.SetState(95)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(96)
-		p.ValueClause()
-	}
-	{
-		p.SetState(97)
+		p.SetState(121)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
-	}
-
-errorExit:
-	if p.HasError() {
-		v := p.GetError()
-		localctx.SetException(v)
-		p.GetErrorHandler().ReportError(p, v)
-		p.GetErrorHandler().Recover(p, v)
-		p.SetError(nil)
-	}
-	p.ExitRule()
-	return localctx
-	goto errorExit // Trick to prevent compiler error if the label is not used
-}
-
-// IDeclarationStatementContext is an interface to support dynamic dispatch.
-type IDeclarationStatementContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// Getter signatures
-	LETS_SAY() antlr.TerminalNode
-	AllSPACE() []antlr.TerminalNode
-	SPACE(i int) antlr.TerminalNode
-	Identifier() IIdentifierContext
-	IS() antlr.TerminalNode
-	ValueClause() IValueClauseContext
-
-	// IsDeclarationStatementContext differentiates from other interfaces.
-	IsDeclarationStatementContext()
-}
-
-type DeclarationStatementContext struct {
-	antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyDeclarationStatementContext() *DeclarationStatementContext {
-	var p = new(DeclarationStatementContext)
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_declarationStatement
-	return p
-}
-
-func InitEmptyDeclarationStatementContext(p *DeclarationStatementContext) {
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_declarationStatement
-}
-
-func (*DeclarationStatementContext) IsDeclarationStatementContext() {}
-
-func NewDeclarationStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DeclarationStatementContext {
-	var p = new(DeclarationStatementContext)
-
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = LectureParserRULE_declarationStatement
-
-	return p
-}
-
-func (s *DeclarationStatementContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *DeclarationStatementContext) LETS_SAY() antlr.TerminalNode {
-	return s.GetToken(LectureParserLETS_SAY, 0)
-}
-
-func (s *DeclarationStatementContext) AllSPACE() []antlr.TerminalNode {
-	return s.GetTokens(LectureParserSPACE)
-}
-
-func (s *DeclarationStatementContext) SPACE(i int) antlr.TerminalNode {
-	return s.GetToken(LectureParserSPACE, i)
-}
-
-func (s *DeclarationStatementContext) Identifier() IIdentifierContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IIdentifierContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IIdentifierContext)
-}
-
-func (s *DeclarationStatementContext) IS() antlr.TerminalNode {
-	return s.GetToken(LectureParserIS, 0)
-}
-
-func (s *DeclarationStatementContext) ValueClause() IValueClauseContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IValueClauseContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IValueClauseContext)
-}
-
-func (s *DeclarationStatementContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *DeclarationStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *DeclarationStatementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterDeclarationStatement(s)
-	}
-}
-
-func (s *DeclarationStatementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitDeclarationStatement(s)
-	}
-}
-
-func (p *LectureParser) DeclarationStatement() (localctx IDeclarationStatementContext) {
-	localctx = NewDeclarationStatementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 18, LectureParserRULE_declarationStatement)
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(99)
-		p.Match(LectureParserLETS_SAY)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(100)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(101)
-		p.Identifier()
-	}
-	{
-		p.SetState(102)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(103)
-		p.Match(LectureParserIS)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(104)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(105)
-		p.ValueClause()
-	}
-
-errorExit:
-	if p.HasError() {
-		v := p.GetError()
-		localctx.SetException(v)
-		p.GetErrorHandler().ReportError(p, v)
-		p.GetErrorHandler().Recover(p, v)
-		p.SetError(nil)
-	}
-	p.ExitRule()
-	return localctx
-	goto errorExit // Trick to prevent compiler error if the label is not used
-}
-
-// IPrintStatementContext is an interface to support dynamic dispatch.
-type IPrintStatementContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// Getter signatures
-	THEN_WE_HAVE() antlr.TerminalNode
-	SPACE() antlr.TerminalNode
-	ValueClause() IValueClauseContext
-
-	// IsPrintStatementContext differentiates from other interfaces.
-	IsPrintStatementContext()
-}
-
-type PrintStatementContext struct {
-	antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyPrintStatementContext() *PrintStatementContext {
-	var p = new(PrintStatementContext)
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_printStatement
-	return p
-}
-
-func InitEmptyPrintStatementContext(p *PrintStatementContext) {
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_printStatement
-}
-
-func (*PrintStatementContext) IsPrintStatementContext() {}
-
-func NewPrintStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PrintStatementContext {
-	var p = new(PrintStatementContext)
-
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = LectureParserRULE_printStatement
-
-	return p
-}
-
-func (s *PrintStatementContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *PrintStatementContext) THEN_WE_HAVE() antlr.TerminalNode {
-	return s.GetToken(LectureParserTHEN_WE_HAVE, 0)
-}
-
-func (s *PrintStatementContext) SPACE() antlr.TerminalNode {
-	return s.GetToken(LectureParserSPACE, 0)
-}
-
-func (s *PrintStatementContext) ValueClause() IValueClauseContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IValueClauseContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IValueClauseContext)
-}
-
-func (s *PrintStatementContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *PrintStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *PrintStatementContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterPrintStatement(s)
-	}
-}
-
-func (s *PrintStatementContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitPrintStatement(s)
-	}
-}
-
-func (p *LectureParser) PrintStatement() (localctx IPrintStatementContext) {
-	localctx = NewPrintStatementContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 20, LectureParserRULE_printStatement)
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(107)
-		p.Match(LectureParserTHEN_WE_HAVE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(108)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(109)
-		p.ValueClause()
 	}
 
 errorExit:
@@ -1990,10 +1512,10 @@ func (s *ParametersDeclarationContext) ExitRule(listener antlr.ParseTreeListener
 
 func (p *LectureParser) ParametersDeclaration() (localctx IParametersDeclarationContext) {
 	localctx = NewParametersDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 22, LectureParserRULE_parametersDeclaration)
+	p.EnterRule(localctx, 14, LectureParserRULE_parametersDeclaration)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(111)
+		p.SetState(123)
 		p.Match(LectureParserCOMMA)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2001,7 +1523,7 @@ func (p *LectureParser) ParametersDeclaration() (localctx IParametersDeclaration
 		}
 	}
 	{
-		p.SetState(112)
+		p.SetState(124)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2009,7 +1531,7 @@ func (p *LectureParser) ParametersDeclaration() (localctx IParametersDeclaration
 		}
 	}
 	{
-		p.SetState(113)
+		p.SetState(125)
 		p.Match(LectureParserWHICH_NEEDS)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2017,7 +1539,7 @@ func (p *LectureParser) ParametersDeclaration() (localctx IParametersDeclaration
 		}
 	}
 	{
-		p.SetState(114)
+		p.SetState(126)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2025,11 +1547,11 @@ func (p *LectureParser) ParametersDeclaration() (localctx IParametersDeclaration
 		}
 	}
 	{
-		p.SetState(115)
+		p.SetState(127)
 		p.ParameterDeclarationClause()
 	}
 	{
-		p.SetState(116)
+		p.SetState(128)
 		p.Match(LectureParserCOMMA)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2166,15 +1688,15 @@ func (s *ParameterDeclarationClauseContext) ExitRule(listener antlr.ParseTreeLis
 
 func (p *LectureParser) ParameterDeclarationClause() (localctx IParameterDeclarationClauseContext) {
 	localctx = NewParameterDeclarationClauseContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 24, LectureParserRULE_parameterDeclarationClause)
+	p.EnterRule(localctx, 16, LectureParserRULE_parameterDeclarationClause)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(118)
+		p.SetState(130)
 		p.ParameterDeclaration()
 	}
-	p.SetState(123)
+	p.SetState(135)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -2183,7 +1705,7 @@ func (p *LectureParser) ParameterDeclarationClause() (localctx IParameterDeclara
 
 	if _la == LectureParserSPACE {
 		{
-			p.SetState(119)
+			p.SetState(131)
 			p.Match(LectureParserSPACE)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2191,7 +1713,7 @@ func (p *LectureParser) ParameterDeclarationClause() (localctx IParameterDeclara
 			}
 		}
 		{
-			p.SetState(120)
+			p.SetState(132)
 			p.Match(LectureParserAND)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2199,7 +1721,7 @@ func (p *LectureParser) ParameterDeclarationClause() (localctx IParameterDeclara
 			}
 		}
 		{
-			p.SetState(121)
+			p.SetState(133)
 			p.Match(LectureParserSPACE)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -2207,7 +1729,7 @@ func (p *LectureParser) ParameterDeclarationClause() (localctx IParameterDeclara
 			}
 		}
 		{
-			p.SetState(122)
+			p.SetState(134)
 			p.ParameterDeclarationClause()
 		}
 
@@ -2226,70 +1748,90 @@ errorExit:
 	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
-// IFunctionCallContext is an interface to support dynamic dispatch.
-type IFunctionCallContext interface {
+// IParameterDeclarationContext is an interface to support dynamic dispatch.
+type IParameterDeclarationContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	THE_RESULT_OF() antlr.TerminalNode
+	A() antlr.TerminalNode
 	AllSPACE() []antlr.TerminalNode
 	SPACE(i int) antlr.TerminalNode
+	Type_() ITypeContext
+	CALLED() antlr.TerminalNode
 	Identifier() IIdentifierContext
-	WITH() antlr.TerminalNode
-	ParametersClause() IParametersClauseContext
 
-	// IsFunctionCallContext differentiates from other interfaces.
-	IsFunctionCallContext()
+	// IsParameterDeclarationContext differentiates from other interfaces.
+	IsParameterDeclarationContext()
 }
 
-type FunctionCallContext struct {
+type ParameterDeclarationContext struct {
 	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyFunctionCallContext() *FunctionCallContext {
-	var p = new(FunctionCallContext)
+func NewEmptyParameterDeclarationContext() *ParameterDeclarationContext {
+	var p = new(ParameterDeclarationContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_functionCall
+	p.RuleIndex = LectureParserRULE_parameterDeclaration
 	return p
 }
 
-func InitEmptyFunctionCallContext(p *FunctionCallContext) {
+func InitEmptyParameterDeclarationContext(p *ParameterDeclarationContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_functionCall
+	p.RuleIndex = LectureParserRULE_parameterDeclaration
 }
 
-func (*FunctionCallContext) IsFunctionCallContext() {}
+func (*ParameterDeclarationContext) IsParameterDeclarationContext() {}
 
-func NewFunctionCallContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionCallContext {
-	var p = new(FunctionCallContext)
+func NewParameterDeclarationContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ParameterDeclarationContext {
+	var p = new(ParameterDeclarationContext)
 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = LectureParserRULE_functionCall
+	p.RuleIndex = LectureParserRULE_parameterDeclaration
 
 	return p
 }
 
-func (s *FunctionCallContext) GetParser() antlr.Parser { return s.parser }
+func (s *ParameterDeclarationContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *FunctionCallContext) THE_RESULT_OF() antlr.TerminalNode {
-	return s.GetToken(LectureParserTHE_RESULT_OF, 0)
+func (s *ParameterDeclarationContext) A() antlr.TerminalNode {
+	return s.GetToken(LectureParserA, 0)
 }
 
-func (s *FunctionCallContext) AllSPACE() []antlr.TerminalNode {
+func (s *ParameterDeclarationContext) AllSPACE() []antlr.TerminalNode {
 	return s.GetTokens(LectureParserSPACE)
 }
 
-func (s *FunctionCallContext) SPACE(i int) antlr.TerminalNode {
+func (s *ParameterDeclarationContext) SPACE(i int) antlr.TerminalNode {
 	return s.GetToken(LectureParserSPACE, i)
 }
 
-func (s *FunctionCallContext) Identifier() IIdentifierContext {
+func (s *ParameterDeclarationContext) Type_() ITypeContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(ITypeContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ITypeContext)
+}
+
+func (s *ParameterDeclarationContext) CALLED() antlr.TerminalNode {
+	return s.GetToken(LectureParserCALLED, 0)
+}
+
+func (s *ParameterDeclarationContext) Identifier() IIdentifierContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IIdentifierContext); ok {
@@ -2305,14 +1847,150 @@ func (s *FunctionCallContext) Identifier() IIdentifierContext {
 	return t.(IIdentifierContext)
 }
 
-func (s *FunctionCallContext) WITH() antlr.TerminalNode {
-	return s.GetToken(LectureParserWITH, 0)
+func (s *ParameterDeclarationContext) GetRuleContext() antlr.RuleContext {
+	return s
 }
 
-func (s *FunctionCallContext) ParametersClause() IParametersClauseContext {
+func (s *ParameterDeclarationContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *ParameterDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterParameterDeclaration(s)
+	}
+}
+
+func (s *ParameterDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitParameterDeclaration(s)
+	}
+}
+
+func (p *LectureParser) ParameterDeclaration() (localctx IParameterDeclarationContext) {
+	localctx = NewParameterDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 18, LectureParserRULE_parameterDeclaration)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(137)
+		p.Match(LectureParserA)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(138)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(139)
+		p.Type_()
+	}
+	{
+		p.SetState(140)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(141)
+		p.Match(LectureParserCALLED)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(142)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(143)
+		p.Identifier()
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IStatementContext is an interface to support dynamic dispatch.
+type IStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	TERMINATOR() antlr.TerminalNode
+	AssignmentStatement() IAssignmentStatementContext
+	ReassignmentStatement() IReassignmentStatementContext
+	PrintStatement() IPrintStatementContext
+	IfChainStatement() IIfChainStatementContext
+
+	// IsStatementContext differentiates from other interfaces.
+	IsStatementContext()
+}
+
+type StatementContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyStatementContext() *StatementContext {
+	var p = new(StatementContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_statement
+	return p
+}
+
+func InitEmptyStatementContext(p *StatementContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_statement
+}
+
+func (*StatementContext) IsStatementContext() {}
+
+func NewStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *StatementContext {
+	var p = new(StatementContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_statement
+
+	return p
+}
+
+func (s *StatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *StatementContext) TERMINATOR() antlr.TerminalNode {
+	return s.GetToken(LectureParserTERMINATOR, 0)
+}
+
+func (s *StatementContext) AssignmentStatement() IAssignmentStatementContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IParametersClauseContext); ok {
+		if _, ok := ctx.(IAssignmentStatementContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -2322,43 +2000,397 @@ func (s *FunctionCallContext) ParametersClause() IParametersClauseContext {
 		return nil
 	}
 
-	return t.(IParametersClauseContext)
+	return t.(IAssignmentStatementContext)
 }
 
-func (s *FunctionCallContext) GetRuleContext() antlr.RuleContext {
+func (s *StatementContext) ReassignmentStatement() IReassignmentStatementContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IReassignmentStatementContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IReassignmentStatementContext)
+}
+
+func (s *StatementContext) PrintStatement() IPrintStatementContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IPrintStatementContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IPrintStatementContext)
+}
+
+func (s *StatementContext) IfChainStatement() IIfChainStatementContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IIfChainStatementContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IIfChainStatementContext)
+}
+
+func (s *StatementContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *FunctionCallContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *StatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *FunctionCallContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *StatementContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterFunctionCall(s)
+		listenerT.EnterStatement(s)
 	}
 }
 
-func (s *FunctionCallContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *StatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitFunctionCall(s)
+		listenerT.ExitStatement(s)
 	}
 }
 
-func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
-	localctx = NewFunctionCallContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 26, LectureParserRULE_functionCall)
+func (p *LectureParser) Statement() (localctx IStatementContext) {
+	localctx = NewStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 20, LectureParserRULE_statement)
+	p.EnterOuterAlt(localctx, 1)
+	p.SetState(149)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetTokenStream().LA(1) {
+	case LectureParserLETS_SAY:
+		{
+			p.SetState(145)
+			p.AssignmentStatement()
+		}
+
+	case LectureParserNOW_LETS_SAY:
+		{
+			p.SetState(146)
+			p.ReassignmentStatement()
+		}
+
+	case LectureParserTHEN_WE_HAVE:
+		{
+			p.SetState(147)
+			p.PrintStatement()
+		}
+
+	case LectureParserIF:
+		{
+			p.SetState(148)
+			p.IfChainStatement()
+		}
+
+	default:
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
+	}
+	{
+		p.SetState(151)
+		p.Match(LectureParserTERMINATOR)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IStatementBlockContext is an interface to support dynamic dispatch.
+type IStatementBlockContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	AllStatement() []IStatementContext
+	Statement(i int) IStatementContext
+
+	// IsStatementBlockContext differentiates from other interfaces.
+	IsStatementBlockContext()
+}
+
+type StatementBlockContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyStatementBlockContext() *StatementBlockContext {
+	var p = new(StatementBlockContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_statementBlock
+	return p
+}
+
+func InitEmptyStatementBlockContext(p *StatementBlockContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_statementBlock
+}
+
+func (*StatementBlockContext) IsStatementBlockContext() {}
+
+func NewStatementBlockContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *StatementBlockContext {
+	var p = new(StatementBlockContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_statementBlock
+
+	return p
+}
+
+func (s *StatementBlockContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *StatementBlockContext) AllStatement() []IStatementContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IStatementContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IStatementContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IStatementContext); ok {
+			tst[i] = t.(IStatementContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *StatementBlockContext) Statement(i int) IStatementContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IStatementContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IStatementContext)
+}
+
+func (s *StatementBlockContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *StatementBlockContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *StatementBlockContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterStatementBlock(s)
+	}
+}
+
+func (s *StatementBlockContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitStatementBlock(s)
+	}
+}
+
+func (p *LectureParser) StatementBlock() (localctx IStatementBlockContext) {
+	localctx = NewStatementBlockContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 22, LectureParserRULE_statementBlock)
+	var _la int
+
+	p.EnterOuterAlt(localctx, 1)
+	p.SetState(154)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+	_la = p.GetTokenStream().LA(1)
+
+	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1048632) != 0) {
+		{
+			p.SetState(153)
+			p.Statement()
+		}
+
+		p.SetState(156)
+		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
+		_la = p.GetTokenStream().LA(1)
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IReturnStatementContext is an interface to support dynamic dispatch.
+type IReturnStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	FINALLY_WE_GET() antlr.TerminalNode
+	SPACE() antlr.TerminalNode
+	ValueClause() IValueClauseContext
+	TERMINATOR() antlr.TerminalNode
+
+	// IsReturnStatementContext differentiates from other interfaces.
+	IsReturnStatementContext()
+}
+
+type ReturnStatementContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyReturnStatementContext() *ReturnStatementContext {
+	var p = new(ReturnStatementContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_returnStatement
+	return p
+}
+
+func InitEmptyReturnStatementContext(p *ReturnStatementContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_returnStatement
+}
+
+func (*ReturnStatementContext) IsReturnStatementContext() {}
+
+func NewReturnStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ReturnStatementContext {
+	var p = new(ReturnStatementContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_returnStatement
+
+	return p
+}
+
+func (s *ReturnStatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *ReturnStatementContext) FINALLY_WE_GET() antlr.TerminalNode {
+	return s.GetToken(LectureParserFINALLY_WE_GET, 0)
+}
+
+func (s *ReturnStatementContext) SPACE() antlr.TerminalNode {
+	return s.GetToken(LectureParserSPACE, 0)
+}
+
+func (s *ReturnStatementContext) ValueClause() IValueClauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IValueClauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IValueClauseContext)
+}
+
+func (s *ReturnStatementContext) TERMINATOR() antlr.TerminalNode {
+	return s.GetToken(LectureParserTERMINATOR, 0)
+}
+
+func (s *ReturnStatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ReturnStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *ReturnStatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterReturnStatement(s)
+	}
+}
+
+func (s *ReturnStatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitReturnStatement(s)
+	}
+}
+
+func (p *LectureParser) ReturnStatement() (localctx IReturnStatementContext) {
+	localctx = NewReturnStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 24, LectureParserRULE_returnStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(125)
-		p.Match(LectureParserTHE_RESULT_OF)
+		p.SetState(158)
+		p.Match(LectureParserFINALLY_WE_GET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
 	{
-		p.SetState(126)
+		p.SetState(159)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2366,43 +2398,236 @@ func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
 		}
 	}
 	{
-		p.SetState(127)
+		p.SetState(160)
+		p.ValueClause()
+	}
+	{
+		p.SetState(161)
+		p.Match(LectureParserTERMINATOR)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IAssignmentStatementContext is an interface to support dynamic dispatch.
+type IAssignmentStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	LETS_SAY() antlr.TerminalNode
+	AllSPACE() []antlr.TerminalNode
+	SPACE(i int) antlr.TerminalNode
+	Identifier() IIdentifierContext
+	IS() antlr.TerminalNode
+	ValueClause() IValueClauseContext
+	FunctionCall() IFunctionCallContext
+
+	// IsAssignmentStatementContext differentiates from other interfaces.
+	IsAssignmentStatementContext()
+}
+
+type AssignmentStatementContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyAssignmentStatementContext() *AssignmentStatementContext {
+	var p = new(AssignmentStatementContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_assignmentStatement
+	return p
+}
+
+func InitEmptyAssignmentStatementContext(p *AssignmentStatementContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_assignmentStatement
+}
+
+func (*AssignmentStatementContext) IsAssignmentStatementContext() {}
+
+func NewAssignmentStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *AssignmentStatementContext {
+	var p = new(AssignmentStatementContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_assignmentStatement
+
+	return p
+}
+
+func (s *AssignmentStatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *AssignmentStatementContext) LETS_SAY() antlr.TerminalNode {
+	return s.GetToken(LectureParserLETS_SAY, 0)
+}
+
+func (s *AssignmentStatementContext) AllSPACE() []antlr.TerminalNode {
+	return s.GetTokens(LectureParserSPACE)
+}
+
+func (s *AssignmentStatementContext) SPACE(i int) antlr.TerminalNode {
+	return s.GetToken(LectureParserSPACE, i)
+}
+
+func (s *AssignmentStatementContext) Identifier() IIdentifierContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IIdentifierContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IIdentifierContext)
+}
+
+func (s *AssignmentStatementContext) IS() antlr.TerminalNode {
+	return s.GetToken(LectureParserIS, 0)
+}
+
+func (s *AssignmentStatementContext) ValueClause() IValueClauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IValueClauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IValueClauseContext)
+}
+
+func (s *AssignmentStatementContext) FunctionCall() IFunctionCallContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IFunctionCallContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunctionCallContext)
+}
+
+func (s *AssignmentStatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *AssignmentStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *AssignmentStatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterAssignmentStatement(s)
+	}
+}
+
+func (s *AssignmentStatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitAssignmentStatement(s)
+	}
+}
+
+func (p *LectureParser) AssignmentStatement() (localctx IAssignmentStatementContext) {
+	localctx = NewAssignmentStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 26, LectureParserRULE_assignmentStatement)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(163)
+		p.Match(LectureParserLETS_SAY)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(164)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(165)
 		p.Identifier()
 	}
-	p.SetState(132)
+	{
+		p.SetState(166)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(167)
+		p.Match(LectureParserIS)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(168)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	p.SetState(171)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
-	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 6, p.GetParserRuleContext()) == 1 {
+	switch p.GetTokenStream().LA(1) {
+	case LectureParserLITERALLY, LectureParserALPHANUMERICSTRING:
 		{
-			p.SetState(128)
-			p.Match(LectureParserSPACE)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(129)
-			p.Match(LectureParserWITH)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(130)
-			p.Match(LectureParserSPACE)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(131)
-			p.ParametersClause()
+			p.SetState(169)
+			p.ValueClause()
 		}
 
-	} else if p.HasError() { // JIM
+	case LectureParserTHE_RESULT_OF:
+		{
+			p.SetState(170)
+			p.FunctionCall()
+		}
+
+	default:
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 		goto errorExit
 	}
 
@@ -2419,88 +2644,74 @@ errorExit:
 	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
-// IParametersClauseContext is an interface to support dynamic dispatch.
-type IParametersClauseContext interface {
+// IReassignmentStatementContext is an interface to support dynamic dispatch.
+type IReassignmentStatementContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	Value() IValueContext
+	NOW_LETS_SAY() antlr.TerminalNode
 	AllSPACE() []antlr.TerminalNode
 	SPACE(i int) antlr.TerminalNode
-	AND() antlr.TerminalNode
-	ParametersClause() IParametersClauseContext
+	Identifier() IIdentifierContext
+	IS() antlr.TerminalNode
+	ValueClause() IValueClauseContext
+	FunctionCall() IFunctionCallContext
 
-	// IsParametersClauseContext differentiates from other interfaces.
-	IsParametersClauseContext()
+	// IsReassignmentStatementContext differentiates from other interfaces.
+	IsReassignmentStatementContext()
 }
 
-type ParametersClauseContext struct {
+type ReassignmentStatementContext struct {
 	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyParametersClauseContext() *ParametersClauseContext {
-	var p = new(ParametersClauseContext)
+func NewEmptyReassignmentStatementContext() *ReassignmentStatementContext {
+	var p = new(ReassignmentStatementContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_parametersClause
+	p.RuleIndex = LectureParserRULE_reassignmentStatement
 	return p
 }
 
-func InitEmptyParametersClauseContext(p *ParametersClauseContext) {
+func InitEmptyReassignmentStatementContext(p *ReassignmentStatementContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_parametersClause
+	p.RuleIndex = LectureParserRULE_reassignmentStatement
 }
 
-func (*ParametersClauseContext) IsParametersClauseContext() {}
+func (*ReassignmentStatementContext) IsReassignmentStatementContext() {}
 
-func NewParametersClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ParametersClauseContext {
-	var p = new(ParametersClauseContext)
+func NewReassignmentStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ReassignmentStatementContext {
+	var p = new(ReassignmentStatementContext)
 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = LectureParserRULE_parametersClause
+	p.RuleIndex = LectureParserRULE_reassignmentStatement
 
 	return p
 }
 
-func (s *ParametersClauseContext) GetParser() antlr.Parser { return s.parser }
+func (s *ReassignmentStatementContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ParametersClauseContext) Value() IValueContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IValueContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IValueContext)
+func (s *ReassignmentStatementContext) NOW_LETS_SAY() antlr.TerminalNode {
+	return s.GetToken(LectureParserNOW_LETS_SAY, 0)
 }
 
-func (s *ParametersClauseContext) AllSPACE() []antlr.TerminalNode {
+func (s *ReassignmentStatementContext) AllSPACE() []antlr.TerminalNode {
 	return s.GetTokens(LectureParserSPACE)
 }
 
-func (s *ParametersClauseContext) SPACE(i int) antlr.TerminalNode {
+func (s *ReassignmentStatementContext) SPACE(i int) antlr.TerminalNode {
 	return s.GetToken(LectureParserSPACE, i)
 }
 
-func (s *ParametersClauseContext) AND() antlr.TerminalNode {
-	return s.GetToken(LectureParserAND, 0)
-}
-
-func (s *ParametersClauseContext) ParametersClause() IParametersClauseContext {
+func (s *ReassignmentStatementContext) Identifier() IIdentifierContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IParametersClauseContext); ok {
+		if _, ok := ctx.(IIdentifierContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -2510,72 +2721,1659 @@ func (s *ParametersClauseContext) ParametersClause() IParametersClauseContext {
 		return nil
 	}
 
-	return t.(IParametersClauseContext)
+	return t.(IIdentifierContext)
 }
 
-func (s *ParametersClauseContext) GetRuleContext() antlr.RuleContext {
+func (s *ReassignmentStatementContext) IS() antlr.TerminalNode {
+	return s.GetToken(LectureParserIS, 0)
+}
+
+func (s *ReassignmentStatementContext) ValueClause() IValueClauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IValueClauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IValueClauseContext)
+}
+
+func (s *ReassignmentStatementContext) FunctionCall() IFunctionCallContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IFunctionCallContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunctionCallContext)
+}
+
+func (s *ReassignmentStatementContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *ParametersClauseContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *ReassignmentStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *ParametersClauseContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *ReassignmentStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterParametersClause(s)
+		listenerT.EnterReassignmentStatement(s)
 	}
 }
 
-func (s *ParametersClauseContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *ReassignmentStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitParametersClause(s)
+		listenerT.ExitReassignmentStatement(s)
 	}
 }
 
-func (p *LectureParser) ParametersClause() (localctx IParametersClauseContext) {
-	localctx = NewParametersClauseContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 28, LectureParserRULE_parametersClause)
+func (p *LectureParser) ReassignmentStatement() (localctx IReassignmentStatementContext) {
+	localctx = NewReassignmentStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 28, LectureParserRULE_reassignmentStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(134)
-		p.Value()
+		p.SetState(173)
+		p.Match(LectureParserNOW_LETS_SAY)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
-	p.SetState(139)
+	{
+		p.SetState(174)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(175)
+		p.Identifier()
+	}
+	{
+		p.SetState(176)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(177)
+		p.Match(LectureParserIS)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(178)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	p.SetState(181)
 	p.GetErrorHandler().Sync(p)
-
-	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 7, p.GetParserRuleContext()) == 1 {
-		{
-			p.SetState(135)
-			p.Match(LectureParserSPACE)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(136)
-			p.Match(LectureParserAND)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(137)
-			p.Match(LectureParserSPACE)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(138)
-			p.ParametersClause()
-		}
-
-	} else if p.HasError() { // JIM
+	if p.HasError() {
 		goto errorExit
+	}
+
+	switch p.GetTokenStream().LA(1) {
+	case LectureParserLITERALLY, LectureParserALPHANUMERICSTRING:
+		{
+			p.SetState(179)
+			p.ValueClause()
+		}
+
+	case LectureParserTHE_RESULT_OF:
+		{
+			p.SetState(180)
+			p.FunctionCall()
+		}
+
+	default:
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IPrintStatementContext is an interface to support dynamic dispatch.
+type IPrintStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	THEN_WE_HAVE() antlr.TerminalNode
+	SPACE() antlr.TerminalNode
+	ValueClause() IValueClauseContext
+
+	// IsPrintStatementContext differentiates from other interfaces.
+	IsPrintStatementContext()
+}
+
+type PrintStatementContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyPrintStatementContext() *PrintStatementContext {
+	var p = new(PrintStatementContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_printStatement
+	return p
+}
+
+func InitEmptyPrintStatementContext(p *PrintStatementContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_printStatement
+}
+
+func (*PrintStatementContext) IsPrintStatementContext() {}
+
+func NewPrintStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PrintStatementContext {
+	var p = new(PrintStatementContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_printStatement
+
+	return p
+}
+
+func (s *PrintStatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *PrintStatementContext) THEN_WE_HAVE() antlr.TerminalNode {
+	return s.GetToken(LectureParserTHEN_WE_HAVE, 0)
+}
+
+func (s *PrintStatementContext) SPACE() antlr.TerminalNode {
+	return s.GetToken(LectureParserSPACE, 0)
+}
+
+func (s *PrintStatementContext) ValueClause() IValueClauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IValueClauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IValueClauseContext)
+}
+
+func (s *PrintStatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *PrintStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *PrintStatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterPrintStatement(s)
+	}
+}
+
+func (s *PrintStatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitPrintStatement(s)
+	}
+}
+
+func (p *LectureParser) PrintStatement() (localctx IPrintStatementContext) {
+	localctx = NewPrintStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 30, LectureParserRULE_printStatement)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(183)
+		p.Match(LectureParserTHEN_WE_HAVE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(184)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(185)
+		p.ValueClause()
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IIfChainStatementContext is an interface to support dynamic dispatch.
+type IIfChainStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	IfStatement() IIfStatementContext
+	IfClosingStatement() IIfClosingStatementContext
+	AllElseIfStatement() []IElseIfStatementContext
+	ElseIfStatement(i int) IElseIfStatementContext
+	ElseStatement() IElseStatementContext
+
+	// IsIfChainStatementContext differentiates from other interfaces.
+	IsIfChainStatementContext()
+}
+
+type IfChainStatementContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyIfChainStatementContext() *IfChainStatementContext {
+	var p = new(IfChainStatementContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_ifChainStatement
+	return p
+}
+
+func InitEmptyIfChainStatementContext(p *IfChainStatementContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_ifChainStatement
+}
+
+func (*IfChainStatementContext) IsIfChainStatementContext() {}
+
+func NewIfChainStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *IfChainStatementContext {
+	var p = new(IfChainStatementContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_ifChainStatement
+
+	return p
+}
+
+func (s *IfChainStatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *IfChainStatementContext) IfStatement() IIfStatementContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IIfStatementContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IIfStatementContext)
+}
+
+func (s *IfChainStatementContext) IfClosingStatement() IIfClosingStatementContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IIfClosingStatementContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IIfClosingStatementContext)
+}
+
+func (s *IfChainStatementContext) AllElseIfStatement() []IElseIfStatementContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IElseIfStatementContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IElseIfStatementContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IElseIfStatementContext); ok {
+			tst[i] = t.(IElseIfStatementContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *IfChainStatementContext) ElseIfStatement(i int) IElseIfStatementContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IElseIfStatementContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IElseIfStatementContext)
+}
+
+func (s *IfChainStatementContext) ElseStatement() IElseStatementContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IElseStatementContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IElseStatementContext)
+}
+
+func (s *IfChainStatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *IfChainStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *IfChainStatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterIfChainStatement(s)
+	}
+}
+
+func (s *IfChainStatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitIfChainStatement(s)
+	}
+}
+
+func (p *LectureParser) IfChainStatement() (localctx IIfChainStatementContext) {
+	localctx = NewIfChainStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 32, LectureParserRULE_ifChainStatement)
+	var _la int
+
+	var _alt int
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(187)
+		p.IfStatement()
+	}
+	p.SetState(191)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 9, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
+	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
+		if _alt == 1 {
+			{
+				p.SetState(188)
+				p.ElseIfStatement()
+			}
+
+		}
+		p.SetState(193)
+		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 9, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+	}
+	p.SetState(195)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+	_la = p.GetTokenStream().LA(1)
+
+	if _la == LectureParserOTHERWISE {
+		{
+			p.SetState(194)
+			p.ElseStatement()
+		}
+
+	}
+	{
+		p.SetState(197)
+		p.IfClosingStatement()
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IIfStatementContext is an interface to support dynamic dispatch.
+type IIfStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	IfSignature() IIfSignatureContext
+	StatementBlock() IStatementBlockContext
+
+	// IsIfStatementContext differentiates from other interfaces.
+	IsIfStatementContext()
+}
+
+type IfStatementContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyIfStatementContext() *IfStatementContext {
+	var p = new(IfStatementContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_ifStatement
+	return p
+}
+
+func InitEmptyIfStatementContext(p *IfStatementContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_ifStatement
+}
+
+func (*IfStatementContext) IsIfStatementContext() {}
+
+func NewIfStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *IfStatementContext {
+	var p = new(IfStatementContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_ifStatement
+
+	return p
+}
+
+func (s *IfStatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *IfStatementContext) IfSignature() IIfSignatureContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IIfSignatureContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IIfSignatureContext)
+}
+
+func (s *IfStatementContext) StatementBlock() IStatementBlockContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IStatementBlockContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IStatementBlockContext)
+}
+
+func (s *IfStatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *IfStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *IfStatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterIfStatement(s)
+	}
+}
+
+func (s *IfStatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitIfStatement(s)
+	}
+}
+
+func (p *LectureParser) IfStatement() (localctx IIfStatementContext) {
+	localctx = NewIfStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 34, LectureParserRULE_ifStatement)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(199)
+		p.IfSignature()
+	}
+	{
+		p.SetState(200)
+		p.StatementBlock()
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IIfSignatureContext is an interface to support dynamic dispatch.
+type IIfSignatureContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	IF() antlr.TerminalNode
+	AllSPACE() []antlr.TerminalNode
+	SPACE(i int) antlr.TerminalNode
+	ConditionClause() IConditionClauseContext
+	COMMA() antlr.TerminalNode
+	HERES_WHAT_WE_NEED_TO_DO() antlr.TerminalNode
+	TERMINATOR() antlr.TerminalNode
+
+	// IsIfSignatureContext differentiates from other interfaces.
+	IsIfSignatureContext()
+}
+
+type IfSignatureContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyIfSignatureContext() *IfSignatureContext {
+	var p = new(IfSignatureContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_ifSignature
+	return p
+}
+
+func InitEmptyIfSignatureContext(p *IfSignatureContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_ifSignature
+}
+
+func (*IfSignatureContext) IsIfSignatureContext() {}
+
+func NewIfSignatureContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *IfSignatureContext {
+	var p = new(IfSignatureContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_ifSignature
+
+	return p
+}
+
+func (s *IfSignatureContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *IfSignatureContext) IF() antlr.TerminalNode {
+	return s.GetToken(LectureParserIF, 0)
+}
+
+func (s *IfSignatureContext) AllSPACE() []antlr.TerminalNode {
+	return s.GetTokens(LectureParserSPACE)
+}
+
+func (s *IfSignatureContext) SPACE(i int) antlr.TerminalNode {
+	return s.GetToken(LectureParserSPACE, i)
+}
+
+func (s *IfSignatureContext) ConditionClause() IConditionClauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IConditionClauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IConditionClauseContext)
+}
+
+func (s *IfSignatureContext) COMMA() antlr.TerminalNode {
+	return s.GetToken(LectureParserCOMMA, 0)
+}
+
+func (s *IfSignatureContext) HERES_WHAT_WE_NEED_TO_DO() antlr.TerminalNode {
+	return s.GetToken(LectureParserHERES_WHAT_WE_NEED_TO_DO, 0)
+}
+
+func (s *IfSignatureContext) TERMINATOR() antlr.TerminalNode {
+	return s.GetToken(LectureParserTERMINATOR, 0)
+}
+
+func (s *IfSignatureContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *IfSignatureContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *IfSignatureContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterIfSignature(s)
+	}
+}
+
+func (s *IfSignatureContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitIfSignature(s)
+	}
+}
+
+func (p *LectureParser) IfSignature() (localctx IIfSignatureContext) {
+	localctx = NewIfSignatureContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 36, LectureParserRULE_ifSignature)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(202)
+		p.Match(LectureParserIF)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(203)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(204)
+		p.ConditionClause()
+	}
+	{
+		p.SetState(205)
+		p.Match(LectureParserCOMMA)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(206)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(207)
+		p.Match(LectureParserHERES_WHAT_WE_NEED_TO_DO)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(208)
+		p.Match(LectureParserTERMINATOR)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IElseIfStatementContext is an interface to support dynamic dispatch.
+type IElseIfStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	ElseIfSignature() IElseIfSignatureContext
+	StatementBlock() IStatementBlockContext
+
+	// IsElseIfStatementContext differentiates from other interfaces.
+	IsElseIfStatementContext()
+}
+
+type ElseIfStatementContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyElseIfStatementContext() *ElseIfStatementContext {
+	var p = new(ElseIfStatementContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_elseIfStatement
+	return p
+}
+
+func InitEmptyElseIfStatementContext(p *ElseIfStatementContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_elseIfStatement
+}
+
+func (*ElseIfStatementContext) IsElseIfStatementContext() {}
+
+func NewElseIfStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ElseIfStatementContext {
+	var p = new(ElseIfStatementContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_elseIfStatement
+
+	return p
+}
+
+func (s *ElseIfStatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *ElseIfStatementContext) ElseIfSignature() IElseIfSignatureContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IElseIfSignatureContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IElseIfSignatureContext)
+}
+
+func (s *ElseIfStatementContext) StatementBlock() IStatementBlockContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IStatementBlockContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IStatementBlockContext)
+}
+
+func (s *ElseIfStatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ElseIfStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *ElseIfStatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterElseIfStatement(s)
+	}
+}
+
+func (s *ElseIfStatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitElseIfStatement(s)
+	}
+}
+
+func (p *LectureParser) ElseIfStatement() (localctx IElseIfStatementContext) {
+	localctx = NewElseIfStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 38, LectureParserRULE_elseIfStatement)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(210)
+		p.ElseIfSignature()
+	}
+	{
+		p.SetState(211)
+		p.StatementBlock()
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IElseIfSignatureContext is an interface to support dynamic dispatch.
+type IElseIfSignatureContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	OTHERWISE() antlr.TerminalNode
+	COMMA() antlr.TerminalNode
+	SPACE() antlr.TerminalNode
+	IfSignature() IIfSignatureContext
+
+	// IsElseIfSignatureContext differentiates from other interfaces.
+	IsElseIfSignatureContext()
+}
+
+type ElseIfSignatureContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyElseIfSignatureContext() *ElseIfSignatureContext {
+	var p = new(ElseIfSignatureContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_elseIfSignature
+	return p
+}
+
+func InitEmptyElseIfSignatureContext(p *ElseIfSignatureContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_elseIfSignature
+}
+
+func (*ElseIfSignatureContext) IsElseIfSignatureContext() {}
+
+func NewElseIfSignatureContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ElseIfSignatureContext {
+	var p = new(ElseIfSignatureContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_elseIfSignature
+
+	return p
+}
+
+func (s *ElseIfSignatureContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *ElseIfSignatureContext) OTHERWISE() antlr.TerminalNode {
+	return s.GetToken(LectureParserOTHERWISE, 0)
+}
+
+func (s *ElseIfSignatureContext) COMMA() antlr.TerminalNode {
+	return s.GetToken(LectureParserCOMMA, 0)
+}
+
+func (s *ElseIfSignatureContext) SPACE() antlr.TerminalNode {
+	return s.GetToken(LectureParserSPACE, 0)
+}
+
+func (s *ElseIfSignatureContext) IfSignature() IIfSignatureContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IIfSignatureContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IIfSignatureContext)
+}
+
+func (s *ElseIfSignatureContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ElseIfSignatureContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *ElseIfSignatureContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterElseIfSignature(s)
+	}
+}
+
+func (s *ElseIfSignatureContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitElseIfSignature(s)
+	}
+}
+
+func (p *LectureParser) ElseIfSignature() (localctx IElseIfSignatureContext) {
+	localctx = NewElseIfSignatureContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 40, LectureParserRULE_elseIfSignature)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(213)
+		p.Match(LectureParserOTHERWISE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(214)
+		p.Match(LectureParserCOMMA)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(215)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(216)
+		p.IfSignature()
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IElseStatementContext is an interface to support dynamic dispatch.
+type IElseStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	ElseSignature() IElseSignatureContext
+	StatementBlock() IStatementBlockContext
+
+	// IsElseStatementContext differentiates from other interfaces.
+	IsElseStatementContext()
+}
+
+type ElseStatementContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyElseStatementContext() *ElseStatementContext {
+	var p = new(ElseStatementContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_elseStatement
+	return p
+}
+
+func InitEmptyElseStatementContext(p *ElseStatementContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_elseStatement
+}
+
+func (*ElseStatementContext) IsElseStatementContext() {}
+
+func NewElseStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ElseStatementContext {
+	var p = new(ElseStatementContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_elseStatement
+
+	return p
+}
+
+func (s *ElseStatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *ElseStatementContext) ElseSignature() IElseSignatureContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IElseSignatureContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IElseSignatureContext)
+}
+
+func (s *ElseStatementContext) StatementBlock() IStatementBlockContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IStatementBlockContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IStatementBlockContext)
+}
+
+func (s *ElseStatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ElseStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *ElseStatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterElseStatement(s)
+	}
+}
+
+func (s *ElseStatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitElseStatement(s)
+	}
+}
+
+func (p *LectureParser) ElseStatement() (localctx IElseStatementContext) {
+	localctx = NewElseStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 42, LectureParserRULE_elseStatement)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(218)
+		p.ElseSignature()
+	}
+	{
+		p.SetState(219)
+		p.StatementBlock()
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IElseSignatureContext is an interface to support dynamic dispatch.
+type IElseSignatureContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	OTHERWISE() antlr.TerminalNode
+	COMMA() antlr.TerminalNode
+	SPACE() antlr.TerminalNode
+	HERES_WHAT_WE_NEED_TO_DO() antlr.TerminalNode
+	TERMINATOR() antlr.TerminalNode
+
+	// IsElseSignatureContext differentiates from other interfaces.
+	IsElseSignatureContext()
+}
+
+type ElseSignatureContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyElseSignatureContext() *ElseSignatureContext {
+	var p = new(ElseSignatureContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_elseSignature
+	return p
+}
+
+func InitEmptyElseSignatureContext(p *ElseSignatureContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_elseSignature
+}
+
+func (*ElseSignatureContext) IsElseSignatureContext() {}
+
+func NewElseSignatureContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ElseSignatureContext {
+	var p = new(ElseSignatureContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_elseSignature
+
+	return p
+}
+
+func (s *ElseSignatureContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *ElseSignatureContext) OTHERWISE() antlr.TerminalNode {
+	return s.GetToken(LectureParserOTHERWISE, 0)
+}
+
+func (s *ElseSignatureContext) COMMA() antlr.TerminalNode {
+	return s.GetToken(LectureParserCOMMA, 0)
+}
+
+func (s *ElseSignatureContext) SPACE() antlr.TerminalNode {
+	return s.GetToken(LectureParserSPACE, 0)
+}
+
+func (s *ElseSignatureContext) HERES_WHAT_WE_NEED_TO_DO() antlr.TerminalNode {
+	return s.GetToken(LectureParserHERES_WHAT_WE_NEED_TO_DO, 0)
+}
+
+func (s *ElseSignatureContext) TERMINATOR() antlr.TerminalNode {
+	return s.GetToken(LectureParserTERMINATOR, 0)
+}
+
+func (s *ElseSignatureContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ElseSignatureContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *ElseSignatureContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterElseSignature(s)
+	}
+}
+
+func (s *ElseSignatureContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitElseSignature(s)
+	}
+}
+
+func (p *LectureParser) ElseSignature() (localctx IElseSignatureContext) {
+	localctx = NewElseSignatureContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 44, LectureParserRULE_elseSignature)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(221)
+		p.Match(LectureParserOTHERWISE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(222)
+		p.Match(LectureParserCOMMA)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(223)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(224)
+		p.Match(LectureParserHERES_WHAT_WE_NEED_TO_DO)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(225)
+		p.Match(LectureParserTERMINATOR)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IIfClosingStatementContext is an interface to support dynamic dispatch.
+type IIfClosingStatementContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	NOW_THAT_WEVE_DONE_THAT() antlr.TerminalNode
+	COMMA() antlr.TerminalNode
+	SPACE() antlr.TerminalNode
+	WE_CAN_MOVE_ON() antlr.TerminalNode
+
+	// IsIfClosingStatementContext differentiates from other interfaces.
+	IsIfClosingStatementContext()
+}
+
+type IfClosingStatementContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyIfClosingStatementContext() *IfClosingStatementContext {
+	var p = new(IfClosingStatementContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_ifClosingStatement
+	return p
+}
+
+func InitEmptyIfClosingStatementContext(p *IfClosingStatementContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_ifClosingStatement
+}
+
+func (*IfClosingStatementContext) IsIfClosingStatementContext() {}
+
+func NewIfClosingStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *IfClosingStatementContext {
+	var p = new(IfClosingStatementContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_ifClosingStatement
+
+	return p
+}
+
+func (s *IfClosingStatementContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *IfClosingStatementContext) NOW_THAT_WEVE_DONE_THAT() antlr.TerminalNode {
+	return s.GetToken(LectureParserNOW_THAT_WEVE_DONE_THAT, 0)
+}
+
+func (s *IfClosingStatementContext) COMMA() antlr.TerminalNode {
+	return s.GetToken(LectureParserCOMMA, 0)
+}
+
+func (s *IfClosingStatementContext) SPACE() antlr.TerminalNode {
+	return s.GetToken(LectureParserSPACE, 0)
+}
+
+func (s *IfClosingStatementContext) WE_CAN_MOVE_ON() antlr.TerminalNode {
+	return s.GetToken(LectureParserWE_CAN_MOVE_ON, 0)
+}
+
+func (s *IfClosingStatementContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *IfClosingStatementContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *IfClosingStatementContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterIfClosingStatement(s)
+	}
+}
+
+func (s *IfClosingStatementContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitIfClosingStatement(s)
+	}
+}
+
+func (p *LectureParser) IfClosingStatement() (localctx IIfClosingStatementContext) {
+	localctx = NewIfClosingStatementContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 46, LectureParserRULE_ifClosingStatement)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(227)
+		p.Match(LectureParserNOW_THAT_WEVE_DONE_THAT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(228)
+		p.Match(LectureParserCOMMA)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(229)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(230)
+		p.Match(LectureParserWE_CAN_MOVE_ON)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IConditionClauseContext is an interface to support dynamic dispatch.
+type IConditionClauseContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	AllValueClause() []IValueClauseContext
+	ValueClause(i int) IValueClauseContext
+	AllSPACE() []antlr.TerminalNode
+	SPACE(i int) antlr.TerminalNode
+	Comparator() IComparatorContext
+
+	// IsConditionClauseContext differentiates from other interfaces.
+	IsConditionClauseContext()
+}
+
+type ConditionClauseContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyConditionClauseContext() *ConditionClauseContext {
+	var p = new(ConditionClauseContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_conditionClause
+	return p
+}
+
+func InitEmptyConditionClauseContext(p *ConditionClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_conditionClause
+}
+
+func (*ConditionClauseContext) IsConditionClauseContext() {}
+
+func NewConditionClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ConditionClauseContext {
+	var p = new(ConditionClauseContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_conditionClause
+
+	return p
+}
+
+func (s *ConditionClauseContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *ConditionClauseContext) AllValueClause() []IValueClauseContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IValueClauseContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IValueClauseContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IValueClauseContext); ok {
+			tst[i] = t.(IValueClauseContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *ConditionClauseContext) ValueClause(i int) IValueClauseContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IValueClauseContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IValueClauseContext)
+}
+
+func (s *ConditionClauseContext) AllSPACE() []antlr.TerminalNode {
+	return s.GetTokens(LectureParserSPACE)
+}
+
+func (s *ConditionClauseContext) SPACE(i int) antlr.TerminalNode {
+	return s.GetToken(LectureParserSPACE, i)
+}
+
+func (s *ConditionClauseContext) Comparator() IComparatorContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IComparatorContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IComparatorContext)
+}
+
+func (s *ConditionClauseContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ConditionClauseContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *ConditionClauseContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterConditionClause(s)
+	}
+}
+
+func (s *ConditionClauseContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitConditionClause(s)
+	}
+}
+
+func (p *LectureParser) ConditionClause() (localctx IConditionClauseContext) {
+	localctx = NewConditionClauseContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 48, LectureParserRULE_conditionClause)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(232)
+		p.ValueClause()
+	}
+	{
+		p.SetState(233)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(234)
+		p.Comparator()
+	}
+	{
+		p.SetState(235)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(236)
+		p.ValueClause()
 	}
 
 errorExit:
@@ -2719,47 +4517,184 @@ func (s *ValueClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) ValueClause() (localctx IValueClauseContext) {
 	localctx = NewValueClauseContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 30, LectureParserRULE_valueClause)
-	var _la int
-
+	p.EnterRule(localctx, 50, LectureParserRULE_valueClause)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(141)
+		p.SetState(238)
 		p.Value()
 	}
-	p.SetState(147)
+	p.SetState(244)
+	p.GetErrorHandler().Sync(p)
+
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 11, p.GetParserRuleContext()) == 1 {
+		{
+			p.SetState(239)
+			p.Match(LectureParserSPACE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(240)
+			p.Operator()
+		}
+		{
+			p.SetState(241)
+			p.Match(LectureParserSPACE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(242)
+			p.ValueClause()
+		}
+
+	} else if p.HasError() { // JIM
+		goto errorExit
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IValueContext is an interface to support dynamic dispatch.
+type IValueContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	LiteralClause() ILiteralClauseContext
+	Identifier() IIdentifierContext
+
+	// IsValueContext differentiates from other interfaces.
+	IsValueContext()
+}
+
+type ValueContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyValueContext() *ValueContext {
+	var p = new(ValueContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_value
+	return p
+}
+
+func InitEmptyValueContext(p *ValueContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_value
+}
+
+func (*ValueContext) IsValueContext() {}
+
+func NewValueContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ValueContext {
+	var p = new(ValueContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_value
+
+	return p
+}
+
+func (s *ValueContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *ValueContext) LiteralClause() ILiteralClauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(ILiteralClauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ILiteralClauseContext)
+}
+
+func (s *ValueContext) Identifier() IIdentifierContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IIdentifierContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IIdentifierContext)
+}
+
+func (s *ValueContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ValueContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *ValueContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterValue(s)
+	}
+}
+
+func (s *ValueContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitValue(s)
+	}
+}
+
+func (p *LectureParser) Value() (localctx IValueContext) {
+	localctx = NewValueContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 52, LectureParserRULE_value)
+	p.SetState(248)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
-	_la = p.GetTokenStream().LA(1)
 
-	if _la == LectureParserSPACE {
+	switch p.GetTokenStream().LA(1) {
+	case LectureParserLITERALLY:
+		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(142)
-			p.Match(LectureParserSPACE)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(143)
-			p.Operator()
-		}
-		{
-			p.SetState(144)
-			p.Match(LectureParserSPACE)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(145)
-			p.ValueClause()
+			p.SetState(246)
+			p.LiteralClause()
 		}
 
+	case LectureParserALPHANUMERICSTRING:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(247)
+			p.Identifier()
+		}
+
+	default:
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
 errorExit:
@@ -2869,10 +4804,10 @@ func (s *LiteralClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) LiteralClause() (localctx ILiteralClauseContext) {
 	localctx = NewLiteralClauseContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 32, LectureParserRULE_literalClause)
+	p.EnterRule(localctx, 54, LectureParserRULE_literalClause)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(149)
+		p.SetState(250)
 		p.Match(LectureParserLITERALLY)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2880,7 +4815,7 @@ func (p *LectureParser) LiteralClause() (localctx ILiteralClauseContext) {
 		}
 	}
 	{
-		p.SetState(150)
+		p.SetState(251)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2888,7 +4823,7 @@ func (p *LectureParser) LiteralClause() (localctx ILiteralClauseContext) {
 		}
 	}
 	{
-		p.SetState(151)
+		p.SetState(252)
 		p.Literal()
 	}
 
@@ -2905,90 +4840,71 @@ errorExit:
 	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
-// IParameterDeclarationContext is an interface to support dynamic dispatch.
-type IParameterDeclarationContext interface {
+// IFunctionCallContext is an interface to support dynamic dispatch.
+type IFunctionCallContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	A() antlr.TerminalNode
+	THE_RESULT_OF() antlr.TerminalNode
 	AllSPACE() []antlr.TerminalNode
 	SPACE(i int) antlr.TerminalNode
-	Type_() ITypeContext
-	CALLED() antlr.TerminalNode
 	Identifier() IIdentifierContext
+	USING() antlr.TerminalNode
+	ParametersClause() IParametersClauseContext
+	COMMA() antlr.TerminalNode
 
-	// IsParameterDeclarationContext differentiates from other interfaces.
-	IsParameterDeclarationContext()
+	// IsFunctionCallContext differentiates from other interfaces.
+	IsFunctionCallContext()
 }
 
-type ParameterDeclarationContext struct {
+type FunctionCallContext struct {
 	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyParameterDeclarationContext() *ParameterDeclarationContext {
-	var p = new(ParameterDeclarationContext)
+func NewEmptyFunctionCallContext() *FunctionCallContext {
+	var p = new(FunctionCallContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_parameterDeclaration
+	p.RuleIndex = LectureParserRULE_functionCall
 	return p
 }
 
-func InitEmptyParameterDeclarationContext(p *ParameterDeclarationContext) {
+func InitEmptyFunctionCallContext(p *FunctionCallContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_parameterDeclaration
+	p.RuleIndex = LectureParserRULE_functionCall
 }
 
-func (*ParameterDeclarationContext) IsParameterDeclarationContext() {}
+func (*FunctionCallContext) IsFunctionCallContext() {}
 
-func NewParameterDeclarationContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ParameterDeclarationContext {
-	var p = new(ParameterDeclarationContext)
+func NewFunctionCallContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionCallContext {
+	var p = new(FunctionCallContext)
 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = LectureParserRULE_parameterDeclaration
+	p.RuleIndex = LectureParserRULE_functionCall
 
 	return p
 }
 
-func (s *ParameterDeclarationContext) GetParser() antlr.Parser { return s.parser }
+func (s *FunctionCallContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ParameterDeclarationContext) A() antlr.TerminalNode {
-	return s.GetToken(LectureParserA, 0)
+func (s *FunctionCallContext) THE_RESULT_OF() antlr.TerminalNode {
+	return s.GetToken(LectureParserTHE_RESULT_OF, 0)
 }
 
-func (s *ParameterDeclarationContext) AllSPACE() []antlr.TerminalNode {
+func (s *FunctionCallContext) AllSPACE() []antlr.TerminalNode {
 	return s.GetTokens(LectureParserSPACE)
 }
 
-func (s *ParameterDeclarationContext) SPACE(i int) antlr.TerminalNode {
+func (s *FunctionCallContext) SPACE(i int) antlr.TerminalNode {
 	return s.GetToken(LectureParserSPACE, i)
 }
 
-func (s *ParameterDeclarationContext) Type_() ITypeContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ITypeContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(ITypeContext)
-}
-
-func (s *ParameterDeclarationContext) CALLED() antlr.TerminalNode {
-	return s.GetToken(LectureParserCALLED, 0)
-}
-
-func (s *ParameterDeclarationContext) Identifier() IIdentifierContext {
+func (s *FunctionCallContext) Identifier() IIdentifierContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IIdentifierContext); ok {
@@ -3004,40 +4920,66 @@ func (s *ParameterDeclarationContext) Identifier() IIdentifierContext {
 	return t.(IIdentifierContext)
 }
 
-func (s *ParameterDeclarationContext) GetRuleContext() antlr.RuleContext {
+func (s *FunctionCallContext) USING() antlr.TerminalNode {
+	return s.GetToken(LectureParserUSING, 0)
+}
+
+func (s *FunctionCallContext) ParametersClause() IParametersClauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IParametersClauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IParametersClauseContext)
+}
+
+func (s *FunctionCallContext) COMMA() antlr.TerminalNode {
+	return s.GetToken(LectureParserCOMMA, 0)
+}
+
+func (s *FunctionCallContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *ParameterDeclarationContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *FunctionCallContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *ParameterDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *FunctionCallContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterParameterDeclaration(s)
+		listenerT.EnterFunctionCall(s)
 	}
 }
 
-func (s *ParameterDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *FunctionCallContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitParameterDeclaration(s)
+		listenerT.ExitFunctionCall(s)
 	}
 }
 
-func (p *LectureParser) ParameterDeclaration() (localctx IParameterDeclarationContext) {
-	localctx = NewParameterDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 34, LectureParserRULE_parameterDeclaration)
+func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
+	localctx = NewFunctionCallContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 56, LectureParserRULE_functionCall)
+	var _la int
+
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(153)
-		p.Match(LectureParserA)
+		p.SetState(254)
+		p.Match(LectureParserTHE_RESULT_OF)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
 	{
-		p.SetState(154)
+		p.SetState(255)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3045,36 +4987,64 @@ func (p *LectureParser) ParameterDeclaration() (localctx IParameterDeclarationCo
 		}
 	}
 	{
-		p.SetState(155)
-		p.Type_()
-	}
-	{
-		p.SetState(156)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(157)
-		p.Match(LectureParserCALLED)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(158)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(159)
+		p.SetState(256)
 		p.Identifier()
+	}
+	p.SetState(264)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+	_la = p.GetTokenStream().LA(1)
+
+	if _la == LectureParserCOMMA || _la == LectureParserSPACE {
+		p.SetState(258)
+		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
+		_la = p.GetTokenStream().LA(1)
+
+		if _la == LectureParserCOMMA {
+			{
+				p.SetState(257)
+				p.Match(LectureParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
+			}
+
+		}
+		{
+			p.SetState(260)
+			p.Match(LectureParserSPACE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(261)
+			p.Match(LectureParserUSING)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(262)
+			p.Match(LectureParserSPACE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(263)
+			p.ParametersClause()
+		}
+
 	}
 
 errorExit:
@@ -3090,58 +5060,60 @@ errorExit:
 	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
-// IValueContext is an interface to support dynamic dispatch.
-type IValueContext interface {
+// IParametersClauseContext is an interface to support dynamic dispatch.
+type IParametersClauseContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	LiteralClause() ILiteralClauseContext
-	Identifier() IIdentifierContext
-	FunctionCall() IFunctionCallContext
+	Parameter() IParameterContext
+	AllSPACE() []antlr.TerminalNode
+	SPACE(i int) antlr.TerminalNode
+	AND() antlr.TerminalNode
+	ParametersClause() IParametersClauseContext
 
-	// IsValueContext differentiates from other interfaces.
-	IsValueContext()
+	// IsParametersClauseContext differentiates from other interfaces.
+	IsParametersClauseContext()
 }
 
-type ValueContext struct {
+type ParametersClauseContext struct {
 	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyValueContext() *ValueContext {
-	var p = new(ValueContext)
+func NewEmptyParametersClauseContext() *ParametersClauseContext {
+	var p = new(ParametersClauseContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_value
+	p.RuleIndex = LectureParserRULE_parametersClause
 	return p
 }
 
-func InitEmptyValueContext(p *ValueContext) {
+func InitEmptyParametersClauseContext(p *ParametersClauseContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_value
+	p.RuleIndex = LectureParserRULE_parametersClause
 }
 
-func (*ValueContext) IsValueContext() {}
+func (*ParametersClauseContext) IsParametersClauseContext() {}
 
-func NewValueContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ValueContext {
-	var p = new(ValueContext)
+func NewParametersClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ParametersClauseContext {
+	var p = new(ParametersClauseContext)
 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = LectureParserRULE_value
+	p.RuleIndex = LectureParserRULE_parametersClause
 
 	return p
 }
 
-func (s *ValueContext) GetParser() antlr.Parser { return s.parser }
+func (s *ParametersClauseContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ValueContext) LiteralClause() ILiteralClauseContext {
+func (s *ParametersClauseContext) Parameter() IParameterContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ILiteralClauseContext); ok {
+		if _, ok := ctx.(IParameterContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -3151,13 +5123,25 @@ func (s *ValueContext) LiteralClause() ILiteralClauseContext {
 		return nil
 	}
 
-	return t.(ILiteralClauseContext)
+	return t.(IParameterContext)
 }
 
-func (s *ValueContext) Identifier() IIdentifierContext {
+func (s *ParametersClauseContext) AllSPACE() []antlr.TerminalNode {
+	return s.GetTokens(LectureParserSPACE)
+}
+
+func (s *ParametersClauseContext) SPACE(i int) antlr.TerminalNode {
+	return s.GetToken(LectureParserSPACE, i)
+}
+
+func (s *ParametersClauseContext) AND() antlr.TerminalNode {
+	return s.GetToken(LectureParserAND, 0)
+}
+
+func (s *ParametersClauseContext) ParametersClause() IParametersClauseContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IIdentifierContext); ok {
+		if _, ok := ctx.(IParametersClauseContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -3167,79 +5151,574 @@ func (s *ValueContext) Identifier() IIdentifierContext {
 		return nil
 	}
 
-	return t.(IIdentifierContext)
+	return t.(IParametersClauseContext)
 }
 
-func (s *ValueContext) FunctionCall() IFunctionCallContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IFunctionCallContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IFunctionCallContext)
-}
-
-func (s *ValueContext) GetRuleContext() antlr.RuleContext {
+func (s *ParametersClauseContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *ValueContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *ParametersClauseContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *ValueContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *ParametersClauseContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterValue(s)
+		listenerT.EnterParametersClause(s)
 	}
 }
 
-func (s *ValueContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *ParametersClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitValue(s)
+		listenerT.ExitParametersClause(s)
 	}
 }
 
-func (p *LectureParser) Value() (localctx IValueContext) {
-	localctx = NewValueContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 36, LectureParserRULE_value)
-	p.SetState(164)
+func (p *LectureParser) ParametersClause() (localctx IParametersClauseContext) {
+	localctx = NewParametersClauseContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 58, LectureParserRULE_parametersClause)
+	var _la int
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(266)
+		p.Parameter()
+	}
+	p.SetState(271)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
+	_la = p.GetTokenStream().LA(1)
 
-	switch p.GetTokenStream().LA(1) {
-	case LectureParserLITERALLY:
-		p.EnterOuterAlt(localctx, 1)
+	if _la == LectureParserSPACE {
 		{
-			p.SetState(161)
-			p.LiteralClause()
+			p.SetState(267)
+			p.Match(LectureParserSPACE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(268)
+			p.Match(LectureParserAND)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(269)
+			p.Match(LectureParserSPACE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(270)
+			p.ParametersClause()
 		}
 
-	case LectureParserALPHANUMERICSTRING:
-		p.EnterOuterAlt(localctx, 2)
-		{
-			p.SetState(162)
-			p.Identifier()
-		}
+	}
 
-	case LectureParserTHE_RESULT_OF:
-		p.EnterOuterAlt(localctx, 3)
-		{
-			p.SetState(163)
-			p.FunctionCall()
-		}
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
 
-	default:
-		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
-		goto errorExit
+// IParameterContext is an interface to support dynamic dispatch.
+type IParameterContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	ValueClause() IValueClauseContext
+
+	// IsParameterContext differentiates from other interfaces.
+	IsParameterContext()
+}
+
+type ParameterContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyParameterContext() *ParameterContext {
+	var p = new(ParameterContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_parameter
+	return p
+}
+
+func InitEmptyParameterContext(p *ParameterContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_parameter
+}
+
+func (*ParameterContext) IsParameterContext() {}
+
+func NewParameterContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ParameterContext {
+	var p = new(ParameterContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_parameter
+
+	return p
+}
+
+func (s *ParameterContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *ParameterContext) ValueClause() IValueClauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IValueClauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IValueClauseContext)
+}
+
+func (s *ParameterContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ParameterContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *ParameterContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterParameter(s)
+	}
+}
+
+func (s *ParameterContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitParameter(s)
+	}
+}
+
+func (p *LectureParser) Parameter() (localctx IParameterContext) {
+	localctx = NewParameterContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 60, LectureParserRULE_parameter)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(273)
+		p.ValueClause()
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// ITypeContext is an interface to support dynamic dispatch.
+type ITypeContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	NUMBER() antlr.TerminalNode
+
+	// IsTypeContext differentiates from other interfaces.
+	IsTypeContext()
+}
+
+type TypeContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyTypeContext() *TypeContext {
+	var p = new(TypeContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_type
+	return p
+}
+
+func InitEmptyTypeContext(p *TypeContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_type
+}
+
+func (*TypeContext) IsTypeContext() {}
+
+func NewTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *TypeContext {
+	var p = new(TypeContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_type
+
+	return p
+}
+
+func (s *TypeContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *TypeContext) NUMBER() antlr.TerminalNode {
+	return s.GetToken(LectureParserNUMBER, 0)
+}
+
+func (s *TypeContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *TypeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *TypeContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterType(s)
+	}
+}
+
+func (s *TypeContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitType(s)
+	}
+}
+
+func (p *LectureParser) Type_() (localctx ITypeContext) {
+	localctx = NewTypeContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 62, LectureParserRULE_type)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(275)
+		p.Match(LectureParserNUMBER)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IOperatorContext is an interface to support dynamic dispatch.
+type IOperatorContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	PLUS() antlr.TerminalNode
+	MINUS() antlr.TerminalNode
+
+	// IsOperatorContext differentiates from other interfaces.
+	IsOperatorContext()
+}
+
+type OperatorContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyOperatorContext() *OperatorContext {
+	var p = new(OperatorContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_operator
+	return p
+}
+
+func InitEmptyOperatorContext(p *OperatorContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_operator
+}
+
+func (*OperatorContext) IsOperatorContext() {}
+
+func NewOperatorContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *OperatorContext {
+	var p = new(OperatorContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_operator
+
+	return p
+}
+
+func (s *OperatorContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *OperatorContext) PLUS() antlr.TerminalNode {
+	return s.GetToken(LectureParserPLUS, 0)
+}
+
+func (s *OperatorContext) MINUS() antlr.TerminalNode {
+	return s.GetToken(LectureParserMINUS, 0)
+}
+
+func (s *OperatorContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *OperatorContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *OperatorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterOperator(s)
+	}
+}
+
+func (s *OperatorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitOperator(s)
+	}
+}
+
+func (p *LectureParser) Operator() (localctx IOperatorContext) {
+	localctx = NewOperatorContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 64, LectureParserRULE_operator)
+	var _la int
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(277)
+		_la = p.GetTokenStream().LA(1)
+
+		if !(_la == LectureParserPLUS || _la == LectureParserMINUS) {
+			p.GetErrorHandler().RecoverInline(p)
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
+		}
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IComparatorContext is an interface to support dynamic dispatch.
+type IComparatorContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	IS() antlr.TerminalNode
+
+	// IsComparatorContext differentiates from other interfaces.
+	IsComparatorContext()
+}
+
+type ComparatorContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyComparatorContext() *ComparatorContext {
+	var p = new(ComparatorContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_comparator
+	return p
+}
+
+func InitEmptyComparatorContext(p *ComparatorContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_comparator
+}
+
+func (*ComparatorContext) IsComparatorContext() {}
+
+func NewComparatorContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ComparatorContext {
+	var p = new(ComparatorContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_comparator
+
+	return p
+}
+
+func (s *ComparatorContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *ComparatorContext) IS() antlr.TerminalNode {
+	return s.GetToken(LectureParserIS, 0)
+}
+
+func (s *ComparatorContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ComparatorContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *ComparatorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterComparator(s)
+	}
+}
+
+func (s *ComparatorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitComparator(s)
+	}
+}
+
+func (p *LectureParser) Comparator() (localctx IComparatorContext) {
+	localctx = NewComparatorContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 66, LectureParserRULE_comparator)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(279)
+		p.Match(LectureParserIS)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IIdentifierContext is an interface to support dynamic dispatch.
+type IIdentifierContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	ALPHANUMERICSTRING() antlr.TerminalNode
+
+	// IsIdentifierContext differentiates from other interfaces.
+	IsIdentifierContext()
+}
+
+type IdentifierContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyIdentifierContext() *IdentifierContext {
+	var p = new(IdentifierContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_identifier
+	return p
+}
+
+func InitEmptyIdentifierContext(p *IdentifierContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = LectureParserRULE_identifier
+}
+
+func (*IdentifierContext) IsIdentifierContext() {}
+
+func NewIdentifierContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *IdentifierContext {
+	var p = new(IdentifierContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = LectureParserRULE_identifier
+
+	return p
+}
+
+func (s *IdentifierContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *IdentifierContext) ALPHANUMERICSTRING() antlr.TerminalNode {
+	return s.GetToken(LectureParserALPHANUMERICSTRING, 0)
+}
+
+func (s *IdentifierContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *IdentifierContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *IdentifierContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.EnterIdentifier(s)
+	}
+}
+
+func (s *IdentifierContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(LectureListener); ok {
+		listenerT.ExitIdentifier(s)
+	}
+}
+
+func (p *LectureParser) Identifier() (localctx IIdentifierContext) {
+	localctx = NewIdentifierContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 68, LectureParserRULE_identifier)
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(281)
+		p.Match(LectureParserALPHANUMERICSTRING)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
 errorExit:
@@ -3339,299 +5818,11 @@ func (s *LiteralContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) Literal() (localctx ILiteralContext) {
 	localctx = NewLiteralContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 38, LectureParserRULE_literal)
+	p.EnterRule(localctx, 70, LectureParserRULE_literal)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(166)
+		p.SetState(283)
 		p.Number()
-	}
-
-errorExit:
-	if p.HasError() {
-		v := p.GetError()
-		localctx.SetException(v)
-		p.GetErrorHandler().ReportError(p, v)
-		p.GetErrorHandler().Recover(p, v)
-		p.SetError(nil)
-	}
-	p.ExitRule()
-	return localctx
-	goto errorExit // Trick to prevent compiler error if the label is not used
-}
-
-// ITypeContext is an interface to support dynamic dispatch.
-type ITypeContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// Getter signatures
-	NUMBER() antlr.TerminalNode
-
-	// IsTypeContext differentiates from other interfaces.
-	IsTypeContext()
-}
-
-type TypeContext struct {
-	antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyTypeContext() *TypeContext {
-	var p = new(TypeContext)
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_type
-	return p
-}
-
-func InitEmptyTypeContext(p *TypeContext) {
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_type
-}
-
-func (*TypeContext) IsTypeContext() {}
-
-func NewTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *TypeContext {
-	var p = new(TypeContext)
-
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = LectureParserRULE_type
-
-	return p
-}
-
-func (s *TypeContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *TypeContext) NUMBER() antlr.TerminalNode {
-	return s.GetToken(LectureParserNUMBER, 0)
-}
-
-func (s *TypeContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *TypeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *TypeContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterType(s)
-	}
-}
-
-func (s *TypeContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitType(s)
-	}
-}
-
-func (p *LectureParser) Type_() (localctx ITypeContext) {
-	localctx = NewTypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 40, LectureParserRULE_type)
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(168)
-		p.Match(LectureParserNUMBER)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-
-errorExit:
-	if p.HasError() {
-		v := p.GetError()
-		localctx.SetException(v)
-		p.GetErrorHandler().ReportError(p, v)
-		p.GetErrorHandler().Recover(p, v)
-		p.SetError(nil)
-	}
-	p.ExitRule()
-	return localctx
-	goto errorExit // Trick to prevent compiler error if the label is not used
-}
-
-// IOperatorContext is an interface to support dynamic dispatch.
-type IOperatorContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// Getter signatures
-	PLUS() antlr.TerminalNode
-
-	// IsOperatorContext differentiates from other interfaces.
-	IsOperatorContext()
-}
-
-type OperatorContext struct {
-	antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyOperatorContext() *OperatorContext {
-	var p = new(OperatorContext)
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_operator
-	return p
-}
-
-func InitEmptyOperatorContext(p *OperatorContext) {
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_operator
-}
-
-func (*OperatorContext) IsOperatorContext() {}
-
-func NewOperatorContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *OperatorContext {
-	var p = new(OperatorContext)
-
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = LectureParserRULE_operator
-
-	return p
-}
-
-func (s *OperatorContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *OperatorContext) PLUS() antlr.TerminalNode {
-	return s.GetToken(LectureParserPLUS, 0)
-}
-
-func (s *OperatorContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *OperatorContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *OperatorContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterOperator(s)
-	}
-}
-
-func (s *OperatorContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitOperator(s)
-	}
-}
-
-func (p *LectureParser) Operator() (localctx IOperatorContext) {
-	localctx = NewOperatorContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 42, LectureParserRULE_operator)
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(170)
-		p.Match(LectureParserPLUS)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-
-errorExit:
-	if p.HasError() {
-		v := p.GetError()
-		localctx.SetException(v)
-		p.GetErrorHandler().ReportError(p, v)
-		p.GetErrorHandler().Recover(p, v)
-		p.SetError(nil)
-	}
-	p.ExitRule()
-	return localctx
-	goto errorExit // Trick to prevent compiler error if the label is not used
-}
-
-// IIdentifierContext is an interface to support dynamic dispatch.
-type IIdentifierContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// Getter signatures
-	ALPHANUMERICSTRING() antlr.TerminalNode
-
-	// IsIdentifierContext differentiates from other interfaces.
-	IsIdentifierContext()
-}
-
-type IdentifierContext struct {
-	antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyIdentifierContext() *IdentifierContext {
-	var p = new(IdentifierContext)
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_identifier
-	return p
-}
-
-func InitEmptyIdentifierContext(p *IdentifierContext) {
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_identifier
-}
-
-func (*IdentifierContext) IsIdentifierContext() {}
-
-func NewIdentifierContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *IdentifierContext {
-	var p = new(IdentifierContext)
-
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = LectureParserRULE_identifier
-
-	return p
-}
-
-func (s *IdentifierContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *IdentifierContext) ALPHANUMERICSTRING() antlr.TerminalNode {
-	return s.GetToken(LectureParserALPHANUMERICSTRING, 0)
-}
-
-func (s *IdentifierContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *IdentifierContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *IdentifierContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterIdentifier(s)
-	}
-}
-
-func (s *IdentifierContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitIdentifier(s)
-	}
-}
-
-func (p *LectureParser) Identifier() (localctx IIdentifierContext) {
-	localctx = NewIdentifierContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 44, LectureParserRULE_identifier)
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(172)
-		p.Match(LectureParserALPHANUMERICSTRING)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
 	}
 
 errorExit:
@@ -3719,10 +5910,10 @@ func (s *NumberContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) Number() (localctx INumberContext) {
 	localctx = NewNumberContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 46, LectureParserRULE_number)
+	p.EnterRule(localctx, 72, LectureParserRULE_number)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(174)
+		p.SetState(285)
 		p.Match(LectureParserINTEGER)
 		if p.HasError() {
 			// Recognition error - abort rule

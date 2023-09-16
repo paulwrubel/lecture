@@ -23,35 +23,25 @@ fragment DIGIT: [0-9];
 // initial rule
 lecture: program EOF;
 
-program: startClause (statement)+ endClause;
+program: (function)* mainFunction (function)*;
 
-startClause: OKAY_HEAR_ME_OUT TERMINATOR;
+// main function
 
-endClause: I_REST_MY_CASE TERMINATOR;
+mainFunction:
+	mainStartStatement statementBlock mainEndStatement;
 
-// contructs
+mainStartStatement: OKAY_HEAR_ME_OUT TERMINATOR;
 
-function: functionStatement (atomicStatement)* returnStatement;
+mainEndStatement: I_REST_MY_CASE TERMINATOR;
 
-// statements
+// functions
 
-statement: (atomicStatement | function);
+function: functionSignature (statement)* returnStatement;
 
-atomicStatement: (declarationStatement | printStatement) TERMINATOR;
-
-functionStatement:
+functionSignature:
 	WE_CAN_USE_A_PROCESS_KNOWN_AS SPACE identifier (
 		parametersDeclaration
-	)? SPACE AND_PROCEEDS_AS_FOLLOWS TERMINATOR;
-
-returnStatement: FINALLY_WE_GET SPACE valueClause TERMINATOR;
-
-declarationStatement:
-	LETS_SAY SPACE identifier SPACE IS SPACE valueClause;
-
-printStatement: THEN_WE_HAVE SPACE valueClause;
-
-// sub-statements
+	)? SPACE TO_PRODUCE_A SPACE type TERMINATOR IT_PROCEEDS_AS_FOLLOWS TERMINATOR;
 
 parametersDeclaration:
 	COMMA SPACE WHICH_NEEDS SPACE parameterDeclarationClause COMMA;
@@ -64,25 +54,77 @@ parameterDeclarationClause:
 parameterDeclaration:
 	A SPACE type SPACE CALLED SPACE identifier;
 
+// statements
+
+statement: (
+		assignmentStatement
+		| reassignmentStatement
+		| printStatement
+		| ifChainStatement
+	) TERMINATOR;
+
+statementBlock: statement+;
+
+returnStatement: FINALLY_WE_GET SPACE valueClause TERMINATOR;
+
+assignmentStatement:
+	LETS_SAY SPACE identifier SPACE IS SPACE (
+		valueClause
+		| functionCall
+	);
+
+reassignmentStatement:
+	NOW_LETS_SAY SPACE identifier SPACE IS SPACE (
+		valueClause
+		| functionCall
+	);
+
+printStatement: THEN_WE_HAVE SPACE valueClause;
+
+ifChainStatement:
+	ifStatement elseIfStatement* elseStatement? ifClosingStatement;
+
+ifStatement: ifSignature statementBlock;
+
+ifSignature:
+	IF SPACE conditionClause COMMA SPACE HERES_WHAT_WE_NEED_TO_DO TERMINATOR;
+
+elseIfStatement: elseIfSignature statementBlock;
+
+elseIfSignature: OTHERWISE COMMA SPACE ifSignature;
+
+elseStatement: elseSignature statementBlock;
+
+elseSignature:
+	OTHERWISE COMMA SPACE HERES_WHAT_WE_NEED_TO_DO TERMINATOR;
+
+ifClosingStatement:
+	NOW_THAT_WEVE_DONE_THAT COMMA SPACE WE_CAN_MOVE_ON;
+
+conditionClause: valueClause SPACE comparator SPACE valueClause;
+
 // valueClause
 
 valueClause: value (SPACE operator SPACE valueClause)?;
 
-value: literalClause | identifier | functionCall;
+value: literalClause | identifier;
 
 literalClause: LITERALLY SPACE literal;
 
 functionCall:
 	THE_RESULT_OF SPACE identifier (
-		SPACE WITH SPACE parametersClause
+		COMMA? SPACE USING SPACE parametersClause
 	)?;
 
-parametersClause: value (SPACE AND SPACE parametersClause)?;
+parametersClause: parameter (SPACE AND SPACE parametersClause)?;
+
+parameter: valueClause;
 
 // simples
 
 type: NUMBER;
-operator: PLUS;
+operator: PLUS | MINUS;
+comparator: IS;
 
 identifier: ALPHANUMERICSTRING;
 
@@ -96,23 +138,31 @@ number: INTEGER;
 // reserved keyphrases
 OKAY_HEAR_ME_OUT: 'okay, hear me out';
 I_REST_MY_CASE: 'i rest my case';
+NOW_LETS_SAY: 'now let\'s say';
 LETS_SAY: 'let\'s say';
 THEN_WE_HAVE: 'then we have';
 WE_CAN_USE_A_PROCESS_KNOWN_AS: 'we can use a process known as';
 WHICH_NEEDS: 'which needs';
-AND_PROCEEDS_AS_FOLLOWS: 'and proceeds as follows';
+TO_PRODUCE_A: 'to produce a';
+IT_PROCEEDS_AS_FOLLOWS: 'it proceeds as follows';
 FINALLY_WE_GET: 'finally, we get';
 THE_RESULT_OF: 'the result of';
+HERES_WHAT_WE_NEED_TO_DO: 'here\'s what we need to do';
+NOW_THAT_WEVE_DONE_THAT: 'now that we\'ve done that';
+WE_CAN_MOVE_ON: 'we can move on';
 
 // reserved keywords
 A: 'a';
 CALLED: 'called';
 IS: 'is';
 AND: 'and';
-WITH: 'with';
+USING: 'using';
+IF: 'if';
+OTHERWISE: 'otherwise';
 LITERALLY: 'literally';
 NUMBER: 'number';
 PLUS: 'plus';
+MINUS: 'minus';
 
 // reserved symbols
 COMMA: ',';
@@ -122,7 +172,7 @@ TERMINATOR: DOT;
 // strings
 ALPHANUMERICSTRING: ALPHA (ALPHANUMERIC)*;
 // ALPHANUMERICSTRING: QUOTATION (ALPHANUMERIC | BASICSYMBOL)+ QUOTATION
-
+// 
 // QUOTEESCAPEDSTRING: QUOTATION NONQUOTEORESCAPED* QUOTATION;
 
 // numbers

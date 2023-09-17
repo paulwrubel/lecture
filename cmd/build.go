@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"strings"
@@ -29,41 +30,72 @@ directly run using "go run [FILENAME]"`,
 func init() {
 	rootCmd.AddCommand(buildCmd)
 
-	buildCmd.Flags().StringVarP(&outputFilename, "output", "o", "lecture.go", "golang file to generate")
+	buildCmd.Flags().StringVarP(&outputFilename, "output", "o", "-", "filename to write the generated Golang to. '-' writes to stdout.")
 }
 
 func runBuild(cmd *cobra.Command, args []string) {
-	lectureBytes, err := os.ReadFile(args[0])
+	lectureBytes, err := readLectureBytes(args[0])
 	if err != nil {
-		log.Fatalf("error opening specified lecture source file: %s\n", err.Error())
+		log.Fatalf("error reading lecture bytes: %s\n", err.Error())
 	}
 
-	lectureWalker, err := internal.NewLectureWalker(string(lectureBytes))
+	golangBytes, err := internal.TranspileToGolang(lectureBytes)
 	if err != nil {
-		log.Fatalf("error parsing lecture source file: %s\n", err.Error())
+		log.Fatalf("error transpiling to Golang: %s\n", err.Error())
 	}
-	lastSlashIndex := strings.LastIndex(outputFilename, "/")
-	if lastSlashIndex != -1 {
-		outputFolder := outputFilename[:lastSlashIndex]
-		_, err = os.Stat(outputFolder)
-		if os.IsNotExist(err) {
-			os.MkdirAll(outputFolder, 0755)
-		} else if err != nil {
-			log.Fatalf("error getting output folder info: %s\n", err.Error())
-		}
-	}
-	outputFile, err := os.Create(outputFilename)
+
+	err = writeOutputBytes(outputFilename, golangBytes)
 	if err != nil {
-		log.Fatalf("error creating output file: %s\n", err.Error())
+		log.Fatalf("error writing Golang bytes: %s\n", err.Error())
 	}
-	golangListener := &internal.GolangLectureListener{
-		OutputFile: outputFile,
-	}
-	lectureWalker.Walk(golangListener)
-	if len(golangListener.Errors) > 0 {
-		for _, err := range golangListener.Errors {
-			fmt.Printf("error in listener: %s\n", err.Error())
+}
+
+func readLectureBytes(filename string) ([]byte, error) {
+	var reader io.Reader
+	if filename == "-" {
+		reader = os.Stdin
+	} else {
+		file, err := os.Open(filename)
+		if err != nil {
+			return nil, fmt.Errorf("error opening lecture file: %s", err.Error())
 		}
-		return
+		reader = file
 	}
+
+	lectureBytes, err := io.ReadAll(reader)
+	if err != nil {
+		return nil, fmt.Errorf("error reading lecture: %s", err.Error())
+	}
+
+	return lectureBytes, nil
+}
+
+func writeOutputBytes(filename string, bytes []byte) error {
+	var writer io.Writer
+	if filename == "-" {
+		writer = os.Stdout
+	} else {
+		// create folder path if necessary
+		lastSlashIndex := strings.LastIndex(filename, "/")
+		if lastSlashIndex != -1 {
+			folder := filename[:lastSlashIndex]
+			_, err := os.Stat(folder)
+			if os.IsNotExist(err) {
+				os.MkdirAll(folder, 0755)
+			} else if err != nil {
+				log.Fatalf("error getting output folder info: %s\n", err.Error())
+			}
+		}
+		file, err := os.Create(filename)
+		if err != nil {
+			return fmt.Errorf("error creating output file: %s", err.Error())
+		}
+		writer = file
+	}
+
+	_, err := writer.Write(bytes)
+	if err != nil {
+		return fmt.Errorf("error writing output: %s", err.Error())
+	}
+	return nil
 }

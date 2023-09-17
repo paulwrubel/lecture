@@ -1,9 +1,9 @@
 package internal
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 
@@ -17,8 +17,8 @@ import (
 type GolangLectureListener struct {
 	*lecture.BaseLectureListener
 
-	OutputFile *os.File
-	Errors     []error
+	OutputBytes *bytes.Buffer
+	Errors      []error
 
 	jenFile *jen.File
 
@@ -28,6 +28,7 @@ type GolangLectureListener struct {
 }
 
 func (l *GolangLectureListener) EnterLecture(ctx *lecture.LectureContext) {
+	l.OutputBytes = &bytes.Buffer{}
 	l.jenFile = jen.NewFile("main")
 	l.statementStack = &statementStack{}
 	l.blockStack = &blockStack{}
@@ -41,7 +42,7 @@ func (l *GolangLectureListener) ExitLecture(ctx *lecture.LectureContext) {
 
 	l.jenFile.Add(rootBlock...)
 
-	err := l.jenFile.Render(l.OutputFile)
+	err := l.jenFile.Render(l.OutputBytes)
 	if err != nil {
 		l.Errors = append(l.Errors, err)
 	}

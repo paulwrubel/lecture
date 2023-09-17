@@ -201,6 +201,8 @@ let's say myResult is the result of AddingTwoNumbers, using literally 2 and lite
 
 ### Hello World
 
+[See the file here](./examples/helloworld.ltr)
+
 lecture text:
 ```
 okay, hear me out. 
@@ -222,6 +224,8 @@ func main() {
 ```
 
 ### Fibonacci
+
+[See the file here](./examples/fibonacci.ltr)
 
 lecture text:
 ```

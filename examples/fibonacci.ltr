@@ -1,0 +1,25 @@
+by the way, this program will calcuate the nth fibonacci number.
+
+we can use a process known as FindingTheNthFibonacciNumber, which needs a number called n, to produce a number.
+it proceeds as follows.
+    let's say theNthFibonacciNumber is literally 0.
+
+    if n is literally 0, here's what we need to do.
+        by the way, this is the first base case.
+        now let's say theNthFibonacciNumber is literally 0.
+    otherwise, if n is literally 1, here's what we need to do.
+        by the way, this is the second base case.
+        now let's say theNthFibonacciNumber is literally 1.
+    otherwise, here's what we need to do.
+        let's say theNthMinusOneFibonacciNumber is the result of FindingTheNthFibonacciNumber, using n minus literally 1.
+        let's say theNthMinusTwoFibonacciNumber is the result of FindingTheNthFibonacciNumber, using n minus literally 2.
+        now let's say theNthFibonacciNumber is theNthMinusOneFibonacciNumber plus theNthMinusTwoFibonacciNumber.
+    now that we've done that, we can move on.
+
+    finally, we get theNthFibonacciNumber.
+    
+okay, hear me out.
+    by the way, i only used 19 here since it's a random high-ish number to demonstrate the functionality here.
+    let's say theNineteenthFibonacciNumber is the result of FindingTheNthFibonacciNumber, using literally 20.
+    then we have theNineteenthFibonacciNumber.
+i rest my case.

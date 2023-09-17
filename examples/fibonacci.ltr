@@ -20,6 +20,6 @@ it proceeds as follows.
     
 okay, hear me out.
     by the way, i only used 19 here since it's a random high-ish number to demonstrate the functionality here.
-    let's say theNineteenthFibonacciNumber is the result of FindingTheNthFibonacciNumber, using literally 20.
+    let's say theNineteenthFibonacciNumber is the result of FindingTheNthFibonacciNumber, using literally 19.
     then we have theNineteenthFibonacciNumber.
 i rest my case.

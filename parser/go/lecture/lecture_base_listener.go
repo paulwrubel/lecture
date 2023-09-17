@@ -196,12 +196,6 @@ func (s *BaseLectureListener) EnterValue(ctx *ValueContext) {}
 // ExitValue is called when production value is exited.
 func (s *BaseLectureListener) ExitValue(ctx *ValueContext) {}
 
-// EnterLiteralClause is called when production literalClause is entered.
-func (s *BaseLectureListener) EnterLiteralClause(ctx *LiteralClauseContext) {}
-
-// ExitLiteralClause is called when production literalClause is exited.
-func (s *BaseLectureListener) ExitLiteralClause(ctx *LiteralClauseContext) {}
-
 // EnterFunctionCall is called when production functionCall is entered.
 func (s *BaseLectureListener) EnterFunctionCall(ctx *FunctionCallContext) {}
 

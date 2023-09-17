@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"fmt"
+	"io"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -27,4 +29,24 @@ func Execute() {
 
 func init() {
 
+}
+
+func readLectureBytes(filename string) ([]byte, error) {
+	var reader io.Reader
+	if filename == "-" {
+		reader = os.Stdin
+	} else {
+		file, err := os.Open(filename)
+		if err != nil {
+			return nil, fmt.Errorf("error opening lecture file: %s", err.Error())
+		}
+		reader = file
+	}
+
+	lectureBytes, err := io.ReadAll(reader)
+	if err != nil {
+		return nil, fmt.Errorf("error reading lecture: %s", err.Error())
+	}
+
+	return lectureBytes, nil
 }

@@ -119,9 +119,7 @@ conditionClause: valueClause SPACE comparator SPACE valueClause;
 
 valueClause: value (SPACE operator SPACE valueClause)?;
 
-value: literalClause | identifier;
-
-literalClause: LITERALLY SPACE literal;
+value: literal | identifier;
 
 functionCall:
 	THE_RESULT_OF SPACE identifier (
@@ -140,7 +138,7 @@ comparator: IS;
 
 identifier: IDENTIFIER_STRING;
 
-literal: number | string;
+literal: (LITERALLY SPACE number) | string;
 string: STRING;
 number: INTEGER;
 

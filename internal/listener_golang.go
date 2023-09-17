@@ -302,7 +302,7 @@ func (l *GolangLectureListener) EnterValue(ctx *lecture.ValueContext) {
 	if ctx.Identifier() != nil {
 		// we are an identifier
 		valuesStatement.Add(jen.Id(ctx.GetText()))
-	} else if ctx.LiteralClause() != nil {
+	} else if ctx.Literal() != nil {
 		// we are a literal
 		//
 		// this case is handled elsewhere

@@ -56,134 +56,132 @@ func lectureParserInit() {
 		"returnStatement", "assignmentStatement", "reassignmentStatement", "printStatement",
 		"commentStatement", "ifChainStatement", "ifStatement", "ifSignature",
 		"elseIfStatement", "elseIfSignature", "elseStatement", "elseSignature",
-		"ifClosingStatement", "conditionClause", "valueClause", "value", "literalClause",
-		"functionCall", "parametersClause", "parameter", "type", "operator",
-		"comparator", "identifier", "literal", "string", "number",
+		"ifClosingStatement", "conditionClause", "valueClause", "value", "functionCall",
+		"parametersClause", "parameter", "type", "operator", "comparator", "identifier",
+		"literal", "string", "number",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 36, 306, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 36, 302, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
 		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 2, 14, 7, 14, 2, 15, 7, 15,
 		2, 16, 7, 16, 2, 17, 7, 17, 2, 18, 7, 18, 2, 19, 7, 19, 2, 20, 7, 20, 2,
 		21, 7, 21, 2, 22, 7, 22, 2, 23, 7, 23, 2, 24, 7, 24, 2, 25, 7, 25, 2, 26,
 		7, 26, 2, 27, 7, 27, 2, 28, 7, 28, 2, 29, 7, 29, 2, 30, 7, 30, 2, 31, 7,
 		31, 2, 32, 7, 32, 2, 33, 7, 33, 2, 34, 7, 34, 2, 35, 7, 35, 2, 36, 7, 36,
-		2, 37, 7, 37, 2, 38, 7, 38, 2, 39, 7, 39, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1,
-		5, 1, 86, 8, 1, 10, 1, 12, 1, 89, 9, 1, 1, 1, 1, 1, 1, 1, 5, 1, 94, 8,
-		1, 10, 1, 12, 1, 97, 9, 1, 1, 2, 1, 2, 1, 2, 1, 3, 1, 3, 1, 3, 1, 3, 1,
-		4, 1, 4, 1, 4, 1, 5, 1, 5, 1, 5, 1, 6, 1, 6, 5, 6, 114, 8, 6, 10, 6, 12,
-		6, 117, 9, 6, 1, 6, 1, 6, 1, 7, 1, 7, 1, 7, 1, 7, 3, 7, 125, 8, 7, 1, 7,
-		1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8,
-		1, 8, 1, 8, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 3, 9, 147, 8, 9, 1, 10, 1, 10,
-		1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 1, 11, 1, 11, 1, 11, 1, 11, 1,
-		11, 3, 11, 162, 8, 11, 1, 11, 1, 11, 1, 12, 4, 12, 167, 8, 12, 11, 12,
-		12, 12, 168, 1, 13, 1, 13, 1, 13, 1, 13, 1, 13, 1, 14, 1, 14, 1, 14, 1,
-		14, 1, 14, 1, 14, 1, 14, 1, 14, 3, 14, 184, 8, 14, 1, 15, 1, 15, 1, 15,
-		1, 15, 1, 15, 1, 15, 1, 15, 1, 15, 3, 15, 194, 8, 15, 1, 16, 1, 16, 1,
-		16, 1, 16, 1, 17, 1, 17, 1, 18, 1, 18, 5, 18, 204, 8, 18, 10, 18, 12, 18,
-		207, 9, 18, 1, 18, 3, 18, 210, 8, 18, 1, 18, 1, 18, 1, 19, 1, 19, 1, 19,
-		1, 20, 1, 20, 1, 20, 1, 20, 1, 20, 1, 20, 1, 20, 1, 20, 1, 21, 1, 21, 1,
-		21, 1, 22, 1, 22, 1, 22, 1, 22, 1, 22, 1, 23, 1, 23, 1, 23, 1, 24, 1, 24,
-		1, 24, 1, 24, 1, 24, 1, 24, 1, 25, 1, 25, 1, 25, 1, 25, 1, 25, 1, 26, 1,
-		26, 1, 26, 1, 26, 1, 26, 1, 26, 1, 27, 1, 27, 1, 27, 1, 27, 1, 27, 1, 27,
-		3, 27, 259, 8, 27, 1, 28, 1, 28, 3, 28, 263, 8, 28, 1, 29, 1, 29, 1, 29,
-		1, 29, 1, 30, 1, 30, 1, 30, 1, 30, 3, 30, 273, 8, 30, 1, 30, 1, 30, 1,
-		30, 1, 30, 3, 30, 279, 8, 30, 1, 31, 1, 31, 1, 31, 1, 31, 1, 31, 3, 31,
-		286, 8, 31, 1, 32, 1, 32, 1, 33, 1, 33, 1, 34, 1, 34, 1, 35, 1, 35, 1,
-		36, 1, 36, 1, 37, 1, 37, 3, 37, 300, 8, 37, 1, 38, 1, 38, 1, 39, 1, 39,
-		1, 39, 0, 0, 40, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28,
-		30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64,
-		66, 68, 70, 72, 74, 76, 78, 0, 1, 1, 0, 26, 27, 287, 0, 80, 1, 0, 0, 0,
-		2, 87, 1, 0, 0, 0, 4, 98, 1, 0, 0, 0, 6, 101, 1, 0, 0, 0, 8, 105, 1, 0,
-		0, 0, 10, 108, 1, 0, 0, 0, 12, 111, 1, 0, 0, 0, 14, 120, 1, 0, 0, 0, 16,
-		134, 1, 0, 0, 0, 18, 141, 1, 0, 0, 0, 20, 148, 1, 0, 0, 0, 22, 161, 1,
-		0, 0, 0, 24, 166, 1, 0, 0, 0, 26, 170, 1, 0, 0, 0, 28, 175, 1, 0, 0, 0,
-		30, 185, 1, 0, 0, 0, 32, 195, 1, 0, 0, 0, 34, 199, 1, 0, 0, 0, 36, 201,
-		1, 0, 0, 0, 38, 213, 1, 0, 0, 0, 40, 216, 1, 0, 0, 0, 42, 224, 1, 0, 0,
-		0, 44, 227, 1, 0, 0, 0, 46, 232, 1, 0, 0, 0, 48, 235, 1, 0, 0, 0, 50, 241,
-		1, 0, 0, 0, 52, 246, 1, 0, 0, 0, 54, 252, 1, 0, 0, 0, 56, 262, 1, 0, 0,
-		0, 58, 264, 1, 0, 0, 0, 60, 268, 1, 0, 0, 0, 62, 280, 1, 0, 0, 0, 64, 287,
-		1, 0, 0, 0, 66, 289, 1, 0, 0, 0, 68, 291, 1, 0, 0, 0, 70, 293, 1, 0, 0,
-		0, 72, 295, 1, 0, 0, 0, 74, 299, 1, 0, 0, 0, 76, 301, 1, 0, 0, 0, 78, 303,
-		1, 0, 0, 0, 80, 81, 3, 2, 1, 0, 81, 82, 5, 0, 0, 1, 82, 1, 1, 0, 0, 0,
-		83, 86, 3, 4, 2, 0, 84, 86, 3, 12, 6, 0, 85, 83, 1, 0, 0, 0, 85, 84, 1,
-		0, 0, 0, 86, 89, 1, 0, 0, 0, 87, 85, 1, 0, 0, 0, 87, 88, 1, 0, 0, 0, 88,
-		90, 1, 0, 0, 0, 89, 87, 1, 0, 0, 0, 90, 95, 3, 6, 3, 0, 91, 94, 3, 4, 2,
-		0, 92, 94, 3, 12, 6, 0, 93, 91, 1, 0, 0, 0, 93, 92, 1, 0, 0, 0, 94, 97,
-		1, 0, 0, 0, 95, 93, 1, 0, 0, 0, 95, 96, 1, 0, 0, 0, 96, 3, 1, 0, 0, 0,
-		97, 95, 1, 0, 0, 0, 98, 99, 3, 34, 17, 0, 99, 100, 5, 32, 0, 0, 100, 5,
-		1, 0, 0, 0, 101, 102, 3, 8, 4, 0, 102, 103, 3, 24, 12, 0, 103, 104, 3,
-		10, 5, 0, 104, 7, 1, 0, 0, 0, 105, 106, 5, 2, 0, 0, 106, 107, 5, 32, 0,
-		0, 107, 9, 1, 0, 0, 0, 108, 109, 5, 3, 0, 0, 109, 110, 5, 32, 0, 0, 110,
-		11, 1, 0, 0, 0, 111, 115, 3, 14, 7, 0, 112, 114, 3, 22, 11, 0, 113, 112,
-		1, 0, 0, 0, 114, 117, 1, 0, 0, 0, 115, 113, 1, 0, 0, 0, 115, 116, 1, 0,
-		0, 0, 116, 118, 1, 0, 0, 0, 117, 115, 1, 0, 0, 0, 118, 119, 3, 26, 13,
-		0, 119, 13, 1, 0, 0, 0, 120, 121, 5, 7, 0, 0, 121, 122, 5, 31, 0, 0, 122,
-		124, 3, 72, 36, 0, 123, 125, 3, 16, 8, 0, 124, 123, 1, 0, 0, 0, 124, 125,
-		1, 0, 0, 0, 125, 126, 1, 0, 0, 0, 126, 127, 5, 31, 0, 0, 127, 128, 5, 9,
-		0, 0, 128, 129, 5, 31, 0, 0, 129, 130, 3, 66, 33, 0, 130, 131, 5, 32, 0,
-		0, 131, 132, 5, 10, 0, 0, 132, 133, 5, 32, 0, 0, 133, 15, 1, 0, 0, 0, 134,
-		135, 5, 30, 0, 0, 135, 136, 5, 31, 0, 0, 136, 137, 5, 8, 0, 0, 137, 138,
-		5, 31, 0, 0, 138, 139, 3, 18, 9, 0, 139, 140, 5, 30, 0, 0, 140, 17, 1,
-		0, 0, 0, 141, 146, 3, 20, 10, 0, 142, 143, 5, 31, 0, 0, 143, 144, 5, 20,
-		0, 0, 144, 145, 5, 31, 0, 0, 145, 147, 3, 18, 9, 0, 146, 142, 1, 0, 0,
-		0, 146, 147, 1, 0, 0, 0, 147, 19, 1, 0, 0, 0, 148, 149, 5, 17, 0, 0, 149,
-		150, 5, 31, 0, 0, 150, 151, 3, 66, 33, 0, 151, 152, 5, 31, 0, 0, 152, 153,
-		5, 18, 0, 0, 153, 154, 5, 31, 0, 0, 154, 155, 3, 72, 36, 0, 155, 21, 1,
-		0, 0, 0, 156, 162, 3, 28, 14, 0, 157, 162, 3, 30, 15, 0, 158, 162, 3, 32,
-		16, 0, 159, 162, 3, 36, 18, 0, 160, 162, 3, 34, 17, 0, 161, 156, 1, 0,
-		0, 0, 161, 157, 1, 0, 0, 0, 161, 158, 1, 0, 0, 0, 161, 159, 1, 0, 0, 0,
-		161, 160, 1, 0, 0, 0, 162, 163, 1, 0, 0, 0, 163, 164, 5, 32, 0, 0, 164,
-		23, 1, 0, 0, 0, 165, 167, 3, 22, 11, 0, 166, 165, 1, 0, 0, 0, 167, 168,
-		1, 0, 0, 0, 168, 166, 1, 0, 0, 0, 168, 169, 1, 0, 0, 0, 169, 25, 1, 0,
-		0, 0, 170, 171, 5, 11, 0, 0, 171, 172, 5, 31, 0, 0, 172, 173, 3, 54, 27,
-		0, 173, 174, 5, 32, 0, 0, 174, 27, 1, 0, 0, 0, 175, 176, 5, 5, 0, 0, 176,
-		177, 5, 31, 0, 0, 177, 178, 3, 72, 36, 0, 178, 179, 5, 31, 0, 0, 179, 180,
-		5, 19, 0, 0, 180, 183, 5, 31, 0, 0, 181, 184, 3, 54, 27, 0, 182, 184, 3,
-		60, 30, 0, 183, 181, 1, 0, 0, 0, 183, 182, 1, 0, 0, 0, 184, 29, 1, 0, 0,
-		0, 185, 186, 5, 4, 0, 0, 186, 187, 5, 31, 0, 0, 187, 188, 3, 72, 36, 0,
-		188, 189, 5, 31, 0, 0, 189, 190, 5, 19, 0, 0, 190, 193, 5, 31, 0, 0, 191,
-		194, 3, 54, 27, 0, 192, 194, 3, 60, 30, 0, 193, 191, 1, 0, 0, 0, 193, 192,
-		1, 0, 0, 0, 194, 31, 1, 0, 0, 0, 195, 196, 5, 6, 0, 0, 196, 197, 5, 31,
-		0, 0, 197, 198, 3, 54, 27, 0, 198, 33, 1, 0, 0, 0, 199, 200, 5, 1, 0, 0,
-		200, 35, 1, 0, 0, 0, 201, 205, 3, 38, 19, 0, 202, 204, 3, 42, 21, 0, 203,
-		202, 1, 0, 0, 0, 204, 207, 1, 0, 0, 0, 205, 203, 1, 0, 0, 0, 205, 206,
-		1, 0, 0, 0, 206, 209, 1, 0, 0, 0, 207, 205, 1, 0, 0, 0, 208, 210, 3, 46,
-		23, 0, 209, 208, 1, 0, 0, 0, 209, 210, 1, 0, 0, 0, 210, 211, 1, 0, 0, 0,
-		211, 212, 3, 50, 25, 0, 212, 37, 1, 0, 0, 0, 213, 214, 3, 40, 20, 0, 214,
-		215, 3, 24, 12, 0, 215, 39, 1, 0, 0, 0, 216, 217, 5, 22, 0, 0, 217, 218,
-		5, 31, 0, 0, 218, 219, 3, 52, 26, 0, 219, 220, 5, 30, 0, 0, 220, 221, 5,
-		31, 0, 0, 221, 222, 5, 13, 0, 0, 222, 223, 5, 32, 0, 0, 223, 41, 1, 0,
-		0, 0, 224, 225, 3, 44, 22, 0, 225, 226, 3, 24, 12, 0, 226, 43, 1, 0, 0,
-		0, 227, 228, 5, 23, 0, 0, 228, 229, 5, 30, 0, 0, 229, 230, 5, 31, 0, 0,
-		230, 231, 3, 40, 20, 0, 231, 45, 1, 0, 0, 0, 232, 233, 3, 48, 24, 0, 233,
-		234, 3, 24, 12, 0, 234, 47, 1, 0, 0, 0, 235, 236, 5, 23, 0, 0, 236, 237,
-		5, 30, 0, 0, 237, 238, 5, 31, 0, 0, 238, 239, 5, 13, 0, 0, 239, 240, 5,
-		32, 0, 0, 240, 49, 1, 0, 0, 0, 241, 242, 5, 14, 0, 0, 242, 243, 5, 30,
-		0, 0, 243, 244, 5, 31, 0, 0, 244, 245, 5, 15, 0, 0, 245, 51, 1, 0, 0, 0,
-		246, 247, 3, 54, 27, 0, 247, 248, 5, 31, 0, 0, 248, 249, 3, 70, 35, 0,
-		249, 250, 5, 31, 0, 0, 250, 251, 3, 54, 27, 0, 251, 53, 1, 0, 0, 0, 252,
-		258, 3, 56, 28, 0, 253, 254, 5, 31, 0, 0, 254, 255, 3, 68, 34, 0, 255,
-		256, 5, 31, 0, 0, 256, 257, 3, 54, 27, 0, 257, 259, 1, 0, 0, 0, 258, 253,
-		1, 0, 0, 0, 258, 259, 1, 0, 0, 0, 259, 55, 1, 0, 0, 0, 260, 263, 3, 58,
-		29, 0, 261, 263, 3, 72, 36, 0, 262, 260, 1, 0, 0, 0, 262, 261, 1, 0, 0,
-		0, 263, 57, 1, 0, 0, 0, 264, 265, 5, 24, 0, 0, 265, 266, 5, 31, 0, 0, 266,
-		267, 3, 74, 37, 0, 267, 59, 1, 0, 0, 0, 268, 269, 5, 12, 0, 0, 269, 270,
-		5, 31, 0, 0, 270, 278, 3, 72, 36, 0, 271, 273, 5, 30, 0, 0, 272, 271, 1,
-		0, 0, 0, 272, 273, 1, 0, 0, 0, 273, 274, 1, 0, 0, 0, 274, 275, 5, 31, 0,
-		0, 275, 276, 5, 21, 0, 0, 276, 277, 5, 31, 0, 0, 277, 279, 3, 62, 31, 0,
-		278, 272, 1, 0, 0, 0, 278, 279, 1, 0, 0, 0, 279, 61, 1, 0, 0, 0, 280, 285,
-		3, 64, 32, 0, 281, 282, 5, 31, 0, 0, 282, 283, 5, 20, 0, 0, 283, 284, 5,
-		31, 0, 0, 284, 286, 3, 62, 31, 0, 285, 281, 1, 0, 0, 0, 285, 286, 1, 0,
-		0, 0, 286, 63, 1, 0, 0, 0, 287, 288, 3, 54, 27, 0, 288, 65, 1, 0, 0, 0,
-		289, 290, 5, 25, 0, 0, 290, 67, 1, 0, 0, 0, 291, 292, 7, 0, 0, 0, 292,
-		69, 1, 0, 0, 0, 293, 294, 5, 19, 0, 0, 294, 71, 1, 0, 0, 0, 295, 296, 5,
-		33, 0, 0, 296, 73, 1, 0, 0, 0, 297, 300, 3, 78, 39, 0, 298, 300, 3, 76,
-		38, 0, 299, 297, 1, 0, 0, 0, 299, 298, 1, 0, 0, 0, 300, 75, 1, 0, 0, 0,
-		301, 302, 5, 34, 0, 0, 302, 77, 1, 0, 0, 0, 303, 304, 5, 35, 0, 0, 304,
-		79, 1, 0, 0, 0, 19, 85, 87, 93, 95, 115, 124, 146, 161, 168, 183, 193,
-		205, 209, 258, 262, 272, 278, 285, 299,
+		2, 37, 7, 37, 2, 38, 7, 38, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 5, 1, 84, 8,
+		1, 10, 1, 12, 1, 87, 9, 1, 1, 1, 1, 1, 1, 1, 5, 1, 92, 8, 1, 10, 1, 12,
+		1, 95, 9, 1, 1, 2, 1, 2, 1, 2, 1, 3, 1, 3, 1, 3, 1, 3, 1, 4, 1, 4, 1, 4,
+		1, 5, 1, 5, 1, 5, 1, 6, 1, 6, 5, 6, 112, 8, 6, 10, 6, 12, 6, 115, 9, 6,
+		1, 6, 1, 6, 1, 7, 1, 7, 1, 7, 1, 7, 3, 7, 123, 8, 7, 1, 7, 1, 7, 1, 7,
+		1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8,
+		1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 3, 9, 145, 8, 9, 1, 10, 1, 10, 1, 10, 1,
+		10, 1, 10, 1, 10, 1, 10, 1, 10, 1, 11, 1, 11, 1, 11, 1, 11, 1, 11, 3, 11,
+		160, 8, 11, 1, 11, 1, 11, 1, 12, 4, 12, 165, 8, 12, 11, 12, 12, 12, 166,
+		1, 13, 1, 13, 1, 13, 1, 13, 1, 13, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1,
+		14, 1, 14, 1, 14, 3, 14, 182, 8, 14, 1, 15, 1, 15, 1, 15, 1, 15, 1, 15,
+		1, 15, 1, 15, 1, 15, 3, 15, 192, 8, 15, 1, 16, 1, 16, 1, 16, 1, 16, 1,
+		17, 1, 17, 1, 18, 1, 18, 5, 18, 202, 8, 18, 10, 18, 12, 18, 205, 9, 18,
+		1, 18, 3, 18, 208, 8, 18, 1, 18, 1, 18, 1, 19, 1, 19, 1, 19, 1, 20, 1,
+		20, 1, 20, 1, 20, 1, 20, 1, 20, 1, 20, 1, 20, 1, 21, 1, 21, 1, 21, 1, 22,
+		1, 22, 1, 22, 1, 22, 1, 22, 1, 23, 1, 23, 1, 23, 1, 24, 1, 24, 1, 24, 1,
+		24, 1, 24, 1, 24, 1, 25, 1, 25, 1, 25, 1, 25, 1, 25, 1, 26, 1, 26, 1, 26,
+		1, 26, 1, 26, 1, 26, 1, 27, 1, 27, 1, 27, 1, 27, 1, 27, 1, 27, 3, 27, 257,
+		8, 27, 1, 28, 1, 28, 3, 28, 261, 8, 28, 1, 29, 1, 29, 1, 29, 1, 29, 3,
+		29, 267, 8, 29, 1, 29, 1, 29, 1, 29, 1, 29, 3, 29, 273, 8, 29, 1, 30, 1,
+		30, 1, 30, 1, 30, 1, 30, 3, 30, 280, 8, 30, 1, 31, 1, 31, 1, 32, 1, 32,
+		1, 33, 1, 33, 1, 34, 1, 34, 1, 35, 1, 35, 1, 36, 1, 36, 1, 36, 1, 36, 3,
+		36, 296, 8, 36, 1, 37, 1, 37, 1, 38, 1, 38, 1, 38, 0, 0, 39, 0, 2, 4, 6,
+		8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42,
+		44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 0,
+		1, 1, 0, 26, 27, 284, 0, 78, 1, 0, 0, 0, 2, 85, 1, 0, 0, 0, 4, 96, 1, 0,
+		0, 0, 6, 99, 1, 0, 0, 0, 8, 103, 1, 0, 0, 0, 10, 106, 1, 0, 0, 0, 12, 109,
+		1, 0, 0, 0, 14, 118, 1, 0, 0, 0, 16, 132, 1, 0, 0, 0, 18, 139, 1, 0, 0,
+		0, 20, 146, 1, 0, 0, 0, 22, 159, 1, 0, 0, 0, 24, 164, 1, 0, 0, 0, 26, 168,
+		1, 0, 0, 0, 28, 173, 1, 0, 0, 0, 30, 183, 1, 0, 0, 0, 32, 193, 1, 0, 0,
+		0, 34, 197, 1, 0, 0, 0, 36, 199, 1, 0, 0, 0, 38, 211, 1, 0, 0, 0, 40, 214,
+		1, 0, 0, 0, 42, 222, 1, 0, 0, 0, 44, 225, 1, 0, 0, 0, 46, 230, 1, 0, 0,
+		0, 48, 233, 1, 0, 0, 0, 50, 239, 1, 0, 0, 0, 52, 244, 1, 0, 0, 0, 54, 250,
+		1, 0, 0, 0, 56, 260, 1, 0, 0, 0, 58, 262, 1, 0, 0, 0, 60, 274, 1, 0, 0,
+		0, 62, 281, 1, 0, 0, 0, 64, 283, 1, 0, 0, 0, 66, 285, 1, 0, 0, 0, 68, 287,
+		1, 0, 0, 0, 70, 289, 1, 0, 0, 0, 72, 295, 1, 0, 0, 0, 74, 297, 1, 0, 0,
+		0, 76, 299, 1, 0, 0, 0, 78, 79, 3, 2, 1, 0, 79, 80, 5, 0, 0, 1, 80, 1,
+		1, 0, 0, 0, 81, 84, 3, 4, 2, 0, 82, 84, 3, 12, 6, 0, 83, 81, 1, 0, 0, 0,
+		83, 82, 1, 0, 0, 0, 84, 87, 1, 0, 0, 0, 85, 83, 1, 0, 0, 0, 85, 86, 1,
+		0, 0, 0, 86, 88, 1, 0, 0, 0, 87, 85, 1, 0, 0, 0, 88, 93, 3, 6, 3, 0, 89,
+		92, 3, 4, 2, 0, 90, 92, 3, 12, 6, 0, 91, 89, 1, 0, 0, 0, 91, 90, 1, 0,
+		0, 0, 92, 95, 1, 0, 0, 0, 93, 91, 1, 0, 0, 0, 93, 94, 1, 0, 0, 0, 94, 3,
+		1, 0, 0, 0, 95, 93, 1, 0, 0, 0, 96, 97, 3, 34, 17, 0, 97, 98, 5, 32, 0,
+		0, 98, 5, 1, 0, 0, 0, 99, 100, 3, 8, 4, 0, 100, 101, 3, 24, 12, 0, 101,
+		102, 3, 10, 5, 0, 102, 7, 1, 0, 0, 0, 103, 104, 5, 2, 0, 0, 104, 105, 5,
+		32, 0, 0, 105, 9, 1, 0, 0, 0, 106, 107, 5, 3, 0, 0, 107, 108, 5, 32, 0,
+		0, 108, 11, 1, 0, 0, 0, 109, 113, 3, 14, 7, 0, 110, 112, 3, 22, 11, 0,
+		111, 110, 1, 0, 0, 0, 112, 115, 1, 0, 0, 0, 113, 111, 1, 0, 0, 0, 113,
+		114, 1, 0, 0, 0, 114, 116, 1, 0, 0, 0, 115, 113, 1, 0, 0, 0, 116, 117,
+		3, 26, 13, 0, 117, 13, 1, 0, 0, 0, 118, 119, 5, 7, 0, 0, 119, 120, 5, 31,
+		0, 0, 120, 122, 3, 70, 35, 0, 121, 123, 3, 16, 8, 0, 122, 121, 1, 0, 0,
+		0, 122, 123, 1, 0, 0, 0, 123, 124, 1, 0, 0, 0, 124, 125, 5, 31, 0, 0, 125,
+		126, 5, 9, 0, 0, 126, 127, 5, 31, 0, 0, 127, 128, 3, 64, 32, 0, 128, 129,
+		5, 32, 0, 0, 129, 130, 5, 10, 0, 0, 130, 131, 5, 32, 0, 0, 131, 15, 1,
+		0, 0, 0, 132, 133, 5, 30, 0, 0, 133, 134, 5, 31, 0, 0, 134, 135, 5, 8,
+		0, 0, 135, 136, 5, 31, 0, 0, 136, 137, 3, 18, 9, 0, 137, 138, 5, 30, 0,
+		0, 138, 17, 1, 0, 0, 0, 139, 144, 3, 20, 10, 0, 140, 141, 5, 31, 0, 0,
+		141, 142, 5, 20, 0, 0, 142, 143, 5, 31, 0, 0, 143, 145, 3, 18, 9, 0, 144,
+		140, 1, 0, 0, 0, 144, 145, 1, 0, 0, 0, 145, 19, 1, 0, 0, 0, 146, 147, 5,
+		17, 0, 0, 147, 148, 5, 31, 0, 0, 148, 149, 3, 64, 32, 0, 149, 150, 5, 31,
+		0, 0, 150, 151, 5, 18, 0, 0, 151, 152, 5, 31, 0, 0, 152, 153, 3, 70, 35,
+		0, 153, 21, 1, 0, 0, 0, 154, 160, 3, 28, 14, 0, 155, 160, 3, 30, 15, 0,
+		156, 160, 3, 32, 16, 0, 157, 160, 3, 36, 18, 0, 158, 160, 3, 34, 17, 0,
+		159, 154, 1, 0, 0, 0, 159, 155, 1, 0, 0, 0, 159, 156, 1, 0, 0, 0, 159,
+		157, 1, 0, 0, 0, 159, 158, 1, 0, 0, 0, 160, 161, 1, 0, 0, 0, 161, 162,
+		5, 32, 0, 0, 162, 23, 1, 0, 0, 0, 163, 165, 3, 22, 11, 0, 164, 163, 1,
+		0, 0, 0, 165, 166, 1, 0, 0, 0, 166, 164, 1, 0, 0, 0, 166, 167, 1, 0, 0,
+		0, 167, 25, 1, 0, 0, 0, 168, 169, 5, 11, 0, 0, 169, 170, 5, 31, 0, 0, 170,
+		171, 3, 54, 27, 0, 171, 172, 5, 32, 0, 0, 172, 27, 1, 0, 0, 0, 173, 174,
+		5, 5, 0, 0, 174, 175, 5, 31, 0, 0, 175, 176, 3, 70, 35, 0, 176, 177, 5,
+		31, 0, 0, 177, 178, 5, 19, 0, 0, 178, 181, 5, 31, 0, 0, 179, 182, 3, 54,
+		27, 0, 180, 182, 3, 58, 29, 0, 181, 179, 1, 0, 0, 0, 181, 180, 1, 0, 0,
+		0, 182, 29, 1, 0, 0, 0, 183, 184, 5, 4, 0, 0, 184, 185, 5, 31, 0, 0, 185,
+		186, 3, 70, 35, 0, 186, 187, 5, 31, 0, 0, 187, 188, 5, 19, 0, 0, 188, 191,
+		5, 31, 0, 0, 189, 192, 3, 54, 27, 0, 190, 192, 3, 58, 29, 0, 191, 189,
+		1, 0, 0, 0, 191, 190, 1, 0, 0, 0, 192, 31, 1, 0, 0, 0, 193, 194, 5, 6,
+		0, 0, 194, 195, 5, 31, 0, 0, 195, 196, 3, 54, 27, 0, 196, 33, 1, 0, 0,
+		0, 197, 198, 5, 1, 0, 0, 198, 35, 1, 0, 0, 0, 199, 203, 3, 38, 19, 0, 200,
+		202, 3, 42, 21, 0, 201, 200, 1, 0, 0, 0, 202, 205, 1, 0, 0, 0, 203, 201,
+		1, 0, 0, 0, 203, 204, 1, 0, 0, 0, 204, 207, 1, 0, 0, 0, 205, 203, 1, 0,
+		0, 0, 206, 208, 3, 46, 23, 0, 207, 206, 1, 0, 0, 0, 207, 208, 1, 0, 0,
+		0, 208, 209, 1, 0, 0, 0, 209, 210, 3, 50, 25, 0, 210, 37, 1, 0, 0, 0, 211,
+		212, 3, 40, 20, 0, 212, 213, 3, 24, 12, 0, 213, 39, 1, 0, 0, 0, 214, 215,
+		5, 22, 0, 0, 215, 216, 5, 31, 0, 0, 216, 217, 3, 52, 26, 0, 217, 218, 5,
+		30, 0, 0, 218, 219, 5, 31, 0, 0, 219, 220, 5, 13, 0, 0, 220, 221, 5, 32,
+		0, 0, 221, 41, 1, 0, 0, 0, 222, 223, 3, 44, 22, 0, 223, 224, 3, 24, 12,
+		0, 224, 43, 1, 0, 0, 0, 225, 226, 5, 23, 0, 0, 226, 227, 5, 30, 0, 0, 227,
+		228, 5, 31, 0, 0, 228, 229, 3, 40, 20, 0, 229, 45, 1, 0, 0, 0, 230, 231,
+		3, 48, 24, 0, 231, 232, 3, 24, 12, 0, 232, 47, 1, 0, 0, 0, 233, 234, 5,
+		23, 0, 0, 234, 235, 5, 30, 0, 0, 235, 236, 5, 31, 0, 0, 236, 237, 5, 13,
+		0, 0, 237, 238, 5, 32, 0, 0, 238, 49, 1, 0, 0, 0, 239, 240, 5, 14, 0, 0,
+		240, 241, 5, 30, 0, 0, 241, 242, 5, 31, 0, 0, 242, 243, 5, 15, 0, 0, 243,
+		51, 1, 0, 0, 0, 244, 245, 3, 54, 27, 0, 245, 246, 5, 31, 0, 0, 246, 247,
+		3, 68, 34, 0, 247, 248, 5, 31, 0, 0, 248, 249, 3, 54, 27, 0, 249, 53, 1,
+		0, 0, 0, 250, 256, 3, 56, 28, 0, 251, 252, 5, 31, 0, 0, 252, 253, 3, 66,
+		33, 0, 253, 254, 5, 31, 0, 0, 254, 255, 3, 54, 27, 0, 255, 257, 1, 0, 0,
+		0, 256, 251, 1, 0, 0, 0, 256, 257, 1, 0, 0, 0, 257, 55, 1, 0, 0, 0, 258,
+		261, 3, 72, 36, 0, 259, 261, 3, 70, 35, 0, 260, 258, 1, 0, 0, 0, 260, 259,
+		1, 0, 0, 0, 261, 57, 1, 0, 0, 0, 262, 263, 5, 12, 0, 0, 263, 264, 5, 31,
+		0, 0, 264, 272, 3, 70, 35, 0, 265, 267, 5, 30, 0, 0, 266, 265, 1, 0, 0,
+		0, 266, 267, 1, 0, 0, 0, 267, 268, 1, 0, 0, 0, 268, 269, 5, 31, 0, 0, 269,
+		270, 5, 21, 0, 0, 270, 271, 5, 31, 0, 0, 271, 273, 3, 60, 30, 0, 272, 266,
+		1, 0, 0, 0, 272, 273, 1, 0, 0, 0, 273, 59, 1, 0, 0, 0, 274, 279, 3, 62,
+		31, 0, 275, 276, 5, 31, 0, 0, 276, 277, 5, 20, 0, 0, 277, 278, 5, 31, 0,
+		0, 278, 280, 3, 60, 30, 0, 279, 275, 1, 0, 0, 0, 279, 280, 1, 0, 0, 0,
+		280, 61, 1, 0, 0, 0, 281, 282, 3, 54, 27, 0, 282, 63, 1, 0, 0, 0, 283,
+		284, 5, 25, 0, 0, 284, 65, 1, 0, 0, 0, 285, 286, 7, 0, 0, 0, 286, 67, 1,
+		0, 0, 0, 287, 288, 5, 19, 0, 0, 288, 69, 1, 0, 0, 0, 289, 290, 5, 33, 0,
+		0, 290, 71, 1, 0, 0, 0, 291, 292, 5, 24, 0, 0, 292, 293, 5, 31, 0, 0, 293,
+		296, 3, 76, 38, 0, 294, 296, 3, 74, 37, 0, 295, 291, 1, 0, 0, 0, 295, 294,
+		1, 0, 0, 0, 296, 73, 1, 0, 0, 0, 297, 298, 5, 34, 0, 0, 298, 75, 1, 0,
+		0, 0, 299, 300, 5, 35, 0, 0, 300, 77, 1, 0, 0, 0, 19, 83, 85, 91, 93, 113,
+		122, 144, 159, 166, 181, 191, 203, 207, 256, 260, 266, 272, 279, 295,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -291,17 +289,16 @@ const (
 	LectureParserRULE_conditionClause            = 26
 	LectureParserRULE_valueClause                = 27
 	LectureParserRULE_value                      = 28
-	LectureParserRULE_literalClause              = 29
-	LectureParserRULE_functionCall               = 30
-	LectureParserRULE_parametersClause           = 31
-	LectureParserRULE_parameter                  = 32
-	LectureParserRULE_type                       = 33
-	LectureParserRULE_operator                   = 34
-	LectureParserRULE_comparator                 = 35
-	LectureParserRULE_identifier                 = 36
-	LectureParserRULE_literal                    = 37
-	LectureParserRULE_string                     = 38
-	LectureParserRULE_number                     = 39
+	LectureParserRULE_functionCall               = 29
+	LectureParserRULE_parametersClause           = 30
+	LectureParserRULE_parameter                  = 31
+	LectureParserRULE_type                       = 32
+	LectureParserRULE_operator                   = 33
+	LectureParserRULE_comparator                 = 34
+	LectureParserRULE_identifier                 = 35
+	LectureParserRULE_literal                    = 36
+	LectureParserRULE_string                     = 37
+	LectureParserRULE_number                     = 38
 )
 
 // ILectureContext is an interface to support dynamic dispatch.
@@ -396,11 +393,11 @@ func (p *LectureParser) Lecture() (localctx ILectureContext) {
 	p.EnterRule(localctx, 0, LectureParserRULE_lecture)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(80)
+		p.SetState(78)
 		p.Program()
 	}
 	{
-		p.SetState(81)
+		p.SetState(79)
 		p.Match(LectureParserEOF)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -595,7 +592,7 @@ func (p *LectureParser) Program() (localctx IProgramContext) {
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(87)
+	p.SetState(85)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -603,7 +600,7 @@ func (p *LectureParser) Program() (localctx IProgramContext) {
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == LectureParserCOMMENT || _la == LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS {
-		p.SetState(85)
+		p.SetState(83)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -612,13 +609,13 @@ func (p *LectureParser) Program() (localctx IProgramContext) {
 		switch p.GetTokenStream().LA(1) {
 		case LectureParserCOMMENT:
 			{
-				p.SetState(83)
+				p.SetState(81)
 				p.FloatingComment()
 			}
 
 		case LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS:
 			{
-				p.SetState(84)
+				p.SetState(82)
 				p.Function()
 			}
 
@@ -627,7 +624,7 @@ func (p *LectureParser) Program() (localctx IProgramContext) {
 			goto errorExit
 		}
 
-		p.SetState(89)
+		p.SetState(87)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -635,10 +632,10 @@ func (p *LectureParser) Program() (localctx IProgramContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(90)
+		p.SetState(88)
 		p.MainFunction()
 	}
-	p.SetState(95)
+	p.SetState(93)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -646,7 +643,7 @@ func (p *LectureParser) Program() (localctx IProgramContext) {
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == LectureParserCOMMENT || _la == LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS {
-		p.SetState(93)
+		p.SetState(91)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -655,13 +652,13 @@ func (p *LectureParser) Program() (localctx IProgramContext) {
 		switch p.GetTokenStream().LA(1) {
 		case LectureParserCOMMENT:
 			{
-				p.SetState(91)
+				p.SetState(89)
 				p.FloatingComment()
 			}
 
 		case LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS:
 			{
-				p.SetState(92)
+				p.SetState(90)
 				p.Function()
 			}
 
@@ -670,7 +667,7 @@ func (p *LectureParser) Program() (localctx IProgramContext) {
 			goto errorExit
 		}
 
-		p.SetState(97)
+		p.SetState(95)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -783,11 +780,11 @@ func (p *LectureParser) FloatingComment() (localctx IFloatingCommentContext) {
 	p.EnterRule(localctx, 4, LectureParserRULE_floatingComment)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(98)
+		p.SetState(96)
 		p.CommentStatement()
 	}
 	{
-		p.SetState(99)
+		p.SetState(97)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -929,15 +926,15 @@ func (p *LectureParser) MainFunction() (localctx IMainFunctionContext) {
 	p.EnterRule(localctx, 6, LectureParserRULE_mainFunction)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(101)
+		p.SetState(99)
 		p.MainStartStatement()
 	}
 	{
-		p.SetState(102)
+		p.SetState(100)
 		p.StatementBlock()
 	}
 	{
-		p.SetState(103)
+		p.SetState(101)
 		p.MainEndStatement()
 	}
 
@@ -1034,7 +1031,7 @@ func (p *LectureParser) MainStartStatement() (localctx IMainStartStatementContex
 	p.EnterRule(localctx, 8, LectureParserRULE_mainStartStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(105)
+		p.SetState(103)
 		p.Match(LectureParserOKAY_HEAR_ME_OUT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1042,7 +1039,7 @@ func (p *LectureParser) MainStartStatement() (localctx IMainStartStatementContex
 		}
 	}
 	{
-		p.SetState(106)
+		p.SetState(104)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1143,7 +1140,7 @@ func (p *LectureParser) MainEndStatement() (localctx IMainEndStatementContext) {
 	p.EnterRule(localctx, 10, LectureParserRULE_mainEndStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(108)
+		p.SetState(106)
 		p.Match(LectureParserI_REST_MY_CASE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1151,7 +1148,7 @@ func (p *LectureParser) MainEndStatement() (localctx IMainEndStatementContext) {
 		}
 	}
 	{
-		p.SetState(109)
+		p.SetState(107)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1321,10 +1318,10 @@ func (p *LectureParser) Function() (localctx IFunctionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(111)
+		p.SetState(109)
 		p.FunctionSignature()
 	}
-	p.SetState(115)
+	p.SetState(113)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -1333,11 +1330,11 @@ func (p *LectureParser) Function() (localctx IFunctionContext) {
 
 	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4194418) != 0 {
 		{
-			p.SetState(112)
+			p.SetState(110)
 			p.Statement()
 		}
 
-		p.SetState(117)
+		p.SetState(115)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -1345,7 +1342,7 @@ func (p *LectureParser) Function() (localctx IFunctionContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(118)
+		p.SetState(116)
 		p.ReturnStatement()
 	}
 
@@ -1520,7 +1517,7 @@ func (p *LectureParser) FunctionSignature() (localctx IFunctionSignatureContext)
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(120)
+		p.SetState(118)
 		p.Match(LectureParserWE_CAN_USE_A_PROCESS_KNOWN_AS)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1528,7 +1525,7 @@ func (p *LectureParser) FunctionSignature() (localctx IFunctionSignatureContext)
 		}
 	}
 	{
-		p.SetState(121)
+		p.SetState(119)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1536,10 +1533,10 @@ func (p *LectureParser) FunctionSignature() (localctx IFunctionSignatureContext)
 		}
 	}
 	{
-		p.SetState(122)
+		p.SetState(120)
 		p.Identifier()
 	}
-	p.SetState(124)
+	p.SetState(122)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -1548,10 +1545,26 @@ func (p *LectureParser) FunctionSignature() (localctx IFunctionSignatureContext)
 
 	if _la == LectureParserCOMMA {
 		{
-			p.SetState(123)
+			p.SetState(121)
 			p.ParametersDeclaration()
 		}
 
+	}
+	{
+		p.SetState(124)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(125)
+		p.Match(LectureParserTO_PRODUCE_A)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(126)
@@ -1563,26 +1576,10 @@ func (p *LectureParser) FunctionSignature() (localctx IFunctionSignatureContext)
 	}
 	{
 		p.SetState(127)
-		p.Match(LectureParserTO_PRODUCE_A)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(128)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(129)
 		p.Type_()
 	}
 	{
-		p.SetState(130)
+		p.SetState(128)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1590,7 +1587,7 @@ func (p *LectureParser) FunctionSignature() (localctx IFunctionSignatureContext)
 		}
 	}
 	{
-		p.SetState(131)
+		p.SetState(129)
 		p.Match(LectureParserIT_PROCEEDS_AS_FOLLOWS)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1598,7 +1595,7 @@ func (p *LectureParser) FunctionSignature() (localctx IFunctionSignatureContext)
 		}
 	}
 	{
-		p.SetState(132)
+		p.SetState(130)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1731,8 +1728,24 @@ func (p *LectureParser) ParametersDeclaration() (localctx IParametersDeclaration
 	p.EnterRule(localctx, 16, LectureParserRULE_parametersDeclaration)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(134)
+		p.SetState(132)
 		p.Match(LectureParserCOMMA)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(133)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(134)
+		p.Match(LectureParserWHICH_NEEDS)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -1748,26 +1761,10 @@ func (p *LectureParser) ParametersDeclaration() (localctx IParametersDeclaration
 	}
 	{
 		p.SetState(136)
-		p.Match(LectureParserWHICH_NEEDS)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(137)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(138)
 		p.ParameterDeclarationClause()
 	}
 	{
-		p.SetState(139)
+		p.SetState(137)
 		p.Match(LectureParserCOMMA)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -1909,10 +1906,10 @@ func (p *LectureParser) ParameterDeclarationClause() (localctx IParameterDeclara
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(141)
+		p.SetState(139)
 		p.ParameterDeclaration()
 	}
-	p.SetState(146)
+	p.SetState(144)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -1920,6 +1917,22 @@ func (p *LectureParser) ParameterDeclarationClause() (localctx IParameterDeclara
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == LectureParserSPACE {
+		{
+			p.SetState(140)
+			p.Match(LectureParserSPACE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(141)
+			p.Match(LectureParserAND)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
 		{
 			p.SetState(142)
 			p.Match(LectureParserSPACE)
@@ -1930,22 +1943,6 @@ func (p *LectureParser) ParameterDeclarationClause() (localctx IParameterDeclara
 		}
 		{
 			p.SetState(143)
-			p.Match(LectureParserAND)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(144)
-			p.Match(LectureParserSPACE)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(145)
 			p.ParameterDeclarationClause()
 		}
 
@@ -2088,12 +2085,24 @@ func (p *LectureParser) ParameterDeclaration() (localctx IParameterDeclarationCo
 	p.EnterRule(localctx, 20, LectureParserRULE_parameterDeclaration)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(148)
+		p.SetState(146)
 		p.Match(LectureParserA)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
+	}
+	{
+		p.SetState(147)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(148)
+		p.Type_()
 	}
 	{
 		p.SetState(149)
@@ -2105,7 +2114,11 @@ func (p *LectureParser) ParameterDeclaration() (localctx IParameterDeclarationCo
 	}
 	{
 		p.SetState(150)
-		p.Type_()
+		p.Match(LectureParserCALLED)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(151)
@@ -2117,22 +2130,6 @@ func (p *LectureParser) ParameterDeclaration() (localctx IParameterDeclarationCo
 	}
 	{
 		p.SetState(152)
-		p.Match(LectureParserCALLED)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(153)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(154)
 		p.Identifier()
 	}
 
@@ -2308,7 +2305,7 @@ func (p *LectureParser) Statement() (localctx IStatementContext) {
 	localctx = NewStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 22, LectureParserRULE_statement)
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(161)
+	p.SetState(159)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -2317,31 +2314,31 @@ func (p *LectureParser) Statement() (localctx IStatementContext) {
 	switch p.GetTokenStream().LA(1) {
 	case LectureParserLETS_SAY:
 		{
-			p.SetState(156)
+			p.SetState(154)
 			p.AssignmentStatement()
 		}
 
 	case LectureParserNOW_LETS_SAY:
 		{
-			p.SetState(157)
+			p.SetState(155)
 			p.ReassignmentStatement()
 		}
 
 	case LectureParserTHEN_WE_HAVE:
 		{
-			p.SetState(158)
+			p.SetState(156)
 			p.PrintStatement()
 		}
 
 	case LectureParserIF:
 		{
-			p.SetState(159)
+			p.SetState(157)
 			p.IfChainStatement()
 		}
 
 	case LectureParserCOMMENT:
 		{
-			p.SetState(160)
+			p.SetState(158)
 			p.CommentStatement()
 		}
 
@@ -2350,7 +2347,7 @@ func (p *LectureParser) Statement() (localctx IStatementContext) {
 		goto errorExit
 	}
 	{
-		p.SetState(163)
+		p.SetState(161)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2485,7 +2482,7 @@ func (p *LectureParser) StatementBlock() (localctx IStatementBlockContext) {
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(166)
+	p.SetState(164)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -2494,11 +2491,11 @@ func (p *LectureParser) StatementBlock() (localctx IStatementBlockContext) {
 
 	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4194418) != 0) {
 		{
-			p.SetState(165)
+			p.SetState(163)
 			p.Statement()
 		}
 
-		p.SetState(168)
+		p.SetState(166)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -2621,7 +2618,7 @@ func (p *LectureParser) ReturnStatement() (localctx IReturnStatementContext) {
 	p.EnterRule(localctx, 26, LectureParserRULE_returnStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(170)
+		p.SetState(168)
 		p.Match(LectureParserFINALLY_WE_GET)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2629,7 +2626,7 @@ func (p *LectureParser) ReturnStatement() (localctx IReturnStatementContext) {
 		}
 	}
 	{
-		p.SetState(171)
+		p.SetState(169)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2637,11 +2634,11 @@ func (p *LectureParser) ReturnStatement() (localctx IReturnStatementContext) {
 		}
 	}
 	{
-		p.SetState(172)
+		p.SetState(170)
 		p.ValueClause()
 	}
 	{
-		p.SetState(173)
+		p.SetState(171)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2803,12 +2800,24 @@ func (p *LectureParser) AssignmentStatement() (localctx IAssignmentStatementCont
 	p.EnterRule(localctx, 28, LectureParserRULE_assignmentStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(175)
+		p.SetState(173)
 		p.Match(LectureParserLETS_SAY)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
+	}
+	{
+		p.SetState(174)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(175)
+		p.Identifier()
 	}
 	{
 		p.SetState(176)
@@ -2820,7 +2829,11 @@ func (p *LectureParser) AssignmentStatement() (localctx IAssignmentStatementCont
 	}
 	{
 		p.SetState(177)
-		p.Identifier()
+		p.Match(LectureParserIS)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(178)
@@ -2830,38 +2843,22 @@ func (p *LectureParser) AssignmentStatement() (localctx IAssignmentStatementCont
 			goto errorExit
 		}
 	}
-	{
-		p.SetState(179)
-		p.Match(LectureParserIS)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(180)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	p.SetState(183)
+	p.SetState(181)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case LectureParserLITERALLY, LectureParserIDENTIFIER_STRING:
+	case LectureParserLITERALLY, LectureParserIDENTIFIER_STRING, LectureParserSTRING:
 		{
-			p.SetState(181)
+			p.SetState(179)
 			p.ValueClause()
 		}
 
 	case LectureParserTHE_RESULT_OF:
 		{
-			p.SetState(182)
+			p.SetState(180)
 			p.FunctionCall()
 		}
 
@@ -3024,12 +3021,24 @@ func (p *LectureParser) ReassignmentStatement() (localctx IReassignmentStatement
 	p.EnterRule(localctx, 30, LectureParserRULE_reassignmentStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(185)
+		p.SetState(183)
 		p.Match(LectureParserNOW_LETS_SAY)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
+	}
+	{
+		p.SetState(184)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(185)
+		p.Identifier()
 	}
 	{
 		p.SetState(186)
@@ -3041,7 +3050,11 @@ func (p *LectureParser) ReassignmentStatement() (localctx IReassignmentStatement
 	}
 	{
 		p.SetState(187)
-		p.Identifier()
+		p.Match(LectureParserIS)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(188)
@@ -3051,38 +3064,22 @@ func (p *LectureParser) ReassignmentStatement() (localctx IReassignmentStatement
 			goto errorExit
 		}
 	}
-	{
-		p.SetState(189)
-		p.Match(LectureParserIS)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(190)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	p.SetState(193)
+	p.SetState(191)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case LectureParserLITERALLY, LectureParserIDENTIFIER_STRING:
+	case LectureParserLITERALLY, LectureParserIDENTIFIER_STRING, LectureParserSTRING:
 		{
-			p.SetState(191)
+			p.SetState(189)
 			p.ValueClause()
 		}
 
 	case LectureParserTHE_RESULT_OF:
 		{
-			p.SetState(192)
+			p.SetState(190)
 			p.FunctionCall()
 		}
 
@@ -3201,7 +3198,7 @@ func (p *LectureParser) PrintStatement() (localctx IPrintStatementContext) {
 	p.EnterRule(localctx, 32, LectureParserRULE_printStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(195)
+		p.SetState(193)
 		p.Match(LectureParserTHEN_WE_HAVE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3209,7 +3206,7 @@ func (p *LectureParser) PrintStatement() (localctx IPrintStatementContext) {
 		}
 	}
 	{
-		p.SetState(196)
+		p.SetState(194)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3217,7 +3214,7 @@ func (p *LectureParser) PrintStatement() (localctx IPrintStatementContext) {
 		}
 	}
 	{
-		p.SetState(197)
+		p.SetState(195)
 		p.ValueClause()
 	}
 
@@ -3309,7 +3306,7 @@ func (p *LectureParser) CommentStatement() (localctx ICommentStatementContext) {
 	p.EnterRule(localctx, 34, LectureParserRULE_commentStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(199)
+		p.SetState(197)
 		p.Match(LectureParserCOMMENT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3498,10 +3495,10 @@ func (p *LectureParser) IfChainStatement() (localctx IIfChainStatementContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(201)
+		p.SetState(199)
 		p.IfStatement()
 	}
-	p.SetState(205)
+	p.SetState(203)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -3513,12 +3510,12 @@ func (p *LectureParser) IfChainStatement() (localctx IIfChainStatementContext) {
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			{
-				p.SetState(202)
+				p.SetState(200)
 				p.ElseIfStatement()
 			}
 
 		}
-		p.SetState(207)
+		p.SetState(205)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -3528,7 +3525,7 @@ func (p *LectureParser) IfChainStatement() (localctx IIfChainStatementContext) {
 			goto errorExit
 		}
 	}
-	p.SetState(209)
+	p.SetState(207)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -3537,13 +3534,13 @@ func (p *LectureParser) IfChainStatement() (localctx IIfChainStatementContext) {
 
 	if _la == LectureParserOTHERWISE {
 		{
-			p.SetState(208)
+			p.SetState(206)
 			p.ElseStatement()
 		}
 
 	}
 	{
-		p.SetState(211)
+		p.SetState(209)
 		p.IfClosingStatement()
 	}
 
@@ -3664,11 +3661,11 @@ func (p *LectureParser) IfStatement() (localctx IIfStatementContext) {
 	p.EnterRule(localctx, 38, LectureParserRULE_ifStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(213)
+		p.SetState(211)
 		p.IfSignature()
 	}
 	{
-		p.SetState(214)
+		p.SetState(212)
 		p.StatementBlock()
 	}
 
@@ -3802,7 +3799,7 @@ func (p *LectureParser) IfSignature() (localctx IIfSignatureContext) {
 	p.EnterRule(localctx, 40, LectureParserRULE_ifSignature)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(216)
+		p.SetState(214)
 		p.Match(LectureParserIF)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3810,7 +3807,7 @@ func (p *LectureParser) IfSignature() (localctx IIfSignatureContext) {
 		}
 	}
 	{
-		p.SetState(217)
+		p.SetState(215)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3818,11 +3815,11 @@ func (p *LectureParser) IfSignature() (localctx IIfSignatureContext) {
 		}
 	}
 	{
-		p.SetState(218)
+		p.SetState(216)
 		p.ConditionClause()
 	}
 	{
-		p.SetState(219)
+		p.SetState(217)
 		p.Match(LectureParserCOMMA)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3830,7 +3827,7 @@ func (p *LectureParser) IfSignature() (localctx IIfSignatureContext) {
 		}
 	}
 	{
-		p.SetState(220)
+		p.SetState(218)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3838,7 +3835,7 @@ func (p *LectureParser) IfSignature() (localctx IIfSignatureContext) {
 		}
 	}
 	{
-		p.SetState(221)
+		p.SetState(219)
 		p.Match(LectureParserHERES_WHAT_WE_NEED_TO_DO)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3846,7 +3843,7 @@ func (p *LectureParser) IfSignature() (localctx IIfSignatureContext) {
 		}
 	}
 	{
-		p.SetState(222)
+		p.SetState(220)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3971,11 +3968,11 @@ func (p *LectureParser) ElseIfStatement() (localctx IElseIfStatementContext) {
 	p.EnterRule(localctx, 42, LectureParserRULE_elseIfStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(224)
+		p.SetState(222)
 		p.ElseIfSignature()
 	}
 	{
-		p.SetState(225)
+		p.SetState(223)
 		p.StatementBlock()
 	}
 
@@ -4094,7 +4091,7 @@ func (p *LectureParser) ElseIfSignature() (localctx IElseIfSignatureContext) {
 	p.EnterRule(localctx, 44, LectureParserRULE_elseIfSignature)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(227)
+		p.SetState(225)
 		p.Match(LectureParserOTHERWISE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4102,7 +4099,7 @@ func (p *LectureParser) ElseIfSignature() (localctx IElseIfSignatureContext) {
 		}
 	}
 	{
-		p.SetState(228)
+		p.SetState(226)
 		p.Match(LectureParserCOMMA)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4110,7 +4107,7 @@ func (p *LectureParser) ElseIfSignature() (localctx IElseIfSignatureContext) {
 		}
 	}
 	{
-		p.SetState(229)
+		p.SetState(227)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4118,7 +4115,7 @@ func (p *LectureParser) ElseIfSignature() (localctx IElseIfSignatureContext) {
 		}
 	}
 	{
-		p.SetState(230)
+		p.SetState(228)
 		p.IfSignature()
 	}
 
@@ -4239,11 +4236,11 @@ func (p *LectureParser) ElseStatement() (localctx IElseStatementContext) {
 	p.EnterRule(localctx, 46, LectureParserRULE_elseStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(232)
+		p.SetState(230)
 		p.ElseSignature()
 	}
 	{
-		p.SetState(233)
+		p.SetState(231)
 		p.StatementBlock()
 	}
 
@@ -4355,7 +4352,7 @@ func (p *LectureParser) ElseSignature() (localctx IElseSignatureContext) {
 	p.EnterRule(localctx, 48, LectureParserRULE_elseSignature)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(235)
+		p.SetState(233)
 		p.Match(LectureParserOTHERWISE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4363,7 +4360,7 @@ func (p *LectureParser) ElseSignature() (localctx IElseSignatureContext) {
 		}
 	}
 	{
-		p.SetState(236)
+		p.SetState(234)
 		p.Match(LectureParserCOMMA)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4371,7 +4368,7 @@ func (p *LectureParser) ElseSignature() (localctx IElseSignatureContext) {
 		}
 	}
 	{
-		p.SetState(237)
+		p.SetState(235)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4379,7 +4376,7 @@ func (p *LectureParser) ElseSignature() (localctx IElseSignatureContext) {
 		}
 	}
 	{
-		p.SetState(238)
+		p.SetState(236)
 		p.Match(LectureParserHERES_WHAT_WE_NEED_TO_DO)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4387,7 +4384,7 @@ func (p *LectureParser) ElseSignature() (localctx IElseSignatureContext) {
 		}
 	}
 	{
-		p.SetState(239)
+		p.SetState(237)
 		p.Match(LectureParserTERMINATOR)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4498,7 +4495,7 @@ func (p *LectureParser) IfClosingStatement() (localctx IIfClosingStatementContex
 	p.EnterRule(localctx, 50, LectureParserRULE_ifClosingStatement)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(241)
+		p.SetState(239)
 		p.Match(LectureParserNOW_THAT_WEVE_DONE_THAT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4506,7 +4503,7 @@ func (p *LectureParser) IfClosingStatement() (localctx IIfClosingStatementContex
 		}
 	}
 	{
-		p.SetState(242)
+		p.SetState(240)
 		p.Match(LectureParserCOMMA)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4514,7 +4511,7 @@ func (p *LectureParser) IfClosingStatement() (localctx IIfClosingStatementContex
 		}
 	}
 	{
-		p.SetState(243)
+		p.SetState(241)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4522,7 +4519,7 @@ func (p *LectureParser) IfClosingStatement() (localctx IIfClosingStatementContex
 		}
 	}
 	{
-		p.SetState(244)
+		p.SetState(242)
 		p.Match(LectureParserWE_CAN_MOVE_ON)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4683,8 +4680,20 @@ func (p *LectureParser) ConditionClause() (localctx IConditionClauseContext) {
 	p.EnterRule(localctx, 52, LectureParserRULE_conditionClause)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(246)
+		p.SetState(244)
 		p.ValueClause()
+	}
+	{
+		p.SetState(245)
+		p.Match(LectureParserSPACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(246)
+		p.Comparator()
 	}
 	{
 		p.SetState(247)
@@ -4696,18 +4705,6 @@ func (p *LectureParser) ConditionClause() (localctx IConditionClauseContext) {
 	}
 	{
 		p.SetState(248)
-		p.Comparator()
-	}
-	{
-		p.SetState(249)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(250)
 		p.ValueClause()
 	}
 
@@ -4855,13 +4852,25 @@ func (p *LectureParser) ValueClause() (localctx IValueClauseContext) {
 	p.EnterRule(localctx, 54, LectureParserRULE_valueClause)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(252)
+		p.SetState(250)
 		p.Value()
 	}
-	p.SetState(258)
+	p.SetState(256)
 	p.GetErrorHandler().Sync(p)
 
 	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 13, p.GetParserRuleContext()) == 1 {
+		{
+			p.SetState(251)
+			p.Match(LectureParserSPACE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(252)
+			p.Operator()
+		}
 		{
 			p.SetState(253)
 			p.Match(LectureParserSPACE)
@@ -4872,18 +4881,6 @@ func (p *LectureParser) ValueClause() (localctx IValueClauseContext) {
 		}
 		{
 			p.SetState(254)
-			p.Operator()
-		}
-		{
-			p.SetState(255)
-			p.Match(LectureParserSPACE)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(256)
 			p.ValueClause()
 		}
 
@@ -4912,7 +4909,7 @@ type IValueContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	LiteralClause() ILiteralClauseContext
+	Literal() ILiteralContext
 	Identifier() IIdentifierContext
 
 	// IsValueContext differentiates from other interfaces.
@@ -4951,10 +4948,10 @@ func NewValueContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 
 func (s *ValueContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ValueContext) LiteralClause() ILiteralClauseContext {
+func (s *ValueContext) Literal() ILiteralContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ILiteralClauseContext); ok {
+		if _, ok := ctx.(ILiteralContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -4964,7 +4961,7 @@ func (s *ValueContext) LiteralClause() ILiteralClauseContext {
 		return nil
 	}
 
-	return t.(ILiteralClauseContext)
+	return t.(ILiteralContext)
 }
 
 func (s *ValueContext) Identifier() IIdentifierContext {
@@ -5006,160 +5003,30 @@ func (s *ValueContext) ExitRule(listener antlr.ParseTreeListener) {
 func (p *LectureParser) Value() (localctx IValueContext) {
 	localctx = NewValueContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 56, LectureParserRULE_value)
-	p.SetState(262)
+	p.SetState(260)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case LectureParserLITERALLY:
+	case LectureParserLITERALLY, LectureParserSTRING:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(260)
-			p.LiteralClause()
+			p.SetState(258)
+			p.Literal()
 		}
 
 	case LectureParserIDENTIFIER_STRING:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(261)
+			p.SetState(259)
 			p.Identifier()
 		}
 
 	default:
 		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 		goto errorExit
-	}
-
-errorExit:
-	if p.HasError() {
-		v := p.GetError()
-		localctx.SetException(v)
-		p.GetErrorHandler().ReportError(p, v)
-		p.GetErrorHandler().Recover(p, v)
-		p.SetError(nil)
-	}
-	p.ExitRule()
-	return localctx
-	goto errorExit // Trick to prevent compiler error if the label is not used
-}
-
-// ILiteralClauseContext is an interface to support dynamic dispatch.
-type ILiteralClauseContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// Getter signatures
-	LITERALLY() antlr.TerminalNode
-	SPACE() antlr.TerminalNode
-	Literal() ILiteralContext
-
-	// IsLiteralClauseContext differentiates from other interfaces.
-	IsLiteralClauseContext()
-}
-
-type LiteralClauseContext struct {
-	antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyLiteralClauseContext() *LiteralClauseContext {
-	var p = new(LiteralClauseContext)
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_literalClause
-	return p
-}
-
-func InitEmptyLiteralClauseContext(p *LiteralClauseContext) {
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = LectureParserRULE_literalClause
-}
-
-func (*LiteralClauseContext) IsLiteralClauseContext() {}
-
-func NewLiteralClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *LiteralClauseContext {
-	var p = new(LiteralClauseContext)
-
-	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = LectureParserRULE_literalClause
-
-	return p
-}
-
-func (s *LiteralClauseContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *LiteralClauseContext) LITERALLY() antlr.TerminalNode {
-	return s.GetToken(LectureParserLITERALLY, 0)
-}
-
-func (s *LiteralClauseContext) SPACE() antlr.TerminalNode {
-	return s.GetToken(LectureParserSPACE, 0)
-}
-
-func (s *LiteralClauseContext) Literal() ILiteralContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ILiteralContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(ILiteralContext)
-}
-
-func (s *LiteralClauseContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *LiteralClauseContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *LiteralClauseContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.EnterLiteralClause(s)
-	}
-}
-
-func (s *LiteralClauseContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(LectureListener); ok {
-		listenerT.ExitLiteralClause(s)
-	}
-}
-
-func (p *LectureParser) LiteralClause() (localctx ILiteralClauseContext) {
-	localctx = NewLiteralClauseContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 58, LectureParserRULE_literalClause)
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(264)
-		p.Match(LectureParserLITERALLY)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(265)
-		p.Match(LectureParserSPACE)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
-	}
-	{
-		p.SetState(266)
-		p.Literal()
 	}
 
 errorExit:
@@ -5301,12 +5168,12 @@ func (s *FunctionCallContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
 	localctx = NewFunctionCallContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 60, LectureParserRULE_functionCall)
+	p.EnterRule(localctx, 58, LectureParserRULE_functionCall)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(268)
+		p.SetState(262)
 		p.Match(LectureParserTHE_RESULT_OF)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -5314,7 +5181,7 @@ func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
 		}
 	}
 	{
-		p.SetState(269)
+		p.SetState(263)
 		p.Match(LectureParserSPACE)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -5322,10 +5189,10 @@ func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
 		}
 	}
 	{
-		p.SetState(270)
+		p.SetState(264)
 		p.Identifier()
 	}
-	p.SetState(278)
+	p.SetState(272)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -5333,7 +5200,7 @@ func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == LectureParserCOMMA || _la == LectureParserSPACE {
-		p.SetState(272)
+		p.SetState(266)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -5342,7 +5209,7 @@ func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
 
 		if _la == LectureParserCOMMA {
 			{
-				p.SetState(271)
+				p.SetState(265)
 				p.Match(LectureParserCOMMA)
 				if p.HasError() {
 					// Recognition error - abort rule
@@ -5352,7 +5219,7 @@ func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
 
 		}
 		{
-			p.SetState(274)
+			p.SetState(268)
 			p.Match(LectureParserSPACE)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -5360,7 +5227,7 @@ func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
 			}
 		}
 		{
-			p.SetState(275)
+			p.SetState(269)
 			p.Match(LectureParserUSING)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -5368,7 +5235,7 @@ func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
 			}
 		}
 		{
-			p.SetState(276)
+			p.SetState(270)
 			p.Match(LectureParserSPACE)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -5376,7 +5243,7 @@ func (p *LectureParser) FunctionCall() (localctx IFunctionCallContext) {
 			}
 		}
 		{
-			p.SetState(277)
+			p.SetState(271)
 			p.ParametersClause()
 		}
 
@@ -5511,15 +5378,15 @@ func (s *ParametersClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) ParametersClause() (localctx IParametersClauseContext) {
 	localctx = NewParametersClauseContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 62, LectureParserRULE_parametersClause)
+	p.EnterRule(localctx, 60, LectureParserRULE_parametersClause)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(280)
+		p.SetState(274)
 		p.Parameter()
 	}
-	p.SetState(285)
+	p.SetState(279)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -5528,7 +5395,7 @@ func (p *LectureParser) ParametersClause() (localctx IParametersClauseContext) {
 
 	if _la == LectureParserSPACE {
 		{
-			p.SetState(281)
+			p.SetState(275)
 			p.Match(LectureParserSPACE)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -5536,7 +5403,7 @@ func (p *LectureParser) ParametersClause() (localctx IParametersClauseContext) {
 			}
 		}
 		{
-			p.SetState(282)
+			p.SetState(276)
 			p.Match(LectureParserAND)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -5544,7 +5411,7 @@ func (p *LectureParser) ParametersClause() (localctx IParametersClauseContext) {
 			}
 		}
 		{
-			p.SetState(283)
+			p.SetState(277)
 			p.Match(LectureParserSPACE)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -5552,7 +5419,7 @@ func (p *LectureParser) ParametersClause() (localctx IParametersClauseContext) {
 			}
 		}
 		{
-			p.SetState(284)
+			p.SetState(278)
 			p.ParametersClause()
 		}
 
@@ -5655,10 +5522,10 @@ func (s *ParameterContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) Parameter() (localctx IParameterContext) {
 	localctx = NewParameterContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 64, LectureParserRULE_parameter)
+	p.EnterRule(localctx, 62, LectureParserRULE_parameter)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(287)
+		p.SetState(281)
 		p.ValueClause()
 	}
 
@@ -5747,10 +5614,10 @@ func (s *TypeContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) Type_() (localctx ITypeContext) {
 	localctx = NewTypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 66, LectureParserRULE_type)
+	p.EnterRule(localctx, 64, LectureParserRULE_type)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(289)
+		p.SetState(283)
 		p.Match(LectureParserNUMBER)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -5848,12 +5715,12 @@ func (s *OperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) Operator() (localctx IOperatorContext) {
 	localctx = NewOperatorContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 68, LectureParserRULE_operator)
+	p.EnterRule(localctx, 66, LectureParserRULE_operator)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(291)
+		p.SetState(285)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == LectureParserPLUS || _la == LectureParserMINUS) {
@@ -5949,10 +5816,10 @@ func (s *ComparatorContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) Comparator() (localctx IComparatorContext) {
 	localctx = NewComparatorContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 70, LectureParserRULE_comparator)
+	p.EnterRule(localctx, 68, LectureParserRULE_comparator)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(293)
+		p.SetState(287)
 		p.Match(LectureParserIS)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -6045,10 +5912,10 @@ func (s *IdentifierContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) Identifier() (localctx IIdentifierContext) {
 	localctx = NewIdentifierContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 72, LectureParserRULE_identifier)
+	p.EnterRule(localctx, 70, LectureParserRULE_identifier)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(295)
+		p.SetState(289)
 		p.Match(LectureParserIDENTIFIER_STRING)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -6077,6 +5944,8 @@ type ILiteralContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
+	LITERALLY() antlr.TerminalNode
+	SPACE() antlr.TerminalNode
 	Number() INumberContext
 	String_() IStringContext
 
@@ -6115,6 +5984,14 @@ func NewLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 }
 
 func (s *LiteralContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *LiteralContext) LITERALLY() antlr.TerminalNode {
+	return s.GetToken(LectureParserLITERALLY, 0)
+}
+
+func (s *LiteralContext) SPACE() antlr.TerminalNode {
+	return s.GetToken(LectureParserSPACE, 0)
+}
 
 func (s *LiteralContext) Number() INumberContext {
 	var t antlr.RuleContext
@@ -6170,25 +6047,41 @@ func (s *LiteralContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) Literal() (localctx ILiteralContext) {
 	localctx = NewLiteralContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 74, LectureParserRULE_literal)
-	p.SetState(299)
+	p.EnterRule(localctx, 72, LectureParserRULE_literal)
+	p.SetState(295)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 
 	switch p.GetTokenStream().LA(1) {
-	case LectureParserINTEGER:
+	case LectureParserLITERALLY:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(297)
+			p.SetState(291)
+			p.Match(LectureParserLITERALLY)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(292)
+			p.Match(LectureParserSPACE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(293)
 			p.Number()
 		}
 
 	case LectureParserSTRING:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(298)
+			p.SetState(294)
 			p.String_()
 		}
 
@@ -6282,10 +6175,10 @@ func (s *StringContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) String_() (localctx IStringContext) {
 	localctx = NewStringContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 76, LectureParserRULE_string)
+	p.EnterRule(localctx, 74, LectureParserRULE_string)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(301)
+		p.SetState(297)
 		p.Match(LectureParserSTRING)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -6378,10 +6271,10 @@ func (s *NumberContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *LectureParser) Number() (localctx INumberContext) {
 	localctx = NewNumberContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 78, LectureParserRULE_number)
+	p.EnterRule(localctx, 76, LectureParserRULE_number)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(303)
+		p.SetState(299)
 		p.Match(LectureParserINTEGER)
 		if p.HasError() {
 			// Recognition error - abort rule

@@ -94,9 +94,6 @@ type LectureListener interface {
 	// EnterValue is called when entering the value production.
 	EnterValue(c *ValueContext)
 
-	// EnterLiteralClause is called when entering the literalClause production.
-	EnterLiteralClause(c *LiteralClauseContext)
-
 	// EnterFunctionCall is called when entering the functionCall production.
 	EnterFunctionCall(c *FunctionCallContext)
 
@@ -213,9 +210,6 @@ type LectureListener interface {
 
 	// ExitValue is called when exiting the value production.
 	ExitValue(c *ValueContext)
-
-	// ExitLiteralClause is called when exiting the literalClause production.
-	ExitLiteralClause(c *LiteralClauseContext)
 
 	// ExitFunctionCall is called when exiting the functionCall production.
 	ExitFunctionCall(c *FunctionCallContext)

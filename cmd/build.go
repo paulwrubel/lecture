@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"fmt"
 	"io"
 	"log"
 	"os"
@@ -18,10 +17,10 @@ var (
 // buildCmd represents the build command
 var buildCmd = &cobra.Command{
 	Use:   "build FILENAME",
-	Short: "Build golang scripts from a lecture file",
+	Short: "build will generate a golang script from a lecture file",
 	Long: `Generate golang source files from a lecture file (.ltr)
 	
-This will generate a single *.go file (default "lecture.go") that can be
+This will generate a single *.go file (prints to stdout by default) that can be
 directly run using "go run [FILENAME]"`,
 	Args: cobra.ExactArgs(1),
 	Run:  runBuild,
@@ -39,41 +38,28 @@ func runBuild(cmd *cobra.Command, args []string) {
 		log.Fatalf("error reading lecture bytes: %s\n", err.Error())
 	}
 
+	writer, err := getOutputWriter(outputFilename)
+	if err != nil {
+		log.Fatalf("error getting output writer: %s\n", err.Error())
+	}
+	defer writer.Close()
+
 	golangBytes, err := internal.TranspileToGolang(lectureBytes)
 	if err != nil {
 		log.Fatalf("error transpiling to Golang: %s\n", err.Error())
 	}
 
-	err = writeOutputBytes(outputFilename, golangBytes)
+	_, err = writer.Write(golangBytes)
 	if err != nil {
 		log.Fatalf("error writing Golang bytes: %s\n", err.Error())
 	}
 }
 
-func readLectureBytes(filename string) ([]byte, error) {
-	var reader io.Reader
+func getOutputWriter(filename string) (io.WriteCloser, error) {
 	if filename == "-" {
-		reader = os.Stdin
-	} else {
-		file, err := os.Open(filename)
-		if err != nil {
-			return nil, fmt.Errorf("error opening lecture file: %s", err.Error())
-		}
-		reader = file
-	}
-
-	lectureBytes, err := io.ReadAll(reader)
-	if err != nil {
-		return nil, fmt.Errorf("error reading lecture: %s", err.Error())
-	}
-
-	return lectureBytes, nil
-}
-
-func writeOutputBytes(filename string, bytes []byte) error {
-	var writer io.Writer
-	if filename == "-" {
-		writer = os.Stdout
+		return internal.NopWriteCloser{
+			Writer: os.Stdout,
+		}, nil
 	} else {
 		// create folder path if necessary
 		lastSlashIndex := strings.LastIndex(filename, "/")
@@ -86,16 +72,6 @@ func writeOutputBytes(filename string, bytes []byte) error {
 				log.Fatalf("error getting output folder info: %s\n", err.Error())
 			}
 		}
-		file, err := os.Create(filename)
-		if err != nil {
-			return fmt.Errorf("error creating output file: %s", err.Error())
-		}
-		writer = file
+		return os.Create(filename)
 	}
-
-	_, err := writer.Write(bytes)
-	if err != nil {
-		return fmt.Errorf("error writing output: %s", err.Error())
-	}
-	return nil
 }

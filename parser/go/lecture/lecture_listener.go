@@ -13,6 +13,9 @@ type LectureListener interface {
 	// EnterProgram is called when entering the program production.
 	EnterProgram(c *ProgramContext)
 
+	// EnterFloatingComment is called when entering the floatingComment production.
+	EnterFloatingComment(c *FloatingCommentContext)
+
 	// EnterMainFunction is called when entering the mainFunction production.
 	EnterMainFunction(c *MainFunctionContext)
 
@@ -54,6 +57,9 @@ type LectureListener interface {
 
 	// EnterPrintStatement is called when entering the printStatement production.
 	EnterPrintStatement(c *PrintStatementContext)
+
+	// EnterCommentStatement is called when entering the commentStatement production.
+	EnterCommentStatement(c *CommentStatementContext)
 
 	// EnterIfChainStatement is called when entering the ifChainStatement production.
 	EnterIfChainStatement(c *IfChainStatementContext)
@@ -127,6 +133,9 @@ type LectureListener interface {
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
+	// ExitFloatingComment is called when exiting the floatingComment production.
+	ExitFloatingComment(c *FloatingCommentContext)
+
 	// ExitMainFunction is called when exiting the mainFunction production.
 	ExitMainFunction(c *MainFunctionContext)
 
@@ -168,6 +177,9 @@ type LectureListener interface {
 
 	// ExitPrintStatement is called when exiting the printStatement production.
 	ExitPrintStatement(c *PrintStatementContext)
+
+	// ExitCommentStatement is called when exiting the commentStatement production.
+	ExitCommentStatement(c *CommentStatementContext)
 
 	// ExitIfChainStatement is called when exiting the ifChainStatement production.
 	ExitIfChainStatement(c *IfChainStatementContext)

@@ -24,7 +24,13 @@ fragment DIGIT: [0-9];
 // initial rule
 lecture: program EOF;
 
-program: (function)* mainFunction (function)*;
+program:
+	(floatingComment | function)* mainFunction (
+		floatingComment
+		| function
+	)*;
+
+floatingComment: commentStatement TERMINATOR;
 
 // main function
 
@@ -62,6 +68,7 @@ statement: (
 		| reassignmentStatement
 		| printStatement
 		| ifChainStatement
+		| commentStatement
 	) TERMINATOR;
 
 statementBlock: statement+;
@@ -81,6 +88,10 @@ reassignmentStatement:
 	);
 
 printStatement: THEN_WE_HAVE SPACE valueClause;
+
+commentStatement: COMMENT;
+
+// if statements
 
 ifChainStatement:
 	ifStatement elseIfStatement* elseStatement? ifClosingStatement;
@@ -137,6 +148,8 @@ number: INTEGER;
  * TOKENS
  */
 
+COMMENT: BY_THE_WAY COMMA SPACE ~[.\n]+;
+
 // reserved keyphrases
 OKAY_HEAR_ME_OUT: 'okay, hear me out';
 I_REST_MY_CASE: 'i rest my case';
@@ -152,6 +165,7 @@ THE_RESULT_OF: 'the result of';
 HERES_WHAT_WE_NEED_TO_DO: 'here\'s what we need to do';
 NOW_THAT_WEVE_DONE_THAT: 'now that we\'ve done that';
 WE_CAN_MOVE_ON: 'we can move on';
+BY_THE_WAY: 'by the way';
 
 // reserved keywords
 A: 'a';
@@ -176,9 +190,6 @@ TERMINATOR: DOT;
 // strings
 IDENTIFIER_STRING: ALPHA ALPHANUMERIC*;
 STRING: QUOTE COMMA SPACE CHARACTER* COMMA SPACE UNQUOTE;
-// ALPHANUMERICSTRING: QUOTATION (ALPHANUMERIC | BASICSYMBOL)+ QUOTATION
-// 
-// QUOTEESCAPEDSTRING: QUOTATION NONQUOTEORESCAPED* QUOTATION;
 
 // numbers
 INTEGER: DIGIT+;

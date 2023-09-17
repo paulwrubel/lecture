@@ -31,16 +31,32 @@ func (l *GolangLectureListener) EnterLecture(ctx *lecture.LectureContext) {
 	l.jenFile = jen.NewFile("main")
 	l.statementStack = &statementStack{}
 	l.blockStack = &blockStack{}
+
+	// initial scope
+	l.blockStack.Push([]jen.Code{})
 }
 
 func (l *GolangLectureListener) ExitLecture(ctx *lecture.LectureContext) {
+	rootBlock := l.blockStack.Pop()
+
+	l.jenFile.Add(rootBlock...)
+
 	err := l.jenFile.Render(l.OutputFile)
 	if err != nil {
 		l.Errors = append(l.Errors, err)
 	}
 }
 
+func (l *GolangLectureListener) ExitFloatingComment(ctx *lecture.FloatingCommentContext) {
+	block := l.blockStack.Pop()
+
+	block = append(block, jen.Line())
+
+	l.blockStack.Push(block)
+}
+
 func (l *GolangLectureListener) EnterMainFunction(ctx *lecture.MainFunctionContext) {
+	// main function block
 	l.blockStack.Push([]jen.Code{})
 	l.statementStack.Push(jen.Func().Id("main").Params())
 }
@@ -48,9 +64,12 @@ func (l *GolangLectureListener) EnterMainFunction(ctx *lecture.MainFunctionConte
 func (l *GolangLectureListener) ExitMainFunction(ctx *lecture.MainFunctionContext) {
 	funcStatement := l.statementStack.Pop()
 	funcBlock := l.blockStack.Pop()
+	rootBlock := l.blockStack.Pop()
 
 	funcStatement.Add(jen.Block(funcBlock...))
-	l.jenFile.Add(funcStatement)
+	rootBlock = append(rootBlock, funcStatement, jen.Line())
+
+	l.blockStack.Push(rootBlock)
 }
 
 func (l *GolangLectureListener) EnterFunction(ctx *lecture.FunctionContext) {
@@ -61,9 +80,12 @@ func (l *GolangLectureListener) EnterFunction(ctx *lecture.FunctionContext) {
 func (l *GolangLectureListener) ExitFunction(ctx *lecture.FunctionContext) {
 	funcStatement := l.statementStack.Pop()
 	funcBlock := l.blockStack.Pop()
+	rootBlock := l.blockStack.Pop()
 
 	funcStatement.Add(jen.Block(funcBlock...))
-	l.jenFile.Add(funcStatement)
+	rootBlock = append(rootBlock, funcStatement, jen.Line())
+
+	l.blockStack.Push(rootBlock)
 }
 
 func (l *GolangLectureListener) EnterFunctionSignature(ctx *lecture.FunctionSignatureContext) {
@@ -171,6 +193,17 @@ func (l *GolangLectureListener) ExitPrintStatement(ctx *lecture.PrintStatementCo
 	funcBlock = append(funcBlock, printStatement)
 
 	l.blockStack.Push(funcBlock)
+}
+
+func (l *GolangLectureListener) EnterCommentStatement(ctx *lecture.CommentStatementContext) {
+	block := l.blockStack.Pop()
+
+	commentString := ctx.GetText()
+	commentString = strings.TrimPrefix(commentString, "by the way, ")
+	commentString = strings.TrimSuffix(commentString, ".")
+	block = append(block, jen.Comment(commentString))
+
+	l.blockStack.Push(block)
 }
 
 func (l *GolangLectureListener) EnterIfChainStatement(ctx *lecture.IfChainStatementContext) {

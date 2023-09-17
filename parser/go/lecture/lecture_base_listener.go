@@ -32,6 +32,12 @@ func (s *BaseLectureListener) EnterProgram(ctx *ProgramContext) {}
 // ExitProgram is called when production program is exited.
 func (s *BaseLectureListener) ExitProgram(ctx *ProgramContext) {}
 
+// EnterFloatingComment is called when production floatingComment is entered.
+func (s *BaseLectureListener) EnterFloatingComment(ctx *FloatingCommentContext) {}
+
+// ExitFloatingComment is called when production floatingComment is exited.
+func (s *BaseLectureListener) ExitFloatingComment(ctx *FloatingCommentContext) {}
+
 // EnterMainFunction is called when production mainFunction is entered.
 func (s *BaseLectureListener) EnterMainFunction(ctx *MainFunctionContext) {}
 
@@ -117,6 +123,12 @@ func (s *BaseLectureListener) EnterPrintStatement(ctx *PrintStatementContext) {}
 
 // ExitPrintStatement is called when production printStatement is exited.
 func (s *BaseLectureListener) ExitPrintStatement(ctx *PrintStatementContext) {}
+
+// EnterCommentStatement is called when production commentStatement is entered.
+func (s *BaseLectureListener) EnterCommentStatement(ctx *CommentStatementContext) {}
+
+// ExitCommentStatement is called when production commentStatement is exited.
+func (s *BaseLectureListener) ExitCommentStatement(ctx *CommentStatementContext) {}
 
 // EnterIfChainStatement is called when production ifChainStatement is entered.
 func (s *BaseLectureListener) EnterIfChainStatement(ctx *IfChainStatementContext) {}

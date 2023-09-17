@@ -18,11 +18,13 @@ import (
 
 // runCmd represents the run command
 var runCmd = &cobra.Command{
-	Use:   "run",
+	Use:   "run FILENAME",
 	Short: "run builds and runs lecture",
 	Long: `Run lecture files (.ltr) or input directly.
 	
-This will run a single lecture file.`,
+This will run a single lecture file.
+
+If the first argument is '-', it will read from stdin for the lecture text.`,
 	Args: cobra.ExactArgs(1),
 	Run:  runRun,
 }

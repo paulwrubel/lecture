@@ -21,7 +21,9 @@ var buildCmd = &cobra.Command{
 	Long: `Generate golang source files from a lecture file (.ltr)
 	
 This will generate a single *.go file (prints to stdout by default) that can be
-directly run using "go run [FILENAME]"`,
+directly run using "go run [FILENAME]"
+
+If the first argument is '-', it will read from stdin for the lecture text.`,
 	Args: cobra.ExactArgs(1),
 	Run:  runBuild,
 }

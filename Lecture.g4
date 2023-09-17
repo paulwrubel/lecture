@@ -30,7 +30,7 @@ program:
 		| function
 	)*;
 
-floatingComment: commentStatement TERMINATOR;
+floatingComment: commentStatement;
 
 // main function
 
@@ -63,13 +63,16 @@ parameterDeclaration:
 
 // statements
 
-statement: (
-		assignmentStatement
-		| reassignmentStatement
-		| printStatement
-		| ifChainStatement
-		| commentStatement
-	) TERMINATOR;
+statement:
+	commentStatement
+	| (
+		(
+			assignmentStatement
+			| reassignmentStatement
+			| printStatement
+			| ifChainStatement
+		) TERMINATOR
+	);
 
 statementBlock: statement+;
 
@@ -146,7 +149,7 @@ number: INTEGER;
  * TOKENS
  */
 
-COMMENT: BY_THE_WAY COMMA SPACE ~[.\n]+;
+COMMENT: BY_THE_WAY COMMA SPACE ~[\n]+ TERMINATOR;
 
 // reserved keyphrases
 OKAY_HEAR_ME_OUT: 'okay, hear me out';

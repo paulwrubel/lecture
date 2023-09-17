@@ -6,6 +6,35 @@ Lecture is actually two separate things in a single repository: A well defined g
 
 **[Click here](using-the-lecture-tool.md) to view documentation on compiling and running the `lecture` binary, which can interpret valid Lecture files.**
 
+## Table of Contents
+
+- [Lecture](#lecture)
+  - [Table of Contents](#table-of-contents)
+  - [Language Features](#language-features)
+    - [Syntax](#syntax)
+      - [Entrypoint](#entrypoint)
+      - [Comments](#comments)
+      - [Assignment](#assignment)
+      - [Reassignment](#reassignment)
+      - [Types](#types)
+        - [Number](#number)
+        - [String](#string)
+      - [Printing](#printing)
+      - [Function calls](#function-calls)
+      - [Operators](#operators)
+      - [If Statements](#if-statements)
+      - [Functions](#functions)
+      - [General](#general)
+        - [Capitalization](#capitalization)
+  - [Style](#style)
+    - [Indentation](#indentation)
+    - [Variable names](#variable-names)
+    - [Function Phrasing](#function-phrasing)
+  - [Example Programs](#example-programs)
+    - [Hello World](#hello-world)
+    - [Fibonacci](#fibonacci)
+  - [A Note on Valid Lecture](#a-note-on-valid-lecture)
+
 ## Language Features
 
 The language grammar is defined using ANTLR4. The grammar file, `Lecture.g4` defines the grammar in [EBNF](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form).

@@ -1,6 +1,3 @@
-/*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 import (
@@ -11,7 +8,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/paulwrubel/lecture-lang/internal"
+	"github.com/paulwrubel/lecture/internal"
 	"github.com/spf13/cobra"
 	"golang.org/x/sync/errgroup"
 )

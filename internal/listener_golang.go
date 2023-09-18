@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/dave/jennifer/jen"
-	"github.com/paulwrubel/lecture-lang/parser/go/lecture"
+	"github.com/paulwrubel/lecture/parser/go/lecture"
 )
 
 // GolangLectureListener is a listener for a parse tree produced by LectureParser.

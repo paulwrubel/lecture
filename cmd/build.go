@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/paulwrubel/lecture-lang/internal"
+	"github.com/paulwrubel/lecture/internal"
 	"github.com/spf13/cobra"
 )
 

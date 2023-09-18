@@ -2,7 +2,7 @@ package internal
 
 import (
 	"github.com/antlr4-go/antlr/v4"
-	"github.com/paulwrubel/lecture-lang/parser/go/lecture"
+	"github.com/paulwrubel/lecture/parser/go/lecture"
 )
 
 type LectureWalker struct {

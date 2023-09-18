@@ -1,4 +1,4 @@
-module github.com/paulwrubel/lecture-lang
+module github.com/paulwrubel/lecture
 
 go 1.21
 
